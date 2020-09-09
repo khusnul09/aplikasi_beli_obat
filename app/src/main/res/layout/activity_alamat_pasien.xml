@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center_vertical"
+    tools:context="com.example.mynotes.AlamatPasienActivity">
+
+    <TextView
+        android:id="@+id/tv_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_nama"
+        android:layout_alignStart="@+id/et_nama"
+        android:layout_marginTop="22dp"
+        android:text="*Nama Penerima"
+        android:textColor="#ED5454"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_nama"
+        android:textColor="#1E1E1E"
+        android:background="@drawable/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nama"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:padding="4dp"
+        android:hint="cth:Khusnul Khatima"
+        android:textColorHighlight="#FB9999"
+        android:ems="10"
+        android:textSize="17dp"
+        android:paddingLeft="5dp"
+        android:inputType="textPersonName"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_handphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_nama"
+        android:layout_alignStart="@+id/et_nama"
+        android:layout_below="@+id/et_nama"
+        android:layout_marginTop="20dp"
+        android:text="*Handphone"
+        android:textColor="#ED5454"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_handphone"
+        android:textColor="#000000"
+        android:background="@drawable/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_handphone"
+        android:hint="cth:081234xxxxxx"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="number"
+        android:padding="4dp"
+        android:textColorHighlight="#FB9999"
+        android:paddingLeft="5dp"
+        android:textSize="17dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_alamat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_handphone"
+        android:layout_alignStart="@+id/et_nama"
+        android:layout_alignLeft="@+id/et_nama"
+        android:layout_marginTop="20dp"
+        android:text="*Alamat"
+        android:textColor="#ED5454"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/et_alamat"
+        android:textColor="#000000"
+        android:background="@drawable/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_alamat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:padding="4dp"
+        android:inputType="textMultiLine"
+        android:textColorHighlight="#FB9999"
+        android:textSize="17dp"
+        android:paddingLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_alamat"
+        android:layout_alignStart="@+id/et_nama"
+        android:layout_alignLeft="@+id/et_nama"
+        android:layout_marginTop="20dp"
+        android:text="*Detail Alamat (nama jalan, no rumah, keterangan)"
+        android:textColor="#ED5454"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/et_detail"
+        android:textColor="#000000"
+        android:background="@drawable/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:padding="4dp"
+        android:hint="cth:Disamping bengkel"
+        android:inputType="textMultiLine"
+        android:textColorHighlight="#FB9999"
+        android:textSize="17dp"
+        android:paddingLeft="5dp"
+        />
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:background="#ED5454"
+        android:textColor="#FFFFFF"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_below="@+id/et_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="LANJUTKAN" />
+
+</RelativeLayout>

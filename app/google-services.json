@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "587737311599",
+    "firebase_url": "https://beliobat-a65ff.firebaseio.com",
+    "project_id": "beliobat-a65ff",
+    "storage_bucket": "beliobat-a65ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587737311599:android:698345c5cf83a86925a09a",
+        "android_client_info": {
+          "package_name": "com.khusnul.beliobat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587737311599-dknpk0fkktlnueknio7arks8av88v0qs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khusnul.beliobat",
+            "certificate_hash": "755cac088c025c77bbb69660e51ae0a8c4e0cf40"
+          }
+        },
+        {
+          "client_id": "587737311599-sg4eib31e3ra570g5e3r75vhhv42hnen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQPUMJQXvWrV7pIvfjSW4sMo5J-RSqGrs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587737311599-sg4eib31e3ra570g5e3r75vhhv42hnen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
