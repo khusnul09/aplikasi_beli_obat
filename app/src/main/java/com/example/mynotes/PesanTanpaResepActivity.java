@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -24,7 +26,9 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
-    ImageButton btnKeranjang;
+    Button btnKeranjang;
+
+    ArrayList<Model> listObatToCart = new ArrayList<>();
 
     SharedPreferences preferences;
 
@@ -33,8 +37,25 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesan_tanpa_resep);
 
+        btnKeranjang = findViewById(R.id.btn_tambah_keranjang);
+        btnKeranjang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setModelDataToCart();
+                Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
+                intent.putExtra("CART", listObatToCart);
+                startActivity(intent);
+            }
+        });
+
         mRecyclerView = findViewById(R.id.recyclerView);
         getMyList();
+    }
+
+    @Override
+    protected void onResume() {
+        listObatToCart.clear();
+        super.onResume();
     }
 
     private void getMyList() {
@@ -100,14 +121,11 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
         m.setDescription("Rp.124.782,-/");
         m.setImg(R.drawable.cefixime_100_mg_kapsul);
         models.add(m);
-
-
-        //mengubah jadi 2
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(),2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
 
-        myAdapter = new MyAdapter(this, models);
+        myAdapter = new MyAdapter(this, models, true);
         mRecyclerView.setAdapter(myAdapter);
+        mRecyclerView.setItemViewCacheSize(models.size());
 
         //..............................video 1.................
     }
@@ -151,7 +169,6 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String query) {
-
                         myAdapter.getFilter().filter(query);
                         return false;
                     }
@@ -167,11 +184,32 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
 
             case R.id.cart_count_menu_item:
                 Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
+                intent.putExtra("CART", listObatToCart);
                 startActivity(intent);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    void setModelDataToCart() {
+        for (int i = 0; i < mRecyclerView.getChildCount(); i++) {
+            MyHolder holder = (MyHolder) mRecyclerView.findViewHolderForAdapterPosition(i);
+            assert holder != null;
+            try {
+                if (holder.jumlahAngka>0) {
+                    Model obat = new Model();
+                    obat.setImg(holder.imageViewResource);
+                    obat.setTitle(holder.mTitle.getText().toString());
+                    obat.setDescription(holder.mDes.getText().toString());
+                    obat.setQuantity(holder.jumlahAngka);
+                    listObatToCart.add(obat);
+                }
+            } catch (Exception ignored) {
+
+            }
+
         }
     }
 }

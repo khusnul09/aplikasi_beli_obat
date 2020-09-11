@@ -10,7 +10,6 @@ public class CustomFilter extends Filter {
     MyAdapter adapter;
 
     //press alt+insert
-
     public CustomFilter(ArrayList<Model> filterList, MyAdapter adapter) {
         this.filterList = filterList;
         this.adapter = adapter;
@@ -18,12 +17,9 @@ public class CustomFilter extends Filter {
 
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
-
         FilterResults results = new FilterResults();
-
         if (constraint !=null && constraint.length() > 0){
             constraint = constraint.toString().toUpperCase();
-
             ArrayList<Model> filterModels = new ArrayList<>();
 
             for(int i  = 0; i <filterList.size(); i++){
@@ -46,10 +42,8 @@ public class CustomFilter extends Filter {
 
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-
         adapter.models = (ArrayList<Model>) results.values;
         adapter.notifyDataSetChanged();
-
     }
 }
 

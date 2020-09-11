@@ -12,12 +12,13 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
 
     ImageView mImaeView;
     TextView mTitle, mDes;
+    int imageViewResource;
     ItemClickListener itemClickListener;
 
     Button tambah;
     Button kurang;
     TextView jumlah;
-    int jumlahAngka=0;
+    public int jumlahAngka=0;
 
     MyHolder(@NonNull View itemView) {
         super(itemView);
@@ -28,7 +29,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         this.jumlah = itemView.findViewById(R.id.jumlah);
         this.tambah = itemView.findViewById(R.id.tambah);
         kurang = itemView.findViewById(R.id.kurang);
-
+        imageViewResource = 0;
         itemView.setOnClickListener(this);
     }
 
