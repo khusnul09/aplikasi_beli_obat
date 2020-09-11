@@ -1,12 +1,19 @@
 package com.example.mynotes;
 
 
-import java.util.Comparator;
+import com.google.gson.annotations.SerializedName;
 
-public class Model {
+import java.io.Serializable;
 
-    private String title, description;
+public class Model implements Serializable {
+    @SerializedName("title")
+    private String title;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("img")
     private int img;
+    @SerializedName("quantity")
+    private int quantity;
 
     public String getTitle() {
         return title;
@@ -30,5 +37,13 @@ public class Model {
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 };

@@ -22,13 +22,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
     ArrayList<Model> models, filterList; //this array lis create a list of array which parameter defice in our model class
     CustomFilter filter;
     int gJumlah;
+    boolean canModifyQuantity;
 
     // now create a parameterized constructor, press alt+insert
 
-    public MyAdapter(Context c, ArrayList<Model> models) {
+    public MyAdapter(Context c, ArrayList<Model> models, boolean canModifyQuantity) {
         this.c = c;
         this.models = models;
         this.filterList = models;
+        this.canModifyQuantity = canModifyQuantity;
     }
 
     @NonNull
@@ -47,27 +49,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         myHolder.mDes.setText(models.get(i).getDescription());
         myHolder.mImaeView.setImageResource(models.get(i).getImg());//here we used image resource because we will use images in our
         //resource folder which is drawable
+        myHolder.imageViewResource = models.get(i).getImg();
+        myHolder.jumlah.setText(models.get(i).getQuantity()+"");
+        myHolder.jumlahAngka = 0;
 
-        myHolder.tambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myHolder.jumlahAngka++;
-                myHolder.jumlah.setText(myHolder.jumlahAngka+"");
-                gJumlah = myHolder.jumlahAngka;
-            }
+        myHolder.tambah.setOnClickListener(v -> {
+            myHolder.jumlahAngka++;
+            myHolder.jumlah.setText(myHolder.jumlahAngka+"");
+            gJumlah = myHolder.jumlahAngka;
         });
-        myHolder.kurang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (myHolder.jumlahAngka>0) {
-                    myHolder.jumlahAngka--;
-                }
-                myHolder.jumlah.setText(myHolder.jumlahAngka+"");
-                gJumlah = myHolder.jumlahAngka;
+        myHolder.kurang.setOnClickListener(v -> {
+            if (myHolder.jumlahAngka>0) {
+                myHolder.jumlahAngka--;
             }
+            myHolder.jumlah.setText(myHolder.jumlahAngka+"");
+            gJumlah = myHolder.jumlahAngka;
         });
 
-
+        if (!canModifyQuantity) {
+            myHolder.tambah.setVisibility(View.INVISIBLE);
+            myHolder.kurang.setVisibility(View.INVISIBLE);
+        }
         //friends this method is than you can use when you want to use one activity
         myHolder.setItemClickListener(new ItemClickListener() {
             @Override
