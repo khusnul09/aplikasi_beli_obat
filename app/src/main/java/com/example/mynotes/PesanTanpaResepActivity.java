@@ -21,14 +21,19 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-public class PesanTanpaResepActivity extends AppCompatActivity {
+public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdapter.ICart {
 
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
     Button btnKeranjang;
 
     ArrayList<Model> listObatToCart = new ArrayList<>();
+    HashMap<String, Integer> itemsCart = new HashMap<>();
+
+    ArrayList<Model> models = new ArrayList<>();
 
     SharedPreferences preferences;
 
@@ -38,14 +43,11 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pesan_tanpa_resep);
 
         btnKeranjang = findViewById(R.id.btn_tambah_keranjang);
-        btnKeranjang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setModelDataToCart();
-                Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
-                intent.putExtra("CART", listObatToCart);
-                startActivity(intent);
-            }
+        btnKeranjang.setOnClickListener(v -> {
+            Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
+            setModelDataToCart();
+            intent.putExtra("CART", listObatToCart);
+            startActivity(intent);
         });
 
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -54,14 +56,10 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        listObatToCart.clear();
         super.onResume();
     }
 
     private void getMyList() {
-
-        ArrayList<Model> models = new ArrayList<>();
-
         Model m = new Model();
         m.setTitle("Acyclovir 200 mg tab");
         m.setDescription("Rp.655,-/tablet");
@@ -123,7 +121,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
         models.add(m);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(),2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
 
-        myAdapter = new MyAdapter(this, models, true);
+        myAdapter = new MyAdapter(this, models, true, this);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(models.size());
 
@@ -184,6 +182,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
 
             case R.id.cart_count_menu_item:
                 Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
+                setModelDataToCart();
                 intent.putExtra("CART", listObatToCart);
                 startActivity(intent);
                 return true;
@@ -194,7 +193,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
     }
 
     void setModelDataToCart() {
-        for (int i = 0; i < mRecyclerView.getChildCount(); i++) {
+        /*for (int i = 0; i < mRecyclerView.getChildCount(); i++) {
             MyHolder holder = (MyHolder) mRecyclerView.findViewHolderForAdapterPosition(i);
             assert holder != null;
             try {
@@ -209,8 +208,33 @@ public class PesanTanpaResepActivity extends AppCompatActivity {
             } catch (Exception ignored) {
 
             }
-
+        }*/
+        listObatToCart.clear();
+        for (Model model : models) {
+            for (Map.Entry<String, Integer> data : itemsCart.entrySet()) {
+                if (model.getTitle().toLowerCase().equals(data.getKey().toLowerCase())) {
+                    model.setQuantity(data.getValue());
+                    listObatToCart.add(model);
+                }
+            }
         }
+    }
+
+    @Override
+    public void onItemSelected(String title, Integer quantity) {
+        /*Log.e("CART", "TRIGGERED");
+        if (listObatToCart.size()>0) {
+            for (Model element : listObatToCart) {
+                if (element.getTitle().toLowerCase().equals(model.getTitle().toLowerCase())) {
+                    element.setQuantity(model.getQuantity());
+                } else {
+                    listObatToCart.add(model);
+                }
+            }
+        } else {
+            listObatToCart.add(model);
+        }*/
+        itemsCart.put(title, quantity);
     }
 }
 
