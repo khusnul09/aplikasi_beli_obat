@@ -22,10 +22,7 @@ public class KeranjangActivity extends AppCompatActivity implements MyAdapter.IC
         setContentView(R.layout.activity_keranjang);
 
         listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
-
-        Log.d("CART", listObatToCart.size() + " items");
-        Toast.makeText(KeranjangActivity.this, listObatToCart.size() + " itm", Toast.LENGTH_SHORT).show();
-
+        
         for (Model model : listObatToCart) {
             if (model.getQuantity()==0) {
                 listObatToCart.remove(model);
