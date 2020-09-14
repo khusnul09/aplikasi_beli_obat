@@ -33,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
-
         etEmail = findViewById(R.id.email);
         etPassword = (TextInputLayout) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btn_login);
