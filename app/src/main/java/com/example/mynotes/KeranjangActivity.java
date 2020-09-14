@@ -20,19 +20,14 @@ public class KeranjangActivity extends AppCompatActivity implements MyAdapter.IC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keranjang);
-
         listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
-        
         for (Model model : listObatToCart) {
             if (model.getQuantity()==0) {
                 listObatToCart.remove(model);
             }
         }
-
         mRecyclerView = findViewById(R.id.recyclerView);
-
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
-
         myAdapter = new MyAdapter(this, listObatToCart, false, this);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(listObatToCart.size());
