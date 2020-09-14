@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class AlamatPasienActivity extends AppCompatActivity {
+public class ResepObatTerkirimActivity extends AppCompatActivity {
 
-    Button lanjutkan;
+    Button selesai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alamat_pasien);
+        setContentView(R.layout.activity_resep_obat_terkirim);
 
-        lanjutkan = findViewById(R.id.btn_lanjutkan);
-        lanjutkan.setOnClickListener(new View.OnClickListener() {
+        selesai = findViewById(R.id.btn_selesai);
+        selesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AlamatPasienActivity.this, ResepObatTerkirimActivity.class);
+                Intent intent = new Intent(ResepObatTerkirimActivity.this, PesanObatActivity.class);
                 startActivity(intent);
             }
         });
