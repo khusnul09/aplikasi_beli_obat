@@ -23,7 +23,7 @@ public class CustomFilter extends Filter {
             ArrayList<Model> filterModels = new ArrayList<>();
 
             for(int i  = 0; i <filterList.size(); i++){
-                if (filterList.get(i).getTitle().toUpperCase().contains(constraint)) {
+                if (filterList.get(i).getNamaObat().toUpperCase().contains(constraint)) {
 
                     filterModels.add(filterList.get(i));
                 }

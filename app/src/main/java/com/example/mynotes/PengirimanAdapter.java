@@ -47,10 +47,10 @@ public class PengirimanAdapter extends RecyclerView.Adapter<PengirimanHolder> {
 
         Model currentItem = models.get(i);
 
-        myHolder.mTitle.setText(currentItem.getTitle()); //here i is position
-        myHolder.mDes.setText(currentItem.getDescription());
-        myHolder.mImaeView.setImageResource(currentItem.getImg());//here we used image resource because we will use images in our
-        myHolder.imageViewResource = currentItem.getImg();
+        myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
+        myHolder.mDes.setText(currentItem.getHargaJual()+"");
+        myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
+        myHolder.imageViewResource = currentItem.getImage();
         myHolder.jumlah.setText("x "+currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
 

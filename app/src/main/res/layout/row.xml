@@ -20,17 +20,56 @@
             android:id="@+id/imageIv"
             android:src="@mipmap/ic_launcher"/>
 
-        <TextView
-            android:layout_width="130dp"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:id="@+id/priceLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Description"
-            android:id="@+id/descriptionTv"
-            android:textSize="12sp"
-            android:textColor="#EF0B0B"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
             android:layout_below="@id/imageIv"
-            android:layout_centerHorizontal="true"/>
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tv_rp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp"
+                android:textSize="12sp"
+                android:layout_marginRight="1dp"
+                android:textColor="#ED5454"/>
+
+            <TextView
+                android:id="@+id/tv_harga_obat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_rp"
+                android:layout_marginRight="1dp"
+                android:gravity="center"
+                android:text="10.000"
+                android:textColor="#ED5454"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_garing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_harga_obat"
+                android:layout_marginLeft="1dp"
+                android:gravity="center"
+                android:text="/"
+                android:textColor="#ED5454"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_satuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_garing"
+                android:gravity="center"
+                android:text="ampul"
+                android:textColor="#ED5454"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="130dp"
@@ -42,7 +81,7 @@
             android:textSize="16sp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:layout_below="@id/descriptionTv"
+            android:layout_below="@id/priceLayout"
             android:layout_centerHorizontal="true"/>
 
         <LinearLayout

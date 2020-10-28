@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     ImageView mImaeView;
-    TextView mTitle, mDes;
+    TextView mTitle, mHarga, mSatuan;
     int imageViewResource;
     ItemClickListener itemClickListener;
 
@@ -23,9 +23,10 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     MyHolder(@NonNull View itemView) {
         super(itemView);
 
+        this.mSatuan = itemView.findViewById(R.id.tv_satuan);
         this.mImaeView = itemView.findViewById(R.id.imageIv);
         this.mTitle = itemView.findViewById(R.id.titleTv);
-        this.mDes = itemView.findViewById(R.id.descriptionTv);
+        this.mHarga = itemView.findViewById(R.id.tv_harga_obat);
         this.jumlah = itemView.findViewById(R.id.jumlah);
         this.tambah = itemView.findViewById(R.id.tambah);
         kurang = itemView.findViewById(R.id.kurang);

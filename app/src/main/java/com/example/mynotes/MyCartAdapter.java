@@ -48,10 +48,10 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
 
         Model currentItem = models.get(i);
 
-        myHolder.mTitle.setText(currentItem.getTitle()); //here i is position
-        myHolder.mDes.setText(currentItem.getDescription());
-        myHolder.mImaeView.setImageResource(currentItem.getImg());//here we used image resource because we will use images in our
-        myHolder.imageViewResource = currentItem.getImg();
+        myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
+        myHolder.mDes.setText(currentItem.getHargaJual());
+        myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
+        myHolder.imageViewResource = currentItem.getImage();
         myHolder.jumlah.setText(currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
 
@@ -59,7 +59,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
             myHolder.jumlahAngka++;
             myHolder.jumlah.setText(myHolder.jumlahAngka + "");
             gJumlah = myHolder.jumlahAngka;
-            iCart.onItemSelected(currentItem.getTitle(), myHolder.jumlahAngka);
+            iCart.onItemSelected(currentItem.getNamaObat(), myHolder.jumlahAngka);
         });
         myHolder.kurang.setOnClickListener(v -> {
             if (myHolder.jumlahAngka > 0) {
@@ -67,7 +67,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
             }
             myHolder.jumlah.setText(myHolder.jumlahAngka + "");
             gJumlah = myHolder.jumlahAngka;
-            iCart.onItemSelected(currentItem.getTitle(), myHolder.jumlahAngka);
+            iCart.onItemSelected(currentItem.getNamaObat(), myHolder.jumlahAngka);
         });
 
         if (!canModifyQuantity) {
@@ -77,8 +77,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
 
         //friends this method is than you can use when you want to use one activity
         myHolder.setItemClickListener((v, position) -> {
-            String gTitle = models.get(position).getTitle();
-            String gDesc = models.get(position).getDescription(); //this object our data from previous activity
+            String gTitle = models.get(position).getNamaObat();
+            String gDesc = models.get(position).getHargaJual()+""; //this object our data from previous activity
             BitmapDrawable bitmapDrawable = (BitmapDrawable) myHolder.mImaeView.getDrawable(); //this will get image from drawable
             Bitmap bitmap = bitmapDrawable.getBitmap();
             ByteArrayOutputStream stream = new ByteArrayOutputStream(); //image will get stream and bytes
