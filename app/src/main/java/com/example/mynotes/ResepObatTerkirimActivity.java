@@ -25,4 +25,11 @@ public class ResepObatTerkirimActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ResepObatTerkirimActivity.this, PesanObatActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

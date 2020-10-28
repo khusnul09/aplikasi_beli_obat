@@ -18,8 +18,7 @@
             android:scaleType="centerCrop"
             android:layout_centerHorizontal="true"
             android:id="@+id/imageIv"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:src="@mipmap/ic_launcher"/>
 
         <TextView
             android:layout_width="130dp"
@@ -31,8 +30,7 @@
             android:textSize="12sp"
             android:textColor="#EF0B0B"
             android:layout_below="@id/imageIv"
-            android:layout_centerHorizontal="true"
-            />
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="130dp"
@@ -45,8 +43,7 @@
             android:textColor="#000"
             android:textStyle="bold"
             android:layout_below="@id/descriptionTv"
-            android:layout_centerHorizontal="true"
-            />
+            android:layout_centerHorizontal="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,6 +57,7 @@
                 android:id="@+id/kurang"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:theme="@style/ButtonRow"
                 android:text="-"
                 android:textColor="#000" />
 
@@ -69,6 +67,7 @@
                 android:layout_toRightOf="@id/kurang"
                 android:id="@+id/jumlah"
                 android:text="0"
+                android:textStyle="bold"
                 android:textColor="#000"
                 android:textAlignment="center"
                 android:gravity="center_vertical"
@@ -80,7 +79,8 @@
                 android:layout_height="40dp"
                 android:layout_toRightOf="@+id/jumlah"
                 android:text="+"
-                android:textColor="#E63636" />
+                android:textColor="#000"
+                android:theme="@style/ButtonRow" />
 
         </LinearLayout>
 

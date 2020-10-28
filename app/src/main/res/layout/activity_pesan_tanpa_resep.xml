@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.mynotes.PesanTanpaResepActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerView"
-        android:layout_marginBottom="60dp"
-        />
+        android:layout_marginBottom="60dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,17 +19,14 @@
         android:background="#f0f0f0">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Masukkan keranjang"
             android:id="@+id/btn_tambah_keranjang"
-            android:background="@color/color1"
-            />
-
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="16dp"
+            android:text="Masukkan keranjang"
+            android:background="@drawable/primary_button"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
-
-
 
 </RelativeLayout>

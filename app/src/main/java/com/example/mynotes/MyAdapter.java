@@ -98,32 +98,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
 
         });
 
-        //if you want to use different activities than you can use this logic
-
-        /*myHolder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onItemClickListener(View v, int position) {
-
-                if (models.get(position).getTitle().equals("Panadol")){
-                    //then you can move another activity from if body
-                }
-                if (models.get(position).getTitle().equals("OBH")){
-                    //then you can move another activity from if body
-                }
-                if (models.get(position).getTitle().equals("Combi")){
-                    //then you can move another activity from if body
-                }
-                if (models.get(position).getTitle().equals("Mylanta")){
-                    //then you can move another activity from if body
-                }
-                if (models.get(position).getTitle().equals("Woods")){
-                    //then you can move another activity from if body
-                }
-            }
-        });*/
-
-        // but still we are using one activity so comment it..
-
     }
 
     @Override

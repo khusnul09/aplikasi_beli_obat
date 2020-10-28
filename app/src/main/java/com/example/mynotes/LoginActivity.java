@@ -2,42 +2,47 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String url = "https://obats.000webhostapp.com/api/user/login";
+
+    ProgressDialog progressDialog;
     private TextInputLayout etEmail, etPassword;
     TextView tvDaftar;
     Button btnLogin;
-    private FirebaseAuth auth;
+    String role, statsnk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        auth = FirebaseAuth.getInstance();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
         etEmail = findViewById(R.id.email);
-        etPassword = (TextInputLayout) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        tvDaftar = (TextView) findViewById(R.id.tv_daftar);
-
+        etPassword = findViewById(R.id.password);
+        btnLogin = findViewById(R.id.btn_login);
+        tvDaftar = findViewById(R.id.tv_daftar_disini);
 
         tvDaftar.setOnClickListener(v -> {
             Intent i = new Intent(LoginActivity.this,
@@ -45,35 +50,92 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        btnLogin. setOnClickListener(v -> {
-            loginValidation();
-        });
+        btnLogin. setOnClickListener(v -> loginValidation());
     }
 
     private void loginValidation() {
         if (Utils.inputValidation(etEmail)) {
+            Log.i("Khatima", "if Utils.inputValidation(etEmail) dijalankan");
             etEmail.setErrorEnabled(false);
             if (Utils.inputValidation(etPassword)) {
+                Log.i("Khatima", "if Utils.inputValidation(etPassword) dijalankan");
                 SystemUtils.hideKeyBoard(this);
                 etPassword.setErrorEnabled(false);
                 //if everything is okay
-                auth.signInWithEmailAndPassword(etEmail.getEditText().getText().toString(), etPassword.getEditText().getText().toString())
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
+                StringRequest request = new StringRequest(Request.Method.POST, url,
+                        response -> {
+                            Log.i("Khatima", response);
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                Log.i("Khatima", String.valueOf(jsonObject));
+                                if (jsonObject.getString("status").equals("sukses")) {
+                                    Log.i("Khatima", "if dijalankan");
+                                    JSONArray array = jsonObject.getJSONArray("data");
+                                    for (int i = 0; i < array.length(); i++) {
+                                        JSONObject objData = array.getJSONObject(i);
+                                        role = objData.getString("role");
+                                        statsnk = objData.getString("snk");
+                                    }
+                                    SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", Objects.requireNonNull(etEmail.getEditText()).getText().toString());
+                                    SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", role);
+                                    if (statsnk.equals("setuju")) {
+                                        Toast.makeText(getApplicationContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
+                                        SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", true);
+                                        if (role.equals("user")) {
+                                            Intent intent = new Intent(LoginActivity.this, PesanObatActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else if (role.equals("admin")) {
+                                            Toast.makeText(getApplicationContext(), "ke halaman admin nanti", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else if (statsnk.equals("belum")) {
+                                        Intent intent = new Intent(LoginActivity.this, SyaratDanKetentuanActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                } else if (jsonObject.getString("status").equals("gagal")){
+                                    Log.i("Khatima", "else dijalankan");
+                                    Toast.makeText(getApplicationContext(), "User tidak ditemukan!", Toast.LENGTH_SHORT).show();
+                                }
+                                progressDialog.dismiss();
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        },
+                        error -> {
+
+                        }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> param = new HashMap<>();
+                        param.put("email", Objects.requireNonNull(etEmail.getEditText()).getText().toString());
+                        param.put("password", Objects.requireNonNull(etPassword.getEditText()).getText().toString());
+                        return param;
+                    }
+                };
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                queue.add(request);
+
+                /*auth.signInWithEmailAndPassword(etEmail.getEditText().getText().toString(), etPassword.getEditText().getText().toString())
                         .addOnCompleteListener(task -> {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(this, "Gagal login karena: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(this, "Berhasil login!", Toast.LENGTH_SHORT).show();
-                                SharedPreferenceManager.saveBooleanPreferences(this, "is_login", true);
-                                SharedPreferenceManager.saveStringPreferences(this, "user_email", etEmail.getEditText().getText().toString());
-                                Intent intent = new Intent(this, SyaratDanKetentuanActivity.class);
-                                startActivity(intent);
+
                             }
-                        });
+                        });*/
             } else {
-                etPassword.getEditText().setError("Please enter your password");
+                Objects.requireNonNull(etPassword.getEditText()).setError("Please enter your password");
             }
         } else {
-            etEmail.getEditText().setError("Please enter your username");
+            Objects.requireNonNull(etEmail.getEditText()).setError("Please enter your username");
         }
     }
 }

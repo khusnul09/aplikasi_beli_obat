@@ -2,10 +2,15 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,22 +18,49 @@ import java.util.ArrayList;
 
 public class KeranjangActivity extends AppCompatActivity implements MyAdapter.ICart {
     RecyclerView mRecyclerView;
-    MyAdapter myAdapter;
+    MyCartAdapter myAdapter;
+    TextView tambahProduk;
+    Button lanjutBayar;
+    ImageView kembali;
 
     ArrayList<Model> listObatToCart = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keranjang);
-        listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
-        for (Model model : listObatToCart) {
-            if (model.getQuantity()==0) {
-                listObatToCart.remove(model);
+
+        lanjutBayar = findViewById(R.id.btn_lanjut_bayar);
+        lanjutBayar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PengirimanActivity.class);
+                intent.putExtra("CART", listObatToCart);
+                startActivity(intent);
             }
-        }
+        });
+
+        kembali = findViewById(R.id.iv_kembali6);
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), PesanTanpaResepActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        tambahProduk = findViewById(R.id.tv_tambah_produk_lain);
+        tambahProduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); //kembali ke pilih obat
+            }
+        });
+
+        listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
         mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
-        myAdapter = new MyAdapter(this, listObatToCart, false, this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext(), RecyclerView.VERTICAL, false)); // i will create in linearlayout
+        myAdapter = new MyCartAdapter(this, listObatToCart, false, this::onItemSelected);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(listObatToCart.size());
     }

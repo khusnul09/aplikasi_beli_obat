@@ -1,5 +1,6 @@
 package com.example.mynotes;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
@@ -9,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.mynotes.R.id.search;
 
 public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdapter.ICart {
 
@@ -41,6 +47,12 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesan_tanpa_resep);
+
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#EF3D3D"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle("Pilih Obat"); //color and title actionbar
+        actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Pilih Obat</font>"));
 
         btnKeranjang = findViewById(R.id.btn_tambah_keranjang);
         btnKeranjang.setOnClickListener(v -> {
@@ -119,13 +131,13 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         m.setDescription("Rp.124.782,-/");
         m.setImg(R.drawable.cefixime_100_mg_kapsul);
         models.add(m);
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(),2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
 
         myAdapter = new MyAdapter(this, models, true, this);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(models.size());
 
-        //..............................video 1.................
     }
     //first create an interface class
     //SORT

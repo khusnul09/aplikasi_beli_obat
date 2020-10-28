@@ -4,140 +4,186 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:gravity="center_vertical"
     tools:context="com.example.mynotes.AlamatPasienActivity">
 
-    <TextView
-        android:id="@+id/tv_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_nama"
-        android:layout_alignStart="@+id/et_nama"
-        android:layout_marginTop="22dp"
-        android:text="*Nama Penerima"
-        android:textColor="#ED5454"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/et_nama"
-        android:textColor="#1E1E1E"
-        android:background="@drawable/edit"
+    <LinearLayout
+        android:id="@+id/tb_alamat_penerima"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_nama"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:padding="4dp"
-        android:hint="cth:Khusnul Khatima"
-        android:textColorHighlight="#FB9999"
-        android:ems="10"
-        android:textSize="17dp"
-        android:paddingLeft="5dp"
-        android:inputType="textPersonName"
-        />
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
 
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_handphone"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Data Penerima"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_nama"
-        android:layout_alignStart="@+id/et_nama"
-        android:layout_below="@+id/et_nama"
-        android:layout_marginTop="20dp"
-        android:text="*Handphone"
-        android:textColor="#ED5454"
-        android:textSize="16sp" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_alamat_penerima">
 
-    <EditText
-        android:id="@+id/et_handphone"
-        android:textColor="#000000"
-        android:background="@drawable/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_handphone"
-        android:hint="cth:081234xxxxxx"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:inputType="number"
-        android:padding="4dp"
-        android:textColorHighlight="#FB9999"
-        android:paddingLeft="5dp"
-        android:textSize="17dp"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="27dp"
+            android:layout_centerInParent="true">
 
-    <TextView
-        android:id="@+id/tv_alamat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_handphone"
-        android:layout_alignStart="@+id/et_nama"
-        android:layout_alignLeft="@+id/et_nama"
-        android:layout_marginTop="20dp"
-        android:text="*Alamat"
-        android:textColor="#ED5454"
-        android:textSize="15dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="3dp">
 
-    <EditText
-        android:id="@+id/et_alamat"
-        android:textColor="#000000"
-        android:background="@drawable/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_alamat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:padding="4dp"
-        android:inputType="textMultiLine"
-        android:textColorHighlight="#FB9999"
-        android:textSize="17dp"
-        android:paddingLeft="5dp"
-        />
+                <!--        <LinearLayout-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:gravity="center"-->
+                <!--            android:orientation="horizontal">-->
 
-    <TextView
-        android:id="@+id/tv_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_alamat"
-        android:layout_alignStart="@+id/et_nama"
-        android:layout_alignLeft="@+id/et_nama"
-        android:layout_marginTop="20dp"
-        android:text="*Detail Alamat (nama jalan, no rumah, keterangan)"
-        android:textColor="#ED5454"
-        android:textSize="15dp" />
+                <!--            <ImageView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:src="@drawable/ic_location"/>-->
 
-    <EditText
-        android:id="@+id/et_detail"
-        android:textColor="#000000"
-        android:background="@drawable/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_detail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:padding="4dp"
-        android:hint="cth:Disamping bengkel"
-        android:inputType="textMultiLine"
-        android:textColorHighlight="#FB9999"
-        android:textSize="17dp"
-        android:paddingLeft="5dp"
-        />
+                <!--            <TextView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="Alamat Pengiriman"-->
+                <!--                android:textStyle="bold"-->
+                <!--                android:textColor="#ED5454"-->
+                <!--                android:textSize="18sp"/>-->
+
+                <!--    </LinearLayout>-->
+
+                <TextView
+                    android:id="@+id/tv_lbnama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ED5454"
+                    android:textSize="16sp"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:text="Nama Lengkap"/>
+
+                <EditText
+                    android:id="@+id/et_nama_pasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Khusnul Khatima"
+                    android:paddingHorizontal="12dp"
+                    android:inputType="text"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/linecolor" />
+
+                <TextView
+                    android:id="@+id/tv_lbhp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="No Handphone"
+                    android:textColor="#ED5454"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_hp_pasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="085255513984"
+                    android:paddingHorizontal="12dp"
+                    android:layout_marginTop="3dp"
+                    android:inputType="number"
+                    android:background="@drawable/linecolor" />
+
+                <TextView
+                    android:id="@+id/tv_ket_hp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="*(No Handphone aktif dan bisa dihubungi)"
+                    android:textColor="#ED5454"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_lbalamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Alamat"
+                    android:textColor="#ED5454"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_alamat_pasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/linecolor"
+                    android:hint="Perumahan Griya Mawang Indah Blok A2"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="4"
+                    android:paddingHorizontal="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_lbdet_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="Detail Alamat"
+                    android:textColor="#ED5454"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_det_alamat_pasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Samping Masjid Jami' Abu Bakar As Sidiq"
+                    android:layout_marginTop="3dp"
+                    android:paddingHorizontal="12dp"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:background="@drawable/linecolor"
+                    android:maxLines="4"/>
+
+                <TextView
+                    android:id="@+id/tv_ket_det_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="*(Keterangan nama jalan, no rumah, dan lain-lain)"
+                    android:textColor="#ED5454"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_kirim"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/primary_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/det_alamat"
+                    android:layout_marginTop="50dp"
+                    android:text="KIRIM" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-    <Button
-        android:id="@+id/btn_lanjutkan"
-        android:background="#ED5454"
-        android:textColor="#FFFFFF"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_below="@+id/et_detail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:text="LANJUTKAN" />
+    </ScrollView>
+
 
 </RelativeLayout>

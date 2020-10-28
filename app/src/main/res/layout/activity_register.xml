@@ -7,97 +7,155 @@
     android:background="#FDFDFD"
     tools:context=".RegisterActivity">
 
+    <LinearLayout
+        android:id="@+id/tb_daftar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
 
-    <ImageView
-        android:id="@+id/iv_user"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/logouser" />
+        <ImageView
+            android:id="@+id/iv_kembali1"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/iv_user"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/edit"
-        android:ems="10"
-        android:hint="Nama Lengkap"
-        android:inputType="textPersonName"
-        android:paddingLeft="7dp"
-        android:textColor="#F33939" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/daftar"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
 
-    <EditText
-        android:id="@+id/et_handphone"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/et_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/edit"
-        android:ems="10"
-        android:hint="Handphone"
-        android:inputType="number"
-        android:paddingLeft="7dp"
-        android:textColor="#F33939" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_alamat"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/et_handphone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/edit"
-        android:ems="10"
-        android:hint="Alamat"
-        android:inputType="textMultiLine"
-        android:paddingLeft="7dp"
-        android:textColor="#F33939" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tb_daftar">
 
-    <EditText
-        android:id="@+id/et_reg_email"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/et_alamat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/edit"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:paddingLeft="7dp"
-        android:textColor="#F33939" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
 
-    <EditText
-        android:id="@+id/et_reg_password"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/et_reg_email"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/edit"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        android:paddingLeft="7dp"
-        android:textColor="#F33939"
-        app:passwordToggleEnabled="true" />
+            <ImageView
+                android:id="@+id/iv_user"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/logouser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/nama_lengkap"
+                app:boxStrokeColor="@color/color1"
+                app:hintTextAppearance="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C62525"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/btn_daftar"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_reg_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="#ED5454"
-        android:text="DAFTAR"
-        android:textColor="#ffffff"
-        android:textSize="20sp" />
+            <com.google.android.material.textfield.TextInputLayout
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/no_hp"
+                app:boxStrokeColor="@color/color1"
+                app:hintTextAppearance="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_handphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C62525"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/alamat"
+                app:boxStrokeColor="@color/color1"
+                app:hintTextAppearance="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:textColor="#C62525"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/email"
+                app:boxStrokeColor="@color/color1"
+                app:hintTextAppearance="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_reg_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#C62525"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/password"
+                app:passwordToggleEnabled="true"
+                app:boxStrokeColor="@color/color1"
+                app:hintTextAppearance="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_reg_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="#C62525"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_daftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/primary_button"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:text="@string/daftar" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

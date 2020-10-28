@@ -4,44 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:gravity="center_horizontal"
     tools:context="com.example.mynotes.PesanDenganResepActivity">
 
-        <RelativeLayout
+    <LinearLayout
+        android:id="@+id/tb_unggah"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
+
+        <ImageView
+            android:id="@+id/iv_kembali5"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:text="Unggah Resep"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
 
-            <ImageView
-                android:id="@+id/open_image"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                android:clickable="true"
-                android:src="@drawable/ic_camera" />
+    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/showImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/open_image"
-                android:layout_above="@id/kirimBtn"
-                android:layout_centerInParent="true"
-                android:layout_margin="8dp" />
+    <LinearLayout
+        android:layout_below="@id/tb_unggah"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
-            <Button
-                android:id="@+id/kirimBtn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
-                android:background="#ED5454"
-                android:onClick="Kirim"
-                android:text="Kirim"
-                android:textColor="#FFFF" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_silahkan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Silahkan Unggah Foto Resep Anda"
+            android:textColor="#ED5454"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/showImg"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/picture"/>
+
+        <Button
+            android:id="@+id/btn_pilih_gambar"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:text="Pilih Gambar"
+            android:layout_gravity="center"
+            android:background="@drawable/secondary_button"
+            android:textColor="@color/color1"
+            />
+
+        <Button
+            android:id="@+id/btn_lanjutkan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_pilih_gambar"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            android:background="@drawable/primary_button"
+            android:text="Lanjutkan"
+            android:textColor="#FFFF"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

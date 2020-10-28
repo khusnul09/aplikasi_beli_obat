@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/iv_image"
+            android:layout_toEndOf="@+id/iv_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/tv_harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="12dp"
+            android:textColor="#EF0B0B"
+            android:layout_toRightOf="@+id/iv_image"
+            android:layout_toEndOf="@+id/iv_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/tv_title"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/tv_harga"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/iv_image"
+            android:layout_toEndOf="@+id/iv_image">
+
+            <Button
+                android:id="@+id/btn_kurang"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:textColor="#000"
+                android:theme="@style/ButtonRow"/>
+
+            <TextView
+                android:id="@+id/btn_jumlah"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@id/btn_kurang"
+                android:text="0"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btn_tambah"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/btn_jumlah"
+                android:text="+"
+                android:textColor="#000"
+                android:theme="@style/ButtonRow" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

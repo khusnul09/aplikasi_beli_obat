@@ -2,29 +2,44 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private static final String url = "https://obats.000webhostapp.com//api/user/adduser";
+
+    ProgressDialog progressDialog;
     Button buttonDaftar;
-    EditText namaLengkap, noHp, alamat, emailReg, passwordReg;
-    private FirebaseAuth auth;
+    ImageView kembali;
+    private TextInputEditText namaLengkap, noHp, alamat, emailReg, passwordReg;
+    String dftNamaLengkap, dftNoHp, dftAlamat, dftEmail, dftPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        auth = FirebaseAuth.getInstance();
 
-        namaLengkap = findViewById(R.id.et_name);
+        namaLengkap = findViewById(R.id.et_nama);
         noHp = findViewById(R.id.et_handphone);
         alamat = findViewById(R.id.et_alamat);
         emailReg = findViewById(R.id.et_reg_email);
@@ -54,18 +69,67 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            String email = Objects.requireNonNull(emailReg.getText()).toString();
-            String password = Objects.requireNonNull(passwordReg.getText()).toString();
-            //if everything is okay
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(this, "Gagal mendaftarkan user", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Berhasil mendaftarkan user!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-            });
+            login();
         });
+
+        kembali = findViewById(R.id.iv_kembali1);
+        kembali.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+
+        });
+    }
+
+    private void login() {
+        progressDialog = new ProgressDialog(RegisterActivity.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
+        dftNamaLengkap = Objects.requireNonNull(namaLengkap.getText()).toString().trim();
+        dftNoHp = Objects.requireNonNull(noHp.getText()).toString().trim();
+        dftAlamat = Objects.requireNonNull(alamat.getText()).toString().trim();
+        dftEmail = Objects.requireNonNull(emailReg.getText()).toString().trim();
+        dftPassword = Objects.requireNonNull(passwordReg.getText()).toString().trim();
+
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        progressDialog.dismiss();
+                        if (object.getString("text").equals("berhasil")) {
+                            Toast.makeText(getApplicationContext(), "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();
+                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", dftEmail);
+                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", "user");
+                            Intent keLogin = new Intent(RegisterActivity.this, SyaratDanKetentuanActivity.class);
+                            startActivity(keLogin);
+                        } else {
+                            Toast.makeText(getApplicationContext(), object.getString("text"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                },
+                error -> {
+
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> param = new HashMap<>();
+                param.put("nama", dftNamaLengkap);
+                param.put("handphone", dftNoHp);
+                param.put("alamat", dftAlamat);
+                param.put("email", dftEmail);
+                param.put("password", dftPassword);
+                param.put("role", "user");
+                param.put("snk", "belum");
+                return param;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
     }
 }

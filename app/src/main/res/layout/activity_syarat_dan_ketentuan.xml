@@ -5,20 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
     android:gravity="center_horizontal"
     tools:context="com.example.mynotes.SyaratDanKetentuanActivity">
+
+    <LinearLayout
+        android:id="@+id/tb_syatar_ketenntuan"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/snk"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Syarat dan Ketentuan"
+        android:text="@string/snk"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:textColor="#ED5454"
-        android:layout_centerHorizontal="true"
         android:gravity="center_horizontal" />
 
     <LinearLayout
@@ -34,12 +55,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="1." />
+            android:layout_marginEnd="5dp"
+            android:text="@string/_1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pasien membayar ke rekening qq Rumah Sakit Unhas minimal 50% dari harga obat sebelum diantar." />
+            android:text="@string/snk01" />
 
     </LinearLayout>
 
@@ -56,12 +78,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="2." />
+            android:layout_marginEnd="5dp"
+            android:text="@string/_2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Begitu obat sampai ke lokasi pembeli, maka pembeli wajib melunasi sisa pembayaran dengan cara kembali mentransfer ke rekening qq Rumah Sakit Unhas (tidak menerima case tunai)." />
+            android:text="@string/snk02" />
 
     </LinearLayout>
 
@@ -78,44 +101,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:text="3." />
+            android:layout_marginEnd="5dp"
+            android:text="@string/_3" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Biaya transformasi sebesar Rp. 35.000,00" />
+            android:text="@string/snk03" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:weightSum="2">
 
         <Button
-            android:text="Setuju"
             android:id="@+id/setuju"
-            android:layout_marginRight="20dp"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
+            android:background="@drawable/primary_button"
             android:gravity="center"
-            android:background="#ED5454"
-            android:textColor="#FFFFFF"
             android:shadowColor="#00D81616"
-            />
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/setuju"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/tidak_setuju"
-            android:text="Tidak Setuju"
-            android:layout_toLeftOf="@id/setuju"
+            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_width="100dp"
+            android:background="@drawable/secondary_button"
             android:gravity="center"
-            android:background="#ED5454"
-            android:textColor="#FFFFFF"
-            android:shadowColor="#00D81616" />
+            android:shadowColor="#00D81616"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/tidak_setuju"
+            android:textColor="#ED5454" />
 
     </LinearLayout>
 

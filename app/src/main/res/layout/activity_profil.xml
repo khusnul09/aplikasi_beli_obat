@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilActivity">
+
+    <LinearLayout
+        android:id="@+id/tb_profil"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Profil"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_edit_akun"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/tb_profil">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_edit" />
+
+        <TextView
+            android:id="@+id/tv_edit_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profil"
+            android:textSize="12sp"
+            android:textColor="#777171"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/ll_edit_akun"
+            android:padding="25dp">
+
+            <ImageView
+                android:id="@+id/iv_user_edit"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logouser"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2.5"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_lebel_nama"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:text="Nama Lengkap"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_nama_profil"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Khusnul Khatima"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:layout_weight="1.57"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2.5"
+                        android:paddingLeft="15dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_lebel_no"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="No Handphone"
+                            android:textColor="#000"
+                            android:textSize="14sp"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_hp_profil"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="085255513984"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:layout_weight="1.6"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2.5"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_lebel_alamat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_alamat_profil"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Jalan Mangga No 24 Gowa, Bontomarannu"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:layout_weight="1.52"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2.5"
+                        android:paddingLeft="15dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_lebel_email"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textSize="14sp"
+                            android:textColor="#000"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_email_profil"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="khusnulkhatima09@gmail.com"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:layout_weight="1.52"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Keluar"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/primary_button"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

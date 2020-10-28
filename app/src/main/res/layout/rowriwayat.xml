@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:padding="12sp"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/iv_image_riwayat"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_title_riwayat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/iv_image_riwayat"
+            android:layout_toEndOf="@+id/iv_image_riwayat"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:id="@+id/tv_harga_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="12sp"
+            android:textColor="#EF0B0B"
+            android:layout_toRightOf="@+id/iv_image_riwayat"
+            android:layout_toEndOf="@+id/iv_image_riwayat"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/tv_title_riwayat"/>
+
+        <TextView
+            android:id="@+id/tv_total_riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@+id/iv_image_riwayat"
+            android:layout_below="@id/tv_harga_riwayat"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DETAIL"
+            android:layout_marginTop="74dp"
+            android:gravity="end"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#ED5454"
+            android:layout_marginRight="40dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

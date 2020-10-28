@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">MyNotes</string>
+    <string name="snk01">Pasien membayar ke rekening qq Rumah Sakit Unhas minimal 50% dari harga obat sebelum diantar.</string>
+    <string name="snk">Syarat dan Ketentuan</string>
+    <string name="_1">1.</string>
+    <string name="_2">2.</string>
+    <string name="snk02">Begitu obat sampai ke lokasi pembeli, maka pembeli wajib melunasi sisa pembayaran dengan cara kembali mentransfer ke rekening qq Rumah Sakit Unhas (tidak menerima case tunai).</string>
+    <string name="_3">3.</string>
+    <string name="snk03">Biaya transformasi sebesar Rp. 35.000,00</string>
+    <string name="info1">Gunakan ATM/ iBangking/ mBangking/ setor tunai untuk transfet ke rekening berikut ini:</string>
+    <string name="info2">Silahkan upload bukti transfer</string>
+    <string name="info3">Demi keamaman transaksi, mohon untuk tidak membagikan nukti atau konfirmasi pembayaran pesanan kepada siapapun selain mengunggahnya via aplikasi Beli Obat</string>
+    <string name="info4">Pastikan Anda telah melengkapi seluruh informasi sebelum mengupload bukti transfer</string>
+    <string name="setuju">Setuju</string>
+    <string name="tidak_setuju">Tidak Setuju</string>
+    <string name="daftar">Daftar</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="no_hp">No Handphone</string>
+    <string name="alamat">Alamat</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -4,18 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     tools:context="com.example.mynotes.ResepObatTerkirimActivity">
+
+    <LinearLayout
+        android:id="@+id/tb_unggah"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#EF3D3D">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Kirim Resep"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
         android:layout_centerInParent="true"
-        android:padding="12dp"
+        android:padding="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1DE8DFDF">
+        android:background="#1DDFC4C4">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,9 +46,9 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:padding="10dp"
-            android:textColor="#EA1515"/>
+            android:textColor="#ED5454"/>
 
         <ImageView
             android:id="@+id/resep_oke"
@@ -41,17 +63,16 @@
             android:text="Tunggu konfirmasi selanjutnya. Pastikan nomor anda aktif dan bisa dihubungi"
             android:gravity="center"
             android:paddingTop="12dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:layout_marginTop="17dp"
-            android:textColor="#EA1515"/>
+            android:textColor="#ED5454"/>
 
         <Button
             android:id="@+id/btn_selesai"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="63dp"
-            android:background="#ED5454"
+            android:background="@drawable/primary_button"
             android:text="Selesai"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
