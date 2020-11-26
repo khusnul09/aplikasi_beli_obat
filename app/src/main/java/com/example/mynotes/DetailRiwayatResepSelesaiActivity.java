@@ -15,13 +15,12 @@ import com.squareup.picasso.Picasso;
 
 public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
 
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, TotalHarga;
+    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar, Harga;
+            Waktu, Gambar, TotalHarga;
     int Status;
     ImageView gambar;
     Button Selesai;
-    ImageView img, Kembali;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +33,9 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         detailAlamat = findViewById(R.id.tv_detai_alamat_riwayat_resep_selesai);
         status = findViewById(R.id.tv_status_resep_selesai);
         invoice = findViewById(R.id.tv_kode_resep_selesai);
-        img = findViewById(R.id.showImgResepRiwayatSelesai);
-        TotalHarga = findViewById(R.id.tv_nominal_total_resep_selesai);
+        totalHarga = findViewById(R.id.tv_nominal_total_resep_selesai);
         gambar = findViewById(R.id.showImgResepRiwayatSelesai);
+        waktu = findViewById(R.id.tv_waktu_pemesanan_resep_selesai);
 
         Intent intent = getIntent();
         NamaPenerima = intent.getStringExtra("nama");
@@ -46,14 +45,16 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         Invoice = intent.getStringExtra("invoice");
         Status = intent.getIntExtra("status", 0);
         Gambar = intent.getStringExtra("gambar");
-        Harga = intent.getStringExtra("total_harga");
+        Waktu = intent.getStringExtra("waktu");
+        TotalHarga = intent.getStringExtra("total_harga");
 
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
+        waktu.setText(Waktu);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        TotalHarga.setText(Harga);
+        totalHarga.setText(TotalHarga+",-");
 
         Picasso.get().load(Gambar).into(gambar);
         //Log.i("khatima", Gambar);

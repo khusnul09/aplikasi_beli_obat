@@ -17,7 +17,7 @@
 
         <ImageView
             android:layout_width="50dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="2dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
             android:padding="10dp"/>
@@ -46,7 +46,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F38080"
+                android:background="#F6E7E7"
                 android:padding="5dp"
                 android:orientation="vertical">
 
@@ -67,7 +67,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:text="Selesai"
-                        android:textColor="#FFFFFF"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -82,7 +81,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="21dp"
                         android:text="Pesanan anda sudah selesai"
-                        android:textColor="#FFFFFF"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -203,6 +201,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/totalbayar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:text="Informasi Pembayaran"
+                    android:textColor="#ED5454"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
 
@@ -212,14 +234,14 @@
                     android:layout_weight="2.5"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_subtotal_resep_selesai"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="Subtotal"
-                        android:textColor="#000"
-                        android:textSize="16sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_subtotal_resep_selesai"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        android:text="Subtotal"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="16sp" />-->
 
                     <TextView
                         android:id="@+id/tv_biaya_pengiriman_resep_selesai"
@@ -248,14 +270,14 @@
                     android:orientation="vertical"
                     android:layout_weight="0.21">
 
-                    <TextView
-                        android:id="@+id/tv_Rp_subtotal_resep_selesai"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rp"
-                        android:textSize="16sp"
-                        android:textColor="#000000"
-                        android:layout_marginBottom="8dp"/>
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_Rp_subtotal_resep_selesai"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Rp"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textColor="#000000"-->
+<!--                        android:layout_marginBottom="8dp"/>-->
 
 
                     <TextView
@@ -285,23 +307,23 @@
                     android:orientation="vertical"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/tv_nominal_subtotal_resep_selesai"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:textColor="#000000"
-                        android:layout_marginBottom="8dp"/>
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_nominal_subtotal_resep_selesai"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        android:text="0"-->
+<!--                        android:textColor="#000000"-->
+<!--                        android:textSize="16sp" />-->
 
                     <TextView
                         android:id="@+id/tv_nominal_biaya_pengiriman_resep_selesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16sp"
+                        android:layout_marginBottom="8dp"
+                        android:text="30000,-"
                         android:textColor="#000000"
-                        android:layout_marginBottom="8dp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_nominal_total_resep_selesai"
