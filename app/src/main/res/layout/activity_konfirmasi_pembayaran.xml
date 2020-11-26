@@ -62,10 +62,10 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_ricianharga"
+                            android:id="@+id/tv_total_pembayaran_info_obat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rincian Harga"
+                            android:text="Total Pembayaran"
                             android:textColor="#000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -74,18 +74,19 @@
                             android:id="@+id/tv_Rp1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="150dp"
-                            android:layout_toLeftOf="@id/tv_ricianharga"
+                            android:layout_marginLeft="110dp"
+                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_obat"
                             android:gravity="center"
-                            android:text="Rp "
+                            android:text="Rp"
                             android:textColor="#000"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_nominal_harga"
+                            android:id="@+id/tv_nominal_totbyr_konfirmasi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
                             android:text="0"
                             android:textColor="#000000"
                             android:textSize="14sp"
@@ -196,6 +197,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tv_namarek"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Nama Lengkap" />
@@ -259,6 +261,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tv_norek"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1234567890***" />
@@ -297,7 +300,8 @@
                     android:padding="12dp">
 
                     <Button
-                        android:id="@+id/btn_kirim"
+                        android:id="@+id/btn_kirim_bukti_pembayaran"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/primary_button"

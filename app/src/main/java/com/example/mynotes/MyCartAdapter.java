@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.bumptech.glide.Glide;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -49,11 +51,18 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
         Model currentItem = models.get(i);
 
         myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mDes.setText(currentItem.getHargaJual());
-        myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
-        myHolder.imageViewResource = currentItem.getImage();
-        myHolder.jumlah.setText(currentItem.getQuantity() + "");
+        myHolder.mDes.setText(currentItem.getHargaJual() +",-" +"");
+        myHolder.jumlah.setText("x"+ currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
+
+        if (currentItem.getGambar() != "") {
+            //myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
+            //myHolder.imageViewResource = currentItem.getImage();
+            Glide.with(c).load(currentItem.getGambar()).into(myHolder.mImaeView);
+        } else {
+            myHolder.mImaeView.setImageResource(R.drawable.ic_drugs);//here we used image resource because we will use images in our
+            myHolder.imageViewResource = R.drawable.ic_drugs;
+        }
 
         myHolder.tambah.setOnClickListener(v -> {
             myHolder.jumlahAngka++;
@@ -70,10 +79,11 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
             iCart.onItemSelected(currentItem.getNamaObat(), myHolder.jumlahAngka);
         });
 
-        if (!canModifyQuantity) {
-            myHolder.tambah.setVisibility(View.INVISIBLE);
-            myHolder.kurang.setVisibility(View.INVISIBLE);
-        }
+        myHolder.buttonHapus.setOnClickListener(v -> {
+            removeAt(i);
+            iCart.onItemSelected("delete", i);
+        });
+
 
         //friends this method is than you can use when you want to use one activity
         myHolder.setItemClickListener((v, position) -> {
@@ -91,6 +101,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
             intent.putExtra("iDesc", gDesc); //get data add put in intent
             intent.putExtra("iImage", bytes);
             intent.putExtra("jumlah", gJumlah);
+            intent.putExtra("gambar", models.get(position).getGambar());
             c.startActivity(intent);
 
         });
@@ -104,5 +115,11 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
 
     public interface ICart {
         void onItemSelected(String title, Integer quantity);
+    }
+
+    public void removeAt(int position) {
+        models.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, models.size());
     }
 }

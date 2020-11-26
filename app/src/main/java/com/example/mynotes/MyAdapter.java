@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filterable {
 
@@ -50,11 +54,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         Model currentItem = models.get(i);
 
         myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mHarga.setText(currentItem.getHargaJual()+ "");
-        myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
-        myHolder.imageViewResource = currentItem.getImage();
+        myHolder.mHarga.setText(currentItem.getHargaJual() +",-" +"");
+        myHolder.mSatuan.setText(currentItem.getSatuan());
         myHolder.jumlah.setText(currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
+
+        //menampilkan gambar
+        if (currentItem.getGambar() != "") {
+            //myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
+            //myHolder.imageViewResource = currentItem.getImage();
+            Glide.with(c).load(currentItem.getGambar()).into(myHolder.mImaeView);
+        } else {
+            myHolder.mImaeView.setImageResource(R.drawable.ic_drugs);//here we used image resource because we will use images in our
+            myHolder.imageViewResource = R.drawable.ic_drugs;
+        }
 
         myHolder.tambah.setOnClickListener(v -> {
             myHolder.jumlahAngka++;
@@ -79,6 +92,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         //friends this method is than you can use when you want to use one activity
         myHolder.setItemClickListener((v, position) -> {
             String gTitle = models.get(position).getNamaObat();
+            String sSatuan = models.get(position).getSatuan();
             String gDesc = models.get(position).getHargaJual() + ""; //this object our data from previous activity
             BitmapDrawable bitmapDrawable = (BitmapDrawable) myHolder.mImaeView.getDrawable(); //this will get image from drawable
             Bitmap bitmap = bitmapDrawable.getBitmap();
@@ -92,6 +106,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
             intent.putExtra("iDesc", gDesc); //get data add put in intent
             intent.putExtra("iImage", bytes);
             intent.putExtra("jumlah", gJumlah);
+            intent.putExtra("satuan", sSatuan);
+            intent.putExtra("gambar", models.get(position).getGambar());
             c.startActivity(intent);
 
         });

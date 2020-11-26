@@ -2,102 +2,121 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class AlamatPasienActivity extends AppCompatActivity {
 
-    private static final String url = "https://obats.000webhostapp.com//api/user/update_penerima";
+    private static final String url = "https://obats.000webhostapp.com//api/user/addimage";
 
     Button kirim;
-    ProgressDialog progressDialog;
+    ImageView backAlamatPasien;
     private EditText NamaLengkapPasien, NoHpPasien, AlamatPasien, DetaiAlamatPasien;
-    String namaLengkapPasien, noHpPasien, alamatPasien, detailAlamatPasien;
-    String invoice;
+    String namaLengkapPasien, noHpPasien, alamatPasien, detailAlamatPasien, email_user, alamatGambar;
+
+    String time, name="", invoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alamat_pasien);
 
+        email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
+
         NamaLengkapPasien = findViewById(R.id.et_nama_pasien);
         NoHpPasien = findViewById(R.id.et_hp_pasien);
         AlamatPasien = findViewById(R.id.et_alamat_pasien);
         DetaiAlamatPasien = findViewById(R.id.et_det_alamat_pasien);
 
-        kirim = findViewById(R.id.btn_kirim);
-        kirim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {alamatPasien();}
+        //buat invoice
+        Calendar c = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        time = dateFormat.format(c.getTime());
+        for ( int i=0; i < 5; i++) {
+            char a = email_user.charAt(i);
+            name += a;
+        }
+        invoice = "inv"+name+time;
+        Log.i("khatima", invoice);
+
+        alamatGambar = getIntent().getStringExtra("namagambar");
+
+        backAlamatPasien = findViewById(R.id.iv_kembali8);
+        backAlamatPasien.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesanDenganResepActivity.class);
+            startActivity(intent);
+
         });
 
-        invoice = getIntent().getStringExtra("invoice");
+        kirim = findViewById(R.id.btn_kirim);
+        kirim.setOnClickListener(v -> alamatPasien());
+
     }
+
     private void alamatPasien() {
-        progressDialog = new ProgressDialog(AlamatPasienActivity.this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Mengirim resep...");
         progressDialog.show();
-        progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.setCancelable(false);
-        progressDialog.getWindow().setBackgroundDrawableResource(
-                android.R.color.transparent
-        );
 
         namaLengkapPasien = Objects.requireNonNull(NamaLengkapPasien.getText()).toString().trim();
         noHpPasien = Objects.requireNonNull(NoHpPasien.getText()).toString().trim();
         alamatPasien = Objects.requireNonNull(AlamatPasien.getText()).toString().trim();
         detailAlamatPasien = Objects.requireNonNull(DetaiAlamatPasien.getText()).toString().trim();
 
-        StringRequest request = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
-                    Toast.makeText(getApplicationContext(), "Berhasil", Toast.LENGTH_SHORT).show();
+                    Log.i("khatima", response);
                     try {
-                        JSONObject object = new JSONObject(response);
-                        progressDialog.dismiss();
-                        if (object.getString("text").equals("berhasil")) {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String respon = jsonObject.getString("response");
+                        Log.i("Khatima", respon);
+                        if (jsonObject.getString("response").equals("berhasil")) {
                             Intent keResepTerkirim = new Intent(AlamatPasienActivity.this, ResepObatTerkirimActivity.class);
                             startActivity(keResepTerkirim);
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), object.getString("text"), Toast.LENGTH_SHORT).show();
                         }
+                        Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    progressDialog.dismiss();
-                },
-                error -> {
 
-                }) {
+                    progressDialog.dismiss();
+                }, error -> Toast.makeText(getApplicationContext(), "error: "+ error.toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("invoice",invoice);
-                param.put("nama_penerima", namaLengkapPasien);
-                param.put("handphone", noHpPasien);
-                param.put("alamat", alamatPasien);
-                param.put("detail_alamat", detailAlamatPasien);
-                return param;
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("invoice", invoice);
+                params.put("nama_user", email_user);
+                params.put("nama_penerima", namaLengkapPasien);
+                params.put("handphone", noHpPasien);
+                params.put("alamat", alamatPasien);
+                params.put("detail_alamat", detailAlamatPasien);
+                params.put("gambar_resep", alamatGambar);
+                return  params;
+
             }
         };
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        queue.add(request);
+        RequestQueue requestQueue = Volley.newRequestQueue(AlamatPasienActivity.this);
+        requestQueue.add(stringRequest);
     }
 }

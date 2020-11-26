@@ -6,7 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,6 +29,7 @@ public class EditProfilActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     TextInputEditText editNama, editNo, editAlamat;
+    ImageView backEditProfil;
     private static String url_read = "https://obats.000webhostapp.com/api/user/profil";
     private static String url_edit_user = "https://obats.000webhostapp.com/api/user/edituser";
     Button SimpanProfil;
@@ -36,6 +39,16 @@ public class EditProfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profil);
+
+        backEditProfil = findViewById(R.id.iv_kembali_edit_profil);
+        backEditProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), ProfilActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         SimpanProfil = findViewById(R.id.bt_simpan_edit_profil);
         SimpanProfil.setOnClickListener(v -> updateUser());

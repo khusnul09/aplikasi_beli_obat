@@ -2,6 +2,40 @@ package com.example.mynotes;
 
 public class ModelRiwayatResep {
     private String waktu;
+    private String nama_user;
+    private String nama_penerima;
+    private String handphone;
+    private String alamat;
+    private String detail_alamat;
+    private String gambar_resep;
+    private String invoice;
+    String Harga;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public String getStatusAsString() {
+        switch (status) {
+            case 0:
+                return "Menunggu Konfirmasi Apotek";
+            case 1:
+                return "Menunggu Pembayaran";
+            case 2:
+                return "Pesanan dikemas";
+            case 3:
+                return  "Pesanan dikirim";
+            case 4:
+                return  "Pesanan diterima";
+            default:
+                return "-";
+        }
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getNama_user() {
         return nama_user;
@@ -51,12 +85,13 @@ public class ModelRiwayatResep {
         this.gambar_resep = gambar_resep;
     }
 
-    private String nama_user;
-    private String nama_penerima;
-    private String handphone;
-    private String alamat;
-    private String detail_alamat;
-    private String gambar_resep;
+    public String getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(String invoice) {
+        this.invoice = invoice;
+    }
 
 
     public String getWaktu() { return waktu;
@@ -64,6 +99,14 @@ public class ModelRiwayatResep {
 
     public void setWaktu(String waktu) {
         this.waktu = waktu;
+    }
+
+    public String getHarga() {
+        return Harga;
+    }
+
+    public void setHarga(String harga) {
+        Harga = harga;
     }
 
 }

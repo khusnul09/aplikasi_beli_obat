@@ -382,14 +382,13 @@
                             android:layout_marginBottom="8dp"/>
 
 
-
-
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1">
 
                         <TextView
@@ -405,7 +404,7 @@
                             android:id="@+id/tv_nominal_ongkir"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="30000"
                             android:textSize="14sp"
                             android:textColor="#000000"
                             android:layout_marginBottom="8dp"/>
@@ -436,7 +435,7 @@
                         android:id="@+id/tv_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total "
+                        android:text="Total Pembayaran : "
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -444,17 +443,20 @@
                         android:id="@+id/tv_Rp_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
+                        android:textColor="#EF3D3D"
                         android:layout_toLeftOf="@id/tv_total"
-                        android:text="Rp "/>
+                        android:text="Rp"/>
 
                     <TextView
-                        android:id="@+id/tv_nominal_total"
+                        android:id="@+id/tv_nominal_total_pengiriman"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
+                        android:textColor="#EF3D3D"
+                        android:layout_marginLeft="2dp"
                         android:text="0"/>
 
                 </LinearLayout>

@@ -61,6 +61,10 @@ public class ftab1 extends Fragment {
             intent.putExtra("handphone",data.getHandphone());
             intent.putExtra("alamat",data.getAlamat());
             intent.putExtra("detail_alamat", data.getDetail_alamat());
+            intent.putExtra("status", data.getStatus());
+            intent.putExtra("invoice", data.getInvoice());
+            intent.putExtra("gambar", data.getGambar_resep());
+            intent.putExtra("total_harga", data.getHarga());
             startActivity(intent);
         });
 
@@ -97,7 +101,11 @@ public class ftab1 extends Fragment {
                                 modelRiwayatResep.setNama_penerima(array.getJSONObject(i).optString("nama_penerima"));
                                 modelRiwayatResep.setHandphone(array.getJSONObject(i).optString("handphone"));
                                 modelRiwayatResep.setAlamat(array.getJSONObject(i).optString("alamat"));
+                                modelRiwayatResep.setInvoice(array.getJSONObject(i).optString("invoice"));
                                 modelRiwayatResep.setDetail_alamat(array.getJSONObject(i).optString("detail_alamat"));
+                                modelRiwayatResep.setStatus(array.getJSONObject(i).optInt("status"));
+                                modelRiwayatResep.setGambar_resep(array.getJSONObject(i).optString("gambar_resep"));
+                                modelRiwayatResep.setHarga(array.getJSONObject(i).optString("total_harga"));
                                 Log.i("khatima", array.getJSONObject(i).optString("waktu"));
                                 adapterRiwayarResep.add(modelRiwayatResep);
                             }

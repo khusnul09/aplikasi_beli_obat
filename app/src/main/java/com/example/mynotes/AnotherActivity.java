@@ -13,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 public class AnotherActivity extends AppCompatActivity {
 
-    TextView mTitleTv, mDescTv;
+    TextView mTitleTv, mDescTv, sSatuanTv;
     ImageView mImageIv;
 
 
@@ -30,6 +32,7 @@ public class AnotherActivity extends AppCompatActivity {
         mTitleTv = findViewById(R.id.title);
         mDescTv = findViewById(R.id.description);
         mImageIv = findViewById(R.id.imageView);
+        sSatuanTv = findViewById(R.id.tv_satuan_obat);
 
         //now get our data from intent in which we put our data
 
@@ -37,6 +40,8 @@ public class AnotherActivity extends AppCompatActivity {
 
         String mTitle = intent.getStringExtra("iTitle");
         String mDescription = intent.getStringExtra("iDesc");
+        String sSatuan = intent.getStringExtra("satuan");
+        String gambar = intent.getStringExtra("gambar");
 
         byte[] mBytes = getIntent().getByteArrayExtra("iImage");
         //now decode image because from previous activity we get our image in bytes
@@ -47,7 +52,13 @@ public class AnotherActivity extends AppCompatActivity {
         //now set our data in our view, which we get in our previous activity
         mTitleTv.setText(mTitle);
         mDescTv.setText(mDescription);
-        mImageIv.setImageBitmap(bitmap);
+        sSatuanTv.setText(sSatuan);
 
+        try {
+            //mImageIv.setImageBitmap(bitmap);
+            Glide.with(this).load(gambar).into(mImageIv);
+        } catch (Exception e) {
+            mImageIv.setImageResource(R.drawable.ic_drugs);
+        }
     }
 }

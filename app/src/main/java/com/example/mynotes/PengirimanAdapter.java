@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -48,11 +50,18 @@ public class PengirimanAdapter extends RecyclerView.Adapter<PengirimanHolder> {
         Model currentItem = models.get(i);
 
         myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mDes.setText(currentItem.getHargaJual()+"");
-        myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
-        myHolder.imageViewResource = currentItem.getImage();
-        myHolder.jumlah.setText("x "+currentItem.getQuantity() + "");
+        myHolder.mDes.setText(currentItem.getHargaJual() +",-"+ "");
+        myHolder.jumlah.setText("x"+currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
+
+        if (currentItem.getGambar() != "") {
+            //myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
+            //myHolder.imageViewResource = currentItem.getImage();
+            Glide.with(c).load(currentItem.getGambar()).into(myHolder.mImaeView); //tampilkan gambar obat
+        } else {
+            myHolder.mImaeView.setImageResource(R.drawable.ic_drugs);//here we used image resource because we will use images in our
+            myHolder.imageViewResource = R.drawable.ic_drugs;
+        }
 
 
         //friends this method is than you can use when you want to use one activity

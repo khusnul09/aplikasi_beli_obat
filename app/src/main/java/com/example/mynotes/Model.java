@@ -22,8 +22,18 @@ public class Model implements Serializable {
     private int hargaJual;
     @SerializedName("image")
     private int image;
+    @SerializedName("gambar")
+    private String gambar;
     @SerializedName("quantity")
     private int quantity;
+
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
+    }
 
     public int getQuantity() {
         return quantity;

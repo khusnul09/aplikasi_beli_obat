@@ -79,21 +79,22 @@
                     android:id="@+id/tv_subtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp "
+                    android:text="Rp"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="#ED5454"/>
 
                 <TextView
-                    android:id="@+id/tv_Rp2"
+                    android:id="@+id/tv_total_pembayaran_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/tv_subtotal"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:text="0"
+                    android:layout_marginLeft="2dp"
                     android:textColor="#ED5454"
-                    android:textSize="30sp"/>
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

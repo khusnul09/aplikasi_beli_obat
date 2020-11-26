@@ -1,38 +1,32 @@
 package com.example.mynotes;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
+import com.cloudinary.utils.ObjectUtils;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,9 +36,19 @@ public class PesanDenganResepActivity extends AppCompatActivity {
     public Button btnKirimResep, btnPilihGambar;
     public ImageView ivShowImage;
     final int CODE_GALLERY_RQEUEST = 999;
-    String url = "https://obats.000webhostapp.com//api/user/addimage";
+    ImageView backPesanResep;
     Bitmap bitmap;
-    String email_user;
+    String email_user, namagambar;
+
+    String filePath;
+    /*Map config = new HashMap();
+
+    private void configCloudinary() {
+        config.put("cloud_name", "beliobatid");
+        config.put("api_key", "832196155542743");
+        config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
+        MediaManager.init(PesanDenganResepActivity.this, config);
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class PesanDenganResepActivity extends AppCompatActivity {
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
+//        configCloudinary();
+
         btnPilihGambar = findViewById(R.id.btn_pilih_gambar);
         btnKirimResep = findViewById(R.id.btn_lanjutkan);
         ivShowImage = findViewById(R.id.showImg);
@@ -60,20 +66,20 @@ public class PesanDenganResepActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(PesanDenganResepActivity.this,new
                 String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, CODE_GALLERY_RQEUEST);
 
-        btnPilihGambar.setOnClickListener(v -> {
-            ImagePicker.Companion.with(this)
-                    //Crop image(Optional), Check Customization for more option
-                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                    .start();
+        btnPilihGambar.setOnClickListener(v -> ImagePicker.Companion.with(this)
+                //Crop image(Optional), Check Customization for more option
+                .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .start());
+
+        backPesanResep = findViewById(R.id.iv_kembali5);
+        backPesanResep.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
+            startActivity(intent);
+
         });
 
-        btnKirimResep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
+        btnKirimResep.setOnClickListener(v -> uploadToCloudinary(filePath));
     }
 
     @Override
@@ -91,62 +97,53 @@ public class PesanDenganResepActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-    private void uploadImage() {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mengirim resep...");
-        progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("khatima", response);
-                        //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String respon = jsonObject.getString("response");
-                            Log.i("Khatima", respon);
-                            if (jsonObject.getString("response").equals("berhasil")) {
-                                String invoice = jsonObject.getString("invoice");
-                                Intent alamatPasien = new Intent(PesanDenganResepActivity.this, AlamatPasienActivity.class);
-                                alamatPasien.putExtra("invoice", invoice);
-                                startActivity(alamatPasien);
-                            }
-                            Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
-                        progressDialog.dismiss();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "error: "+ error.toString(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> params = new HashMap<>();
-                String gambar = imagetoString(bitmap);
-                params.put("invoice","");
-                params.put("nama_user",email_user);
-                params.put("nama_penerima","");
-                params.put("handphone","0");
-                params.put("alamat","");
-                params.put("detail_alamat","");
-                params.put("gambar_resep",gambar);
-                return  params;
-
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(PesanDenganResepActivity.this);
-        requestQueue.add(stringRequest);
+        //get the image's file location
+        filePath = getRealPathFromUri(data.getData(), PesanDenganResepActivity.this);
     }
-    private String imagetoString (Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] imageType = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(imageType, Base64.DEFAULT);
+
+    private String getRealPathFromUri(Uri imageUri, Activity activity){
+        @SuppressLint("Recycle") Cursor cursor = activity.getContentResolver().query(imageUri, null, null, null, null);
+
+        if(cursor==null) {
+            return imageUri.getPath();
+        }else{
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
+        }
+    }
+
+    private void uploadToCloudinary(String filePath) {
+        Log.d("A", "sign up uploadToCloudinary- ");
+        MediaManager.get().upload(filePath).callback(new UploadCallback() {
+            @Override
+            public void onStart(String requestId) {
+                Toast.makeText(getApplicationContext(), "Mengunggah Gambar", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onProgress(String requestId, long bytes, long totalBytes) {
+                Log.i("khatima", "mengirim");
+            }
+
+            @Override
+            public void onSuccess(String requestId, Map resultData) {
+                namagambar = resultData.get("url").toString();
+                Intent alamatPasien = new Intent(PesanDenganResepActivity.this, AlamatPasienActivity.class);
+                alamatPasien.putExtra("namagambar", namagambar);
+                startActivity(alamatPasien);
+            }
+
+            @Override
+            public void onError(String requestId, ErrorInfo error) {
+                Toast.makeText(getApplicationContext(), "Gagal!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onReschedule(String requestId, ErrorInfo error) {
+                Log.i("khatima", error.getDescription());
+            }
+        }).dispatch();
     }
 }

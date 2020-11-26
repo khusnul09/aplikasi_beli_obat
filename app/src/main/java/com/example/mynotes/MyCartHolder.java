@@ -13,6 +13,7 @@ public class MyCartHolder extends RecyclerView.ViewHolder implements View.OnClic
     ImageView mImaeView;
     TextView mTitle, mDes;
     int imageViewResource;
+    ImageView buttonHapus;
     ItemClickListener itemClickListener;
 
     Button tambah;
@@ -26,9 +27,10 @@ public class MyCartHolder extends RecyclerView.ViewHolder implements View.OnClic
         this.mImaeView = itemView.findViewById(R.id.iv_image);
         this.mTitle = itemView.findViewById(R.id.tv_title);
         this.mDes = itemView.findViewById(R.id.tv_harga);
-        this.jumlah = itemView.findViewById(R.id.btn_jumlah);
-        this.tambah = itemView.findViewById(R.id.btn_tambah);
-        kurang = itemView.findViewById(R.id.btn_kurang);
+        this.jumlah = itemView.findViewById(R.id.tv_jumlah);
+        this.tambah = itemView.findViewById(R.id.bt_tambah);
+        kurang = itemView.findViewById(R.id.bt_kurang);
+        buttonHapus = itemView.findViewById(R.id.hapus);
         imageViewResource = 0;
         itemView.setOnClickListener(this);
     }

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class ProfilActivity extends AppCompatActivity {
     String url = "https://obats.000webhostapp.com/api/user/profil";
     LinearLayout EditProfil;
     TextView NamaLengkap, NoHp, Alamat, Email;
+    ImageView backProfil;
     Button logout;
     String email;
 
@@ -51,6 +54,16 @@ public class ProfilActivity extends AppCompatActivity {
             Intent logout = new Intent(getApplicationContext(), SplashActivity.class);
             startActivity(logout);
             finish();
+        });
+
+        backProfil = findViewById(R.id.iv_back_profil);
+        backProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
+                startActivity(intent);
+
+            }
         });
 
         email = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");

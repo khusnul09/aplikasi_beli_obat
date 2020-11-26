@@ -15,13 +15,15 @@
         android:background="#EF3D3D">
 
         <ImageView
+            android:id="@+id/iv_kembali_fragmant_resep"
             android:layout_width="50dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="5dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
             android:padding="10dp"/>
 
         <TextView
+            android:id="@+id/kode_resep"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Riwayat Resep"
@@ -50,26 +52,73 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/statuspengiriman"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status Pengiriman"
+                    android:text="Status Transaksi"
                     android:layout_marginLeft="1dp"
-                    android:textStyle="bold"
-                    android:textColor="#ED5454"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_status_resep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Menunggu Konfirmasi"
-                android:textSize="16sp"
-                android:textColor="#000000"
+                android:text="Statusnya"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#ED5454"
                 android:layout_marginLeft="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:text="Waktu Pemesanan :"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_waktu_pemesanan_resep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="0"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:text="Waktu Pembayaran :"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_waktu_pembayaran_resep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="0"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -86,13 +135,14 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/datapasien"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="1dp"
-                    android:text="Data Pasien"
+                    android:text="Data Penerima"
                     android:textStyle="bold"
                     android:textColor="#ED5454"
                     android:textSize="18sp" />
@@ -192,6 +242,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/fotoresep" />
 
                 <TextView
@@ -220,12 +271,14 @@
             </LinearLayout>
 
             <View
+                android:id="@+id/view_resep"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
                 android:layout_marginTop="12dp"
                 android:background="#f0f0f0" />
 
             <LinearLayout
+                android:id="@+id/ll_total_pembayaran_resep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -240,6 +293,7 @@
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/totalbayar"/>
 
                     <TextView
@@ -292,10 +346,21 @@
                     android:id="@+id/btn_info_rek_bank"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Info pembayaran"
+                    android:text="BAYAR"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFFFFF"
                     android:layout_marginBottom="20dp"
+                    android:background="@drawable/primary_button"/>
+
+                <Button
+                    android:id="@+id/btn_pesanan_diterima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PESANAN DITERIMA"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/primary_button"/>
 
             </LinearLayout>

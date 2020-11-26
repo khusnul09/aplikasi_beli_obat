@@ -32,11 +32,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottombt2"
         android:layout_below="@id/tb_keranjang"/>
 
     <LinearLayout
+        android:id="@+id/bottombt2"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
                 android:id="@+id/tv_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total "
+                android:text="Total : "
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -62,17 +63,20 @@
                 android:id="@+id/tv_Rp_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="20sp"
+                android:textColor="#EF3D3D"
                 android:layout_toLeftOf="@id/tv_total"
                 android:textStyle="bold"
-                android:text="Rp "/>
+                android:text="Rp"/>
 
             <TextView
                 android:id="@+id/tv_nominal_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="#EF3D3D"
+                android:layout_marginLeft="2dp"
                 android:text="0"/>
 
         </LinearLayout>

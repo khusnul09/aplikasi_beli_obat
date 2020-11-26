@@ -1,27 +1,24 @@
 package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
-public class KeranjangActivity extends AppCompatActivity implements MyAdapter.ICart {
+public class KeranjangActivity extends AppCompatActivity implements MyCartAdapter.ICart {
     RecyclerView mRecyclerView;
     MyCartAdapter myAdapter;
     TextView tambahProduk;
     Button lanjutBayar;
     ImageView kembali;
+    TextView totalTV;
 
     ArrayList<Model> listObatToCart = new ArrayList<>();
     @Override
@@ -60,13 +57,31 @@ public class KeranjangActivity extends AppCompatActivity implements MyAdapter.IC
         listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext(), RecyclerView.VERTICAL, false)); // i will create in linearlayout
-        myAdapter = new MyCartAdapter(this, listObatToCart, false, this::onItemSelected);
+        myAdapter = new MyCartAdapter(this, listObatToCart, false, this);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(listObatToCart.size());
+
+        totalTV = findViewById(R.id.tv_nominal_total);
+
+        int totalInt = 0;
+        for (Model model : listObatToCart) {
+            totalInt+=(model.getHargaJual()*model.getQuantity());
+        }
+
+        totalTV.setText(totalInt+ "-,");
     }
+
 
     @Override
     public void onItemSelected(String title, Integer quantity) {
+        if (title.equals("delete")) {
+            listObatToCart.remove(quantity);
+            int totalInt = 0;
+            for (Model model : listObatToCart) {
+                totalInt+=(model.getHargaJual()*model.getQuantity());
+            }
 
+            totalTV.setText(totalInt+ "");
+        }
     }
 }

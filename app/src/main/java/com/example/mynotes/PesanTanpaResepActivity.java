@@ -7,7 +7,11 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -23,23 +27,34 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.example.mynotes.api.ApiConfig;
+import com.example.mynotes.api.ApiInterface;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.mynotes.R.id.search;
+import static java.security.AccessController.getContext;
 
 public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdapter.ICart {
 
+    String url = "https://obats.000webhostapp.com/api/obats";
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
     Button btnKeranjang;
-
     ArrayList<Model> listObatToCart = new ArrayList<>();
     HashMap<String, Integer> itemsCart = new HashMap<>();
-
     ArrayList<Model> models = new ArrayList<>();
+    String email_user;
 
     SharedPreferences preferences;
 
@@ -54,6 +69,8 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         actionBar.setTitle("Pilih Obat"); //color and title actionbar
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Pilih Obat</font>"));
 
+        email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
+
         btnKeranjang = findViewById(R.id.btn_tambah_keranjang);
         btnKeranjang.setOnClickListener(v -> {
             Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
@@ -63,7 +80,8 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         });
 
         mRecyclerView = findViewById(R.id.recyclerView);
-        getMyList();
+        //getMyList();
+        getListObat();
     }
 
     @Override
@@ -72,22 +90,23 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     }
 
     private void getMyList() {
+
         Model m = new Model();
         m.setNamaObat("Acyclovir 200 mg tab");
         m.setHargaJual(655);
         m.setImage(R.drawable.acyclovir_200_mg_tab);
-        m.setSatuan("Botol");
+        m.setSatuan("tablet");
         models.add(m);
 
         m = new Model();
         m.setNamaObat("Acyclovir 400 mg tab");
         m.setHargaJual(833);
         m.setImage(R.drawable.acyclovir_400_mg_tab);
-        m.setSatuan("Botol");
+        m.setSatuan("tablet");
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("ampul");
         m.setNamaObat("Amikasin 250 mg/2 ml inj");
         m.setHargaJual(35350);
         m.setImage(R.drawable.amikasin_250_mg_2_ml_inj);
@@ -96,47 +115,47 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         m = new Model();
         m.setNamaObat("Amoxicillin 500 mg tab");
         m.setHargaJual(258);
-        m.setSatuan("Botol");
+        m.setSatuan("tablet");
         m.setImage(R.drawable.amoxicillin_500_mg_tab);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("botol");
         m.setNamaObat("Amoxicillin syr botol");
         m.setHargaJual(5349);
         m.setImage(R.drawable.amoxicillin_syr_botol);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("vial");
         m.setNamaObat("Ampicillin 1000 mg inj vial");
         m.setHargaJual(9474);
         m.setImage(R.drawable.ampicillin_1000_mg_inj_vial);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("tablet");
         m.setNamaObat("Ampicillin 500 mg tab");
         m.setHargaJual(468);
         m.setImage(R.drawable.ampicillin_500_mg_tab);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
-        m.setNamaObat("Cefadroxil 125 mg/5 ml syr");
+        m.setSatuan("botol");
+        m.setNamaObat("Ceftazidim 1 g inj vial");
         m.setHargaJual(5412);
-        m.setImage(R.drawable.cefadroxil_125_mg_5_ml_syr);
+        m.setImage(R.drawable.ceftazidim_1_g_inj_vial);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("kapsul");
         m.setNamaObat("Cefadroxil 500 mg kapsul");
         m.setHargaJual(792);
         m.setImage(R.drawable.cefadroxil_500_mg_kapsul);
         models.add(m);
 
         m = new Model();
-        m.setSatuan("Botol");
+        m.setSatuan("vial");
         m.setNamaObat("Cefepime 1 gr inj");
         m.setHargaJual(124782);
         m.setImage(R.drawable.cefixime_100_mg_kapsul);
@@ -148,6 +167,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(models.size());
 
+
     }
     //first create an interface class
     //SORT
@@ -156,28 +176,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
-
-        /*MenuItem item = menu.findItem(R.id.search);
-
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                myAdapter.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                myAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });*/
         return true;
-
     }
 
     @Override
@@ -244,20 +243,36 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
 
     @Override
     public void onItemSelected(String title, Integer quantity) {
-        /*Log.e("CART", "TRIGGERED");
-        if (listObatToCart.size()>0) {
-            for (Model element : listObatToCart) {
-                if (element.getTitle().toLowerCase().equals(model.getTitle().toLowerCase())) {
-                    element.setQuantity(model.getQuantity());
-                } else {
-                    listObatToCart.add(model);
-                }
-            }
-        } else {
-            listObatToCart.add(model);
-        }*/
         itemsCart.put(title, quantity);
     }
+
+    public void getListObat() {
+        ApiInterface api = new ApiConfig().instance();
+        Call<ArrayList<Model>> call = api.getListObat();
+
+        ProgressDialog progressDialog = new ProgressDialog(PesanTanpaResepActivity.this, ProgressDialog.THEME_HOLO_LIGHT);
+        progressDialog.setMessage("Silahkan tunggu..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        call.enqueue(new Callback<ArrayList<Model>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Model>> call, Response<ArrayList<Model>> response) {
+                models.clear();
+                models = response.body();
+                mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(),2, GridLayoutManager.VERTICAL, false)); // i will create in linearlayout
+                myAdapter = new MyAdapter(PesanTanpaResepActivity.this, models, true, PesanTanpaResepActivity.this::onItemSelected);
+                mRecyclerView.setAdapter(myAdapter);
+                mRecyclerView.setItemViewCacheSize(models.size());
+
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Model>> call, Throwable t) {
+                Toast.makeText(getBaseContext(), t.toString(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+    }
 }
-
-

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="135dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="3dp"
@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="16dp"
+        android:paddingVertical="12dp"
         android:paddingHorizontal="20dp">
 
         <ImageView
@@ -26,67 +26,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="#000"
             android:textStyle="bold"
+            android:layout_marginTop="7dp"
             android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp" />
 
-        <TextView
-            android:id="@+id/tv_harga"
+        <LinearLayout
+            android:id="@+id/harga_desc"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="12dp"
-            android:textColor="#EF0B0B"
             android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
-            android:layout_below="@+id/tv_title"/>
+            android:layout_below="@+id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_rp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp"
+                android:textSize="12dp"
+                android:textColor="#EF0B0B" />
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:layout_marginLeft="2dp"
+                android:textSize="12dp"
+                android:textColor="#EF0B0B" />
+        </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_below="@+id/tv_harga"
+            android:layout_below="@+id/harga_desc"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image">
 
             <Button
-                android:id="@+id/btn_kurang"
+                android:id="@+id/bt_kurang"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:theme="@style/ButtonRow"
                 android:text="-"
-                android:textColor="#000"
-                android:theme="@style/ButtonRow"/>
+                android:visibility="gone"
+                android:textColor="#000" />
 
             <TextView
-                android:id="@+id/btn_jumlah"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:layout_toRightOf="@id/btn_kurang"
+                android:id="@+id/tv_jumlah"
+                android:layout_width="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_height="wrap_content"
                 android:text="0"
-                android:textColor="#000"
-                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="#605F5F"
                 android:gravity="center_vertical"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat"
+                android:layout_toRightOf="@id/bt_kurang"/>
 
             <Button
-                android:id="@+id/btn_tambah"
+                android:id="@+id/bt_tambah"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_toRightOf="@+id/btn_jumlah"
+                android:layout_toRightOf="@+id/tv_jumlah"
                 android:text="+"
-                android:textColor="#000"
+                android:visibility="gone"
+                android:textColor="#ED5454"
                 android:theme="@style/ButtonRow" />
+
+            <ImageView
+                android:id="@+id/hapus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/delete1"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 
