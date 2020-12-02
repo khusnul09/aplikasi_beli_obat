@@ -45,7 +45,7 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
     EditText namaPenerima, handphone, alamat, detailAlamat;
     String strNamaPenerima, strHandphone, strAlamat, strDetailAlamat;
 
-    String time, name="", invoice;
+    String time, name="", invoice, waktuKirim;
 
     Gson gson;
 
@@ -130,6 +130,9 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
         invoice = "itr"+name+time;
         Log.i("khatima", invoice);
 
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        waktuKirim = format.format(c.getTime());
+
         String listnya = gson.toJson(listObatToCart);
 
         //ambil nilai parameter
@@ -177,6 +180,7 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
                 params.put("bukti_bayar", "-");
                 params.put("nama_rek", "-");
                 params.put("no_rek", "-");
+                params.put("waktu", waktuKirim);
                 params.put("list_obat", listnya);
                 return  params;
 

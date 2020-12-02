@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="21dp"
+        android:padding="12sp"
+        android:background="#ffff"
+        android:paddingHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_invoice_resep_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="invoice"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_toEndOf="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_nama_pengirim_resep_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Pemesan"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_toEndOf="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/tv_invoice_resep_admin"/>
+
+        <TextView
+            android:id="@+id/tv_waktu_pesanan_resep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_toEndOf="@+id/iv_gambar_pesanan_resep_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/tv_nama_pengirim_resep_admin"/>
+
+
+        <TextView
+            android:id="@+id/tv_lihat_detail_pesanan_resep_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LIHAT DETAIL"
+            android:layout_below="@id/tv_waktu_pesanan_resep"
+            android:gravity="end"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#ED5454"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -22,6 +22,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -30,11 +32,11 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
 
     String urlSelesaikan = "https://obats.000webhostapp.com/api/user/selesaikan";
 
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, TotalHarga;
+    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, TotalHarga, waktu, waktuBayar, waktuKirim;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar, Harga;
+            Gambar, Harga, Waktu, WaktuBayar, WaktuKirim;
     int Status;
-    LinearLayout TotalPembayaranResep;
+    LinearLayout TotalPembayaranResep, WaktuPembayaran, WaktuPengiriman;
     View Viewresep;
     Button InfoRekBank, pesananDiterima;
     ImageView img, Kembali;
@@ -56,7 +58,12 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         InfoRekBank = findViewById(R.id.btn_info_rek_bank);
         TotalHarga = findViewById(R.id.tv_nominal_tot_riwayat_resep);
         TotalPembayaranResep = findViewById(R.id.ll_total_pembayaran_resep);
+        waktu = findViewById(R.id.tv_waktu_pemesanan_resep);
+        waktuBayar = findViewById(R.id.tv_waktu_pembayaran_resep);
         Viewresep = findViewById(R.id.view_resep);
+        WaktuPembayaran = findViewById(R.id.ll_waktu_pembayaran_resep);
+        WaktuPengiriman = findViewById(R.id.ll_waktu_pengiriman_resep);
+        waktuKirim = findViewById(R.id.tv_waktu_pengiriman_resep);
 
         pesananDiterima = findViewById(R.id.btn_pesanan_diterima);
 
@@ -67,8 +74,10 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment resep
                 intent.putExtra("fragmentItem", 0);
                 startActivity(intent);
+                finish();
             }
         });
+
 
         Intent intent = getIntent();
         NamaPenerima = intent.getStringExtra("nama");
@@ -78,11 +87,17 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         Invoice = intent.getStringExtra("invoice");
         Status = intent.getIntExtra("status", 0);
         Gambar = intent.getStringExtra("gambar");
+        Waktu = intent.getStringExtra("waktu");
         Harga = intent.getStringExtra("total_harga");
+        WaktuBayar = intent.getStringExtra("waktu_bayar");
+        WaktuKirim = intent.getStringExtra("waktu_pengiriman");
 
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
+        waktu.setText(Waktu);
+        waktuBayar.setText(WaktuBayar);
+        waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         TotalHarga.setText(Harga);
@@ -91,9 +106,15 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
             statusdesc = "Menunggu Konfirmasi Apotek";
             InfoRekBank.setVisibility(View.GONE);
             pesananDiterima.setVisibility(View.GONE);
+            TotalPembayaranResep.setVisibility(View.GONE);
+            Viewresep.setVisibility(View.GONE);
+            WaktuPembayaran.setVisibility(View.GONE);
+            WaktuPengiriman.setVisibility(View.GONE);
         } else if (Status == 1) {
             statusdesc = "Menunggu Pembayaran";
             pesananDiterima.setVisibility(View.GONE);
+            WaktuPembayaran.setVisibility(View.GONE);
+            WaktuPengiriman.setVisibility(View.GONE);
             if (Harga.equals("0")) {
                 InfoRekBank.setVisibility(View.GONE);
                 TotalPembayaranResep.setVisibility(View.GONE);
@@ -117,6 +138,7 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
             statusdesc = "Pesanan dikemas";
             InfoRekBank.setVisibility(View.GONE);
             pesananDiterima.setVisibility(View.GONE);
+            WaktuPengiriman.setVisibility(View.GONE);
         } else if (Status == 3) {
             statusdesc = "Pesanan dikirim";
             InfoRekBank.setVisibility(View.GONE);
@@ -139,6 +161,7 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
     private void selesaikan() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Menyelesaikan Order...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         StringRequest request = new StringRequest(Request.Method.POST, urlSelesaikan,
@@ -162,6 +185,7 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> param = new HashMap<>();
                 param.put("invoice", Invoice);
+                param.put("status", "4");
                 return param;
             }
         };

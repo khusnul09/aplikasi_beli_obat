@@ -1,6 +1,7 @@
 package com.example.mynotes;
 
-public class ModelRiwayatSelesai {
+public class ModelPesananResepAdmin {
+
     private String waktu;
     private String nama_user;
     private String nama_penerima;
@@ -9,19 +10,34 @@ public class ModelRiwayatSelesai {
     private String detail_alamat;
     private String gambar_resep;
     private String invoice;
-    private String Harga;
-    private String totalHarga;
-    private String status;
-    private String jenis;
+    private String bukti_bayar;
     private String waktu_bayar;
-    private String waktu_kirim;
+    String Harga;
+    private int status;
 
-    public String getWaktu() {
-        return waktu;
+    public int getStatus() {
+        return status;
     }
 
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
+    public String getStatusAsString() {
+        switch (status) {
+            case 0:
+                return "Menunggu Konfirmasi Apotek";
+            case 1:
+                return "Menunggu Pembayaran";
+            case 2:
+                return "Pesanan dikemas";
+            case 3:
+                return  "Pesanan dikirim";
+            case 4:
+                return  "Pesanan diterima";
+            default:
+                return "-";
+        }
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getNama_user() {
@@ -80,6 +96,12 @@ public class ModelRiwayatSelesai {
         this.invoice = invoice;
     }
 
+    public String getWaktu() { return waktu; }
+
+    public void setWaktu(String waktu) {
+        this.waktu = waktu;
+    }
+
     public String getHarga() {
         return Harga;
     }
@@ -88,39 +110,16 @@ public class ModelRiwayatSelesai {
         Harga = harga;
     }
 
-    public String getTotalHarga() {
-        return totalHarga;
-    }
-
-    public void setTotalHarga(String TotalHarga) {
-        totalHarga = TotalHarga;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getJenis() {
-        return jenis;
-    }
-
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
-    }
-
     public String getWaktu_bayar() {
         return waktu_bayar;
     }
 
     public void setWaktu_bayar(String waktu_bayar) {this.waktu_bayar =  waktu_bayar;}
 
-    public String getWaktu_kirim() {
-        return waktu_kirim;
+    public String getBukti_bayar() { return bukti_bayar; }
+
+    public void setBukti_bayar(String bukti_bayar) {
+        this.bukti_bayar = bukti_bayar;
     }
 
-    public void setWaktu_kirim(String waktu_kirim) {this.waktu_kirim =  waktu_kirim;}
 }

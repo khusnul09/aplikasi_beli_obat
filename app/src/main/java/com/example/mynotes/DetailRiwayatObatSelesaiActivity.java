@@ -32,9 +32,9 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
 
     String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
 
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, harga;
+    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, harga, waktuBayar, waktuKirim;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Harga, TotalHarga, Waktu;
+            Harga, TotalHarga, Waktu, WaktuBayar, WaktuKirim;
     int Status;
     Button Selesai;
 
@@ -59,6 +59,9 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
         harga = findViewById(R.id.tv_nominal_subtotal_riwayat_obat_selesai);
         totalHarga = findViewById(R.id.tv_nominal_total_riwayat_obat_selesai);
         waktu = findViewById(R.id.tv_waktu_pemesanan_riwayat_obat_selesai);
+        waktuBayar = findViewById(R.id.tv_waktu_pembayaran_riwayat_obat_selesai);
+        waktuKirim = findViewById(R.id.tv_waktu_pengiriman_riwayat_oabat_selesai);
+
 
         Intent intent = getIntent();
         NamaPenerima = intent.getStringExtra("nama");
@@ -70,11 +73,15 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
         Harga = intent.getStringExtra("harga");
         TotalHarga = intent.getStringExtra("total_harga");
         Waktu = intent.getStringExtra("waktu");
+        WaktuBayar = intent.getStringExtra("waktu_bayar");
+        WaktuKirim = intent.getStringExtra("waktu_pengiriman");
 
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
         waktu.setText(Waktu);
+        waktuBayar.setText(WaktuBayar);
+        waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         totalHarga.setText(TotalHarga+",-");

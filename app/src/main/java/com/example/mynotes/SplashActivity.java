@@ -35,9 +35,19 @@ public class SplashActivity extends AppCompatActivity {
         Log.i("Khatima", String.valueOf(SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "is_login")));
         new Handler().postDelayed(() -> {
             if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "is_login")) {
-                Intent home = new Intent(SplashActivity.this, PesanObatActivity.class);
-                startActivity(home);
-                finish();
+                switch (SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_role")) {
+                    case "user":
+                        Intent home = new Intent(SplashActivity.this, PesanObatActivity.class);
+                        startActivity(home);
+                        finish();
+                        break;
+                    case "admin":
+                        Intent homeAdmin = new Intent(SplashActivity.this, AdminActivity.class);
+                        startActivity(homeAdmin);
+                        finish();
+                        break;
+                }
+
             } else {
                 Intent login = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(login);

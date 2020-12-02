@@ -284,6 +284,7 @@
                             android:background="@android:color/transparent"
                             android:gravity="right|center_vertical"
                             android:hint="1234567890***"
+                            android:inputType="number"
                             android:textColor="#E9A69E9E"
                             android:visibility="gone" />
 

@@ -51,7 +51,7 @@ public class ProfilActivity extends AppCompatActivity {
         logout = findViewById(R.id.btn_logout);
         logout.setOnClickListener(v -> {
             SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", false);
-            Intent logout = new Intent(getApplicationContext(), SplashActivity.class);
+            Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(logout);
             finish();
         });

@@ -51,6 +51,11 @@ public class AdapterRiwayatResep extends RecyclerView.Adapter<AdapterRiwayatRese
         }
     }
 
+    void clear(){
+        listriwayatresep.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(AdapterRiwayatResep.ViewHolder holder, int position) {
         ModelRiwayatResep modelRiwayatResep = listriwayatresep.get(position);

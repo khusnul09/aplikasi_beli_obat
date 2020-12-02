@@ -1,6 +1,10 @@
 package com.example.mynotes;
 
-public class ModelRiwayatObat {
+public class ModelPesananObatAdmin {
+
+    private String waktu, invoice, nama_user,nama_penerima, handphone, alamat, detail_alamat, harga, total_harga, jenis_pesan,
+            status, waktu_bayar, gambar_resep, bukti_bayar;
+
     public String getInvoice() {
         return invoice;
     }
@@ -79,7 +83,6 @@ public class ModelRiwayatObat {
         this.status = status;
     }
 
-    private String waktu, invoice, nama_user,nama_penerima, handphone, alamat, detail_alamat, harga, total_harga, jenis_pesan, status, waktu_bayar, waktu_kirim;
 
     public String getWaktu() {
         return waktu;
@@ -95,10 +98,17 @@ public class ModelRiwayatObat {
 
     public void setWaktu_bayar(String waktu_bayar) {this.waktu_bayar =  waktu_bayar;}
 
-    public String getWaktu_kirim() {
-        return waktu_kirim;
+    public String getGambar_resep() {
+        return gambar_resep;
     }
 
-    public void setWaktu_kirim(String waktu_kirim) {this.waktu_kirim =  waktu_kirim;}
+    public void setGambar_resep(String gambar_resep) {
+        this.gambar_resep = gambar_resep;
+    }
 
+    public String getBukti_bayar() { return bukti_bayar; }
+
+    public void setBukti_bayar(String bukti_bayar) {
+        this.bukti_bayar = bukti_bayar;
+    }
 }

@@ -9,6 +9,8 @@ public class ModelRiwayatResep {
     private String detail_alamat;
     private String gambar_resep;
     private String invoice;
+    private String waktu_bayar;
+    private String waktu_kirim;
     String Harga;
     private int status;
 
@@ -94,8 +96,7 @@ public class ModelRiwayatResep {
     }
 
 
-    public String getWaktu() { return waktu;
-    }
+    public String getWaktu() { return waktu; }
 
     public void setWaktu(String waktu) {
         this.waktu = waktu;
@@ -108,5 +109,18 @@ public class ModelRiwayatResep {
     public void setHarga(String harga) {
         Harga = harga;
     }
+
+    public String getWaktu_bayar() {
+        return waktu_bayar;
+    }
+
+    public void setWaktu_bayar(String waktu_bayar) {this.waktu_bayar =  waktu_bayar;}
+
+    public String getWaktu_kirim() {
+        return waktu_kirim;
+    }
+
+    public void setWaktu_kirim(String waktu_kirim) {this.waktu_kirim =  waktu_kirim;}
+
 
 }

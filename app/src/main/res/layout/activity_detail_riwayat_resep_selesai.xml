@@ -66,7 +66,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
-                        android:text="Selesai"
+                        android:text="Pesanan Diterima"
+                        android:textStyle="bold"
+                        android:textColor="#ED5454"
                         android:textSize="14sp" />
 
                 </LinearLayout>

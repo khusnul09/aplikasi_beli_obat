@@ -102,7 +102,7 @@
                     android:textSize="16sp"
                     android:textColor="#000"
                     android:textStyle="bold"
-                    android:text="Jumlah Harus Bayar"/>
+                    android:text="Jumlah Bayar"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

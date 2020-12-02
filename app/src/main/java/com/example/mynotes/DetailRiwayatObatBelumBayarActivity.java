@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,9 +36,10 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
     String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
     String urlSelesaikan = "https://obats.000webhostapp.com/api/user/selesaikan";
 
-    TextView waktu, namaPenerima, handphone, alamat, detailAlamat, harga, totalHarga, status, invoice;
-    String Invoice, Waktu, NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Harga, TotalHarga, Status;
+    TextView waktu, namaPenerima, handphone, alamat, detailAlamat, harga, totalHarga, status, invoice, waktuBayar, waktuKirim;
+    String Invoice, Waktu, NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Harga, TotalHarga, Status, WaktuBayar, WaktuKirim;
     ImageView Kembali;
+    LinearLayout WaktuPembayaran, WaktuPengiriman;
     Button Bayar, Selesai;
 
     AdapterDetailTanpaResep adapterDetailTanpaResep;
@@ -66,6 +68,9 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
         Harga = intent.getStringExtra("harga");
         TotalHarga = intent.getStringExtra("total_harga");
         Status = intent.getStringExtra("status");
+        WaktuBayar = intent.getStringExtra("waktu_bayar");
+        WaktuKirim = intent.getStringExtra("waktu_pengiriman");
+
 
         waktu = findViewById(R.id.tv_waktu_pemesanan_obb);
         namaPenerima = findViewById(R.id.tv_nama_riwayat_obb);
@@ -78,8 +83,14 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
         invoice = findViewById(R.id.tv_kode_obb);
         Bayar = findViewById(R.id.btn_bayar);
         Selesai = findViewById(R.id.btn_selesaikan);
+        waktuBayar = findViewById(R.id.tv_waktu_pembayaran_obb);
+        WaktuPembayaran = findViewById(R.id.ll_waktu_pembayaran_obb);
+        WaktuPengiriman = findViewById(R.id.ll_waktu_pengiriman_obb);
+        waktuKirim = findViewById(R.id.tv_waktu_pengiriman_obb);
 
         waktu.setText(Waktu);
+        waktuBayar.setText(WaktuBayar);
+        waktuKirim.setText(WaktuKirim);
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
@@ -92,11 +103,14 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
                 status.setText("Menunggu Pembayaran");
                 Bayar.setVisibility(View.VISIBLE);
                 Selesai.setVisibility(View.GONE);
+                WaktuPembayaran.setVisibility(View.GONE);
+                WaktuPengiriman.setVisibility(View.GONE);
                 break;
             case "2":
                 status.setText("Pesanan dikemas");
                 Bayar.setVisibility(View.GONE);
                 Selesai.setVisibility(View.GONE);
+                WaktuPengiriman.setVisibility(View.GONE);
                 break;
             case "3":
                 status.setText("Pesanan dikirim");
@@ -199,6 +213,7 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> param = new HashMap<>();
                 param.put("invoice", Invoice);
+                param.put("status", "4");
                 return param;
             }
         };

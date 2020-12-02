@@ -15,9 +15,9 @@ import com.squareup.picasso.Picasso;
 
 public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
 
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu;
+    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar, waktuKirim;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Waktu, Gambar, TotalHarga;
+            Waktu, Gambar, TotalHarga, WaktuBayar, WaktuKirim;
     int Status;
     ImageView gambar;
     Button Selesai;
@@ -36,6 +36,8 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         totalHarga = findViewById(R.id.tv_nominal_total_resep_selesai);
         gambar = findViewById(R.id.showImgResepRiwayatSelesai);
         waktu = findViewById(R.id.tv_waktu_pemesanan_resep_selesai);
+        waktuBayar = findViewById(R.id.tv_waktu_pembayaran_resep_selesai);
+        waktuKirim = findViewById(R.id.tv_waktu_pengiriman_resep_selesai);
 
         Intent intent = getIntent();
         NamaPenerima = intent.getStringExtra("nama");
@@ -47,16 +49,20 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         Gambar = intent.getStringExtra("gambar");
         Waktu = intent.getStringExtra("waktu");
         TotalHarga = intent.getStringExtra("total_harga");
+        WaktuBayar = intent.getStringExtra("waktu_bayar");
+        WaktuKirim = intent.getStringExtra("waktu_pengiriman");
 
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
         waktu.setText(Waktu);
+        waktuBayar.setText(WaktuBayar);
+        waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         totalHarga.setText(TotalHarga+",-");
 
         Picasso.get().load(Gambar).into(gambar);
-        //Log.i("khatima", Gambar);
+        Log.i("khatima", WaktuBayar);
     }
 }

@@ -38,6 +38,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +55,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
     TextView TotalBayar;
     String Total, Invoice;
     EditText etNprb, etRekening;
-    String email_user, namagambar, narek, norek;
+    String email_user, namagambar, narek, norek, waktuBayar;
 
     ProgressDialog progressDialog;
 
@@ -74,6 +76,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
+        progressDialog.setCancelable(false);
 
         showGambar = findViewById(R.id.showGambarResep);
         PilihGambarKonfirm = findViewById(R.id.btn_pilih_gambar_konfirm_resep);
@@ -101,6 +104,11 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
                 etRekening.setVisibility(View.VISIBLE);
             }
         });
+
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat formatnya = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        waktuBayar = formatnya.format(c.getTime());
 
         Total = getIntent().getStringExtra("Harga");
         Invoice = getIntent().getStringExtra("invoice");
@@ -217,6 +225,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
                 params.put("status", "2");
                 params.put("narek", narek);
                 params.put("norek", norek);
+                params.put("waktu_bayar", waktuBayar);
                 return params;
             }
         };

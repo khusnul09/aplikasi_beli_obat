@@ -104,6 +104,7 @@
 <!--                    </LinearLayout>-->
 
                     <LinearLayout
+                        android:id="@+id/ll_waktu_pemesanan_obb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
@@ -113,8 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="21dp"
-                            android:text="Waktu Pemesanan :"
-                            android:textColor="#AF9999"
+                            android:text="Waktu Pemesanan  :"
                             android:textSize="14sp" />
 
                         <TextView
@@ -123,13 +123,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:text="0"
-                            android:textColor="#AF9999"
                             android:textSize="14sp" />
 
                     </LinearLayout>
 
 
                     <LinearLayout
+                        android:id="@+id/ll_waktu_pembayaran_obb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
@@ -140,7 +140,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="21dp"
                             android:text="Waktu Pembayaran :"
-                            android:textColor="#AF9999"
                             android:textSize="14sp" />
 
                         <TextView
@@ -149,7 +148,30 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:text="0"
-                            android:textColor="#AF9999"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_waktu_pengiriman_obb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="21dp"
+                            android:text="Waktu Pengiriman   :"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_waktu_pengiriman_obb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="0"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -336,7 +358,7 @@
                             android:id="@+id/tv_lebel_tot_harus_byr_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Harus Bayar"
+                            android:text="Total Bayar"
                             android:textSize="16sp"
                             android:textColor="#000"
                             android:textStyle="bold"

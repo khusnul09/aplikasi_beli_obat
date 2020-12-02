@@ -65,8 +65,10 @@
                         android:id="@+id/tv_status_riwayat_obat_selesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Selesai"
                         android:layout_marginLeft="2dp"
+                        android:text="Pesanan Diterima"
+                        android:textStyle="bold"
+                        android:textColor="#ED5454"
                         android:textSize="14sp" />
 
                 </LinearLayout>

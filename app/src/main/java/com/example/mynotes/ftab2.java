@@ -66,6 +66,8 @@ public class ftab2 extends Fragment {
             intent.putExtra("total_harga", data.getTotal_harga());
             intent.putExtra("harga", data.getHarga()); //total pesanan
             intent.putExtra("status", data.getStatus());
+            intent.putExtra("waktu_bayar", data.getWaktu_bayar());
+            intent.putExtra("waktu_pengiriman", data.getWaktu_kirim());
             startActivity(intent);
         });
 
@@ -109,6 +111,8 @@ public class ftab2 extends Fragment {
                                 modelRiwayatObat.setJenis_pesan(array.getJSONObject(i).optString("jenis_pesan"));
                                 modelRiwayatObat.setStatus(array.getJSONObject(i).optString("status"));
                                 modelRiwayatObat.setNama_user(array.getJSONObject(i).optString("nama_user"));
+                                modelRiwayatObat.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
+                                modelRiwayatObat.setWaktu_kirim(array.getJSONObject(i).optString("waktu_pengiriman"));
                                 Log.i("khatima", array.getJSONObject(i).optString("waktu"));
                                 adapterRiwayatObat.add(modelRiwayatObat);
                             }

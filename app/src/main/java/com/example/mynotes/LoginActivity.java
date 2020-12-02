@@ -82,23 +82,57 @@ public class LoginActivity extends AppCompatActivity {
                                         role = objData.getString("role");
                                         statsnk = objData.getString("snk");
                                     }
+                                    Log.i("khatima", role);
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", Objects.requireNonNull(etEmail.getEditText()).getText().toString());
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", role);
-                                    if (statsnk.equals("setuju")) {
+                                    switch (role) {
+                                        case "user":
+                                            if (statsnk.equals("setuju")) {
+                                                Toast.makeText(getApplicationContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
+                                                SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", true);
+
+                                                Intent intent = new Intent(LoginActivity.this, PesanObatActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else if (statsnk.equals("belum")) {
+                                                Intent intent = new Intent(LoginActivity.this, SyaratDanKetentuanActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                            break;
+                                        case "admin":
+                                            Toast.makeText(getApplicationContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
+                                            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", true);
+
+                                            Intent intentAdmin = new Intent(LoginActivity.this, AdminActivity.class);
+                                            startActivity(intentAdmin);
+                                            finish();
+                                            break;
+                                    }
+
+
+
+                                    /*if (statsnk.equals("setuju")) {
                                         Toast.makeText(getApplicationContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
                                         SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", true);
-                                        if (role.equals("user")) {
-                                            Intent intent = new Intent(LoginActivity.this, PesanObatActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        } else if (role.equals("admin")) {
-                                            Toast.makeText(getApplicationContext(), "ke halaman admin nanti", Toast.LENGTH_SHORT).show();
+                                        switch (role) {
+                                            case "user":
+                                                Intent intent = new Intent(LoginActivity.this, PesanObatActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                                break;
+                                            case "admin":
+                                                Intent intentAdmin = new Intent(LoginActivity.this, AdminActivity.class);
+                                                startActivity(intentAdmin);
+                                                finish();
+                                                break;
                                         }
+
                                     } else if (statsnk.equals("belum")) {
                                         Intent intent = new Intent(LoginActivity.this, SyaratDanKetentuanActivity.class);
                                         startActivity(intent);
                                         finish();
-                                    }
+                                    }*/
                                 } else if (jsonObject.getString("status").equals("gagal")){
                                     Log.i("Khatima", "else dijalankan");
                                     Toast.makeText(getApplicationContext(), "User tidak ditemukan!", Toast.LENGTH_SHORT).show();

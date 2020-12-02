@@ -8,7 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ public class ftab1 extends Fragment {
     String url = "https://obats.000webhostapp.com/api/user/riwayatresep";
     AdapterRiwayatResep adapterRiwayarResep;
     private List<ModelRiwayatResep> listmodelresep;
+    private SwipeRefreshLayout SwipeRefresh;
     RecyclerView recyclerView;
     TextView kosong;
     String email;
@@ -47,6 +50,23 @@ public class ftab1 extends Fragment {
 
         email = SharedPreferenceManager.getStringPreferences(getContext(), "user_email");
         adapterRiwayarResep = new AdapterRiwayatResep(getContext());
+
+        SwipeRefresh = view.findViewById(R.id.swipe);
+        SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
+        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        SwipeRefresh.setRefreshing(false);
+
+                        riwayatResepReq();
+                    }
+                }, 4000);
+            }
+        });
+
 
         kosong = view.findViewById(R.id.teks_kosong);
 
@@ -63,8 +83,11 @@ public class ftab1 extends Fragment {
             intent.putExtra("detail_alamat", data.getDetail_alamat());
             intent.putExtra("status", data.getStatus());
             intent.putExtra("invoice", data.getInvoice());
+            intent.putExtra("waktu", data.getWaktu());
             intent.putExtra("gambar", data.getGambar_resep());
             intent.putExtra("total_harga", data.getHarga());
+            intent.putExtra("waktu_bayar", data.getWaktu_bayar());
+            intent.putExtra("waktu_pengiriman", data.getWaktu_kirim());
             startActivity(intent);
         });
 
@@ -88,6 +111,7 @@ public class ftab1 extends Fragment {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
                         JSONArray array = objectResponse.getJSONArray("data");
+                        adapterRiwayarResep.clear();
                         if (objectResponse.getString("data").equals("kosong")) {
                             kosong.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
@@ -106,6 +130,8 @@ public class ftab1 extends Fragment {
                                 modelRiwayatResep.setStatus(array.getJSONObject(i).optInt("status"));
                                 modelRiwayatResep.setGambar_resep(array.getJSONObject(i).optString("gambar_resep"));
                                 modelRiwayatResep.setHarga(array.getJSONObject(i).optString("total_harga"));
+                                modelRiwayatResep.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
+                                modelRiwayatResep.setWaktu_kirim(array.getJSONObject(i).optString("waktu_pengiriman"));
                                 Log.i("khatima", array.getJSONObject(i).optString("waktu"));
                                 adapterRiwayarResep.add(modelRiwayatResep);
                             }

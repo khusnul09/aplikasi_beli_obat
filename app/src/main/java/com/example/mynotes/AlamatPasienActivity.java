@@ -35,7 +35,7 @@ public class AlamatPasienActivity extends AppCompatActivity {
     private EditText NamaLengkapPasien, NoHpPasien, AlamatPasien, DetaiAlamatPasien;
     String namaLengkapPasien, noHpPasien, alamatPasien, detailAlamatPasien, email_user, alamatGambar;
 
-    String time, name="", invoice;
+    String time, name="", invoice, waktuKirim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,9 @@ public class AlamatPasienActivity extends AppCompatActivity {
         invoice = "inv"+name+time;
         Log.i("khatima", invoice);
 
+        SimpleDateFormat formatnya = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        waktuKirim = formatnya.format(c.getTime());
+
         alamatGambar = getIntent().getStringExtra("namagambar");
 
         backAlamatPasien = findViewById(R.id.iv_kembali8);
@@ -77,6 +80,7 @@ public class AlamatPasienActivity extends AppCompatActivity {
     private void alamatPasien() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Mengirim resep...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         namaLengkapPasien = Objects.requireNonNull(NamaLengkapPasien.getText()).toString().trim();
@@ -112,6 +116,7 @@ public class AlamatPasienActivity extends AppCompatActivity {
                 params.put("alamat", alamatPasien);
                 params.put("detail_alamat", detailAlamatPasien);
                 params.put("gambar_resep", alamatGambar);
+                params.put("waktu", waktuKirim);
                 return  params;
 
             }
