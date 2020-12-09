@@ -52,33 +52,41 @@ import java.util.Map;
 public class KonfirmasiPembayaranActivity extends AppCompatActivity {
 
     private static final String urlUploadBukti = "https://obats.000webhostapp.com//api/user/uploadbukti";
+    private static final String urlUpdateStatus = "https://obats.000webhostapp.com//api/user/updatestatusresi";
 
     private ImageView showGambar;
     private Button PilihGambarKonfirm, KirimBuktiPembayaran;
     final int CODE_GALLERY_RQEUEST = 999;
     Bitmap bitmap;
     LinearLayout llNprb, llMnra;
+    ImageView Kembali;
     TextView TotalBayar;
     String Total, Invoice;
     EditText etNprb, etRekening;
-    String email_user, namagambar, narek, norek, waktuBayar;
+    String email_user, namagambar, narek, norek, waktuBayar, setStatus, invoice;
 
     ProgressDialog progressDialog;
 
     String filePath;
-    /*Map config = new HashMap();
+    Map config = new HashMap();
 
     private void configCloudinary() {
         config.put("cloud_name", "beliobatid");
         config.put("api_key", "832196155542743");
         config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
-        MediaManager.init(KonfirmasiPembayaranActivity.this, config);
-    }*/
+        MediaManager.init(getApplicationContext(), config);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_konfirmasi_pembayaran);
+
+        Kembali = findViewById(R.id.iv_back_konfirmasi);
+        Kembali.setOnClickListener(v -> {
+            setStatus = "1";
+            UploadNanti();
+        });
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
@@ -94,7 +102,12 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
-//        configCloudinary();
+        /*if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "isInit")) {
+            Log.i("khatima", "isInit true");
+        } else {
+            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
+        }*/
+        //configCloudinary();
 
         llNprb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +130,7 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
         waktuBayar = formatnya.format(c.getTime());
 
         Total = getIntent().getStringExtra("Total");
-        Invoice = getIntent().getStringExtra("invoice");
+        Invoice = getIntent().getStringExtra("invoice"); //sama
 
         Log.i("khatima", Total);
         TotalBayar = findViewById(R.id.tv_nominal_totbyr_konfirmasi);
@@ -135,6 +148,13 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
 
         KirimBuktiPembayaran.setOnClickListener(v -> uploadToCloudinary(filePath));
     }
+
+    @Override
+    public void onBackPressed() {
+        setStatus = "1";
+        UploadNanti();
+    }
+
     @Override
     protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data){
         try {
@@ -239,5 +259,45 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
         };
         RequestQueue queue = Volley.newRequestQueue(KonfirmasiPembayaranActivity.this);
         queue.add(request);
+    }
+
+    private void UploadNanti() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdateStatus,
+                (Response.Listener<String>) response -> {
+                    Log.i("khatima", response);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String respon = jsonObject.getString("text");
+                        Log.i("Khatima", respon);
+                        if (jsonObject.getString("text").equals("berhasil")) {
+                            Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //pindah
+                            intentUploadNanti.putExtra("fragmentItem", 1);
+                            startActivity(intentUploadNanti);
+                            finish();
+                        }
+                        Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    progressDialog.dismiss();
+                }, (Response.ErrorListener) error -> Toast.makeText(getApplicationContext(), "error: "+ error.toString(), Toast.LENGTH_LONG).show()) {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("invoice", Invoice); //sama
+                params.put("status", setStatus);
+                params.put("Total", Total);
+                return  params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(KonfirmasiPembayaranActivity.this);
+        requestQueue.add(stringRequest);
     }
 }

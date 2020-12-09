@@ -204,49 +204,97 @@
                         android:textColor="#ED5454"
                         android:textSize="18sp" />
 
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/ll_edit_data_penerima"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_marginLeft="150dp"-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_alignParentEnd="true">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="15dp"-->
+<!--                            android:layout_height="20dp"-->
+<!--                            android:src="@drawable/ic_edit" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_edit_data"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Edit Profil"-->
+<!--                            android:textSize="10sp"-->
+<!--                            android:textColor="#777171"/>-->
+
+<!--                    </LinearLayout>-->
+
                 </LinearLayout>
 
-
-                <TextView
-                    android:id="@+id/tv_nama_riwayat_obb"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:text="Khusnul Khatima"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_hp_riwayat_obb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="2dp"
-                    android:text="085255513984"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="50dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_nama_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:text="nama"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
 
 
-                <TextView
-                    android:id="@+id/tv_alamat_riwayat_obb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="2dp"
-                    android:text="Perumahan Griya Mawang Indah Blok A2"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/tv_hp_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="2dp"
+                            android:text="no tlf"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tv_det_riwayat_obb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="6dp"
-                    android:text="Samping Masjid Jami' Abu Bakar As Sidiq"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_alamat_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="2dp"
+                            android:text="alamat"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_det_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="6dp"
+                            android:text="detail alamat"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/iv_edit_data_penerima"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_arrow_right_red"/>
+
+                </RelativeLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -358,7 +406,7 @@
                             android:id="@+id/tv_lebel_tot_harus_byr_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Bayar"
+                            android:text="Total Harus Bayar"
                             android:textSize="16sp"
                             android:textColor="#000"
                             android:textStyle="bold"
@@ -469,11 +517,11 @@
                 android:background="@drawable/primary_button"/>
 
             <Button
-                android:id="@+id/btn_selesaikan"
+                android:id="@+id/btn_pesanan_obat_diterima"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="SELESAIKAN ORDER"
+                android:text="PESANAN DITERIMA"
                 android:visibility="gone"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"

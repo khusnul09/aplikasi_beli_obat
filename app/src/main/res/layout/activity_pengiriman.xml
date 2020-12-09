@@ -63,7 +63,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Alamat Pengiriman"
+                        android:text="Masukkan Alamat Pengiriman"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -89,7 +89,7 @@
                         android:id="@+id/et_nama"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Khusnul Khatima"
+                        android:hint="cth : Khusnul Khatima"
                         android:paddingHorizontal="12dp"
                         android:inputType="text"
                         android:layout_marginTop="3dp"
@@ -109,7 +109,7 @@
                         android:id="@+id/et_hp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="085255513984"
+                        android:hint="cth : 085255XXXXXX"
                         android:paddingHorizontal="12dp"
                         android:layout_marginTop="3dp"
                         android:inputType="number"
@@ -138,7 +138,7 @@
                         android:id="@+id/et_alamat"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Perumahan Griya Mawang Indah Blok A2"
+                        android:hint="cth : Perumahan Griya Mawang Indah Blok A2"
                         android:layout_marginTop="3dp"
                         android:paddingHorizontal="12dp"
                         android:inputType="textCapSentences|textMultiLine"
@@ -162,7 +162,7 @@
                         android:layout_height="50dp"
                         android:layout_marginTop="3dp"
                         android:background="@drawable/linecolor"
-                        android:hint="Samping Masjid Jami' Abu Bakar As Sidiq"
+                        android:hint="cth : Samping Masjid Jami' Abu Bakar As Sidiq"
                         android:inputType="textCapSentences|textMultiLine"
                         android:maxLines="4"
                         android:paddingHorizontal="12dp" />
@@ -404,7 +404,7 @@
                             android:id="@+id/tv_nominal_ongkir"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30000"
+                            android:text="30000,-"
                             android:textSize="14sp"
                             android:textColor="#000000"
                             android:layout_marginBottom="8dp"/>

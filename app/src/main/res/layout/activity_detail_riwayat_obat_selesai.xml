@@ -16,6 +16,7 @@
         android:background="#EF3D3D">
 
         <ImageView
+            android:id="@+id/iv_kembali_riwayat_obat_selesai"
             android:layout_width="50dp"
             android:layout_marginRight="2dp"
             android:layout_height="match_parent"
@@ -81,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="21dp"
+                        android:layout_marginLeft="20dp"
                         android:text="Pesanan anda sudah selesai"
                         android:textSize="14sp" />
 
@@ -115,7 +116,7 @@
                 android:id="@+id/tv_nama_penerima_riwayat_obat_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginLeft="20dp"
                 android:text="Nama"
                 android:textSize="14sp"
                 android:textColor="#000" />
@@ -124,7 +125,7 @@
                 android:id="@+id/tv_tlf_riwayat_obat_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginLeft="20dp"
                 android:text="No Telepon"
                 android:textColor="#000"
                 android:textSize="14sp"
@@ -134,7 +135,7 @@
                 android:id="@+id/tv_alamat_riwayat_obat_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginLeft="20dp"
                 android:text="Alamat"
                 android:textSize="14sp"
                 android:textColor="#000"
@@ -144,7 +145,7 @@
                 android:id="@+id/tv_detai_alamat_riwayat_obat_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
+                android:layout_marginLeft="20dp"
                 android:text="Detail Alamat"
                 android:textColor="#000"
                 android:textSize="14sp"
@@ -258,7 +259,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Total"
+                        android:text="Total Pembayaran"
                         android:textColor="#000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -356,6 +357,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="30dp"
                     android:layout_weight="2.5">
 
                     <TextView
@@ -391,6 +394,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="30dp"
                     android:layout_weight="2">
 
                     <TextView
@@ -424,24 +429,24 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#FFFFFF"
-                android:padding="12sp">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:background="#FFFFFF"-->
+<!--                android:padding="12sp">-->
 
-                <Button
-                    android:id="@+id/btn_selesai_riwayat_obat_selesai"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="SELESAI"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/primary_button"/>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_selesai_riwayat_obat_selesai"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="SELESAI"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:background="@drawable/primary_button"/>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

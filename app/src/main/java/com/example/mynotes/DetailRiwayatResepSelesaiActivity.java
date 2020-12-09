@@ -15,17 +15,28 @@ import com.squareup.picasso.Picasso;
 
 public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
 
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar, waktuKirim;
+    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar, waktuKirim, hargaApoteker;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Waktu, Gambar, TotalHarga, WaktuBayar, WaktuKirim;
+            Waktu, Gambar, TotalHarga, WaktuBayar, WaktuKirim, HargaApoteker;
     int Status;
-    ImageView gambar;
+    ImageView gambar, Kembali;
     Button Selesai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_riwayat_resep_selesai);
+
+        Kembali = findViewById(R.id.iv_kembali_riwayat_resep_selesai);
+        Kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
+                intent.putExtra("fragmentItem", 2);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         namaPenerima = findViewById(R.id.tv_nama_riwayat_resep_selesai);
         handphone = findViewById(R.id.tv_tlf_riwayat_resep_selesai);
@@ -38,6 +49,7 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         waktu = findViewById(R.id.tv_waktu_pemesanan_resep_selesai);
         waktuBayar = findViewById(R.id.tv_waktu_pembayaran_resep_selesai);
         waktuKirim = findViewById(R.id.tv_waktu_pengiriman_resep_selesai);
+        hargaApoteker = findViewById(R.id.tv_nominal_subtotal_resep_selesai);
 
         Intent intent = getIntent();
         NamaPenerima = intent.getStringExtra("nama");
@@ -51,6 +63,7 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         TotalHarga = intent.getStringExtra("total_harga");
         WaktuBayar = intent.getStringExtra("waktu_bayar");
         WaktuKirim = intent.getStringExtra("waktu_pengiriman");
+        HargaApoteker = intent.getStringExtra("harga");
 
         namaPenerima.setText(NamaPenerima);
         handphone.setText(HandphonePenerima);
@@ -61,6 +74,7 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         totalHarga.setText(TotalHarga+",-");
+        hargaApoteker.setText(HargaApoteker+",-");
 
         Picasso.get().load(Gambar).into(gambar);
         Log.i("khatima", WaktuBayar);

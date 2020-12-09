@@ -50,6 +50,11 @@ public class AdapterRiwayatSelesai extends RecyclerView.Adapter<AdapterRiwayatSe
         }
     }
 
+    void clear(){
+        modelRiwayatSelesaiList.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(AdapterRiwayatSelesai.ViewHolder holder, int position) {
         ModelRiwayatSelesai modelRiwayatSelesai = modelRiwayatSelesaiList.get(position);

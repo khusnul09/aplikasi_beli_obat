@@ -9,11 +9,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottombt"
+        android:layout_above="@id/ll_masukkan_keranjang"
         android:id="@+id/recyclerView" />
 
     <LinearLayout
-        android:id="@+id/bottombt"
+        android:id="@+id/ll_masukkan_keranjang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

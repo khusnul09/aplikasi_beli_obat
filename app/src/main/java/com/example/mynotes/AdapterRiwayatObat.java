@@ -50,6 +50,11 @@ public class AdapterRiwayatObat extends RecyclerView.Adapter<AdapterRiwayatObat.
         }
     }
 
+    void clear(){
+        listriwayatobat.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(AdapterRiwayatObat.ViewHolder holder, int position) {
         ModelRiwayatObat modelRiwayatObat = listriwayatobat.get(position);

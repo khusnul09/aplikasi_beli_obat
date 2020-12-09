@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
             Harga, TotalHarga, Waktu, WaktuBayar, WaktuKirim;
     int Status;
     Button Selesai;
+    ImageView Kembali;
 
     AdapterDetailTanpaResep adapterDetailTanpaResep;
     List<ModelDetailTanpaResep> listObatTanpaResep;
@@ -46,6 +48,18 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_riwayat_obat_selesai);
+
+
+        Kembali = findViewById(R.id.iv_kembali_riwayat_obat_selesai);
+        Kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
+                intent.putExtra("fragmentItem", 2);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         listObatTanpaResep = new ArrayList<>();
         adapterDetailTanpaResep = new AdapterDetailTanpaResep(getApplicationContext());

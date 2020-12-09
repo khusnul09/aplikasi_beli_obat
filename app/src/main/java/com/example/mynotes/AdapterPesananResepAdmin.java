@@ -1,10 +1,12 @@
 package com.example.mynotes;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterPesananResepAdmin extends RecyclerView.Adapter<AdapterPesananResepAdmin.ViewHolder> {
@@ -51,9 +54,21 @@ public class AdapterPesananResepAdmin extends RecyclerView.Adapter<AdapterPesana
         }
 }
 
+    void clear(){ //refresh
+        listpesananresep.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(AdapterPesananResepAdmin.ViewHolder holder, int position) {
         ModelPesananResepAdmin modelPesananResepAdmin = listpesananresep.get(position);
+        if (modelPesananResepAdmin.getStatus() == 4) {
+            holder.rowPesananResep.setBackgroundColor(Color.parseColor("#FAF0E6")); //warna pada listpesanan yg sdh diterima user
+        } else {
+            holder.rowPesananResep.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+
+
         holder.waktu.setText(modelPesananResepAdmin.getWaktu());
         holder.invoice.setText("#"+ modelPesananResepAdmin.getInvoice());
         holder.nama.setText(modelPesananResepAdmin.getNama_penerima());
@@ -74,6 +89,7 @@ public class AdapterPesananResepAdmin extends RecyclerView.Adapter<AdapterPesana
         public TextView waktu, invoice, nama;
         ImageView gambar;
         TextView lihatDetailPesananResep;
+        RelativeLayout rowPesananResep;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -82,6 +98,7 @@ public class AdapterPesananResepAdmin extends RecyclerView.Adapter<AdapterPesana
             invoice = itemView.findViewById(R.id.tv_invoice_resep_admin);
             gambar = itemView.findViewById(R.id.iv_gambar_pesanan_resep_admin);
             nama = itemView.findViewById(R.id.tv_nama_pengirim_resep_admin);
+            rowPesananResep = itemView.findViewById(R.id.rl_pesanan_resep);
         }
     }
 

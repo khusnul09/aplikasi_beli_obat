@@ -75,14 +75,15 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
             }
         });
 
-//        kembali = findViewById(R.id.iv_kembali7);
-//        kembali.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), KeranjangActivity.class);
+        kembali = findViewById(R.id.iv_kembali7);
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), PesanObatActivity.class);
 //                startActivity(intent);
-//            }
-//        });
+                onBackPressed();
+            }
+        });
 
         listObatToCart = (ArrayList<Model>) getIntent().getSerializableExtra("CART");
         gson = new Gson();
@@ -117,6 +118,7 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
     private void simpanPesananObat() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Mengirim...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         //buat invoice

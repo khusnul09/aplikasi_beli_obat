@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class ResepObatTerkirimActivity extends AppCompatActivity {
 
     Button selesai;
+    ImageView Kembali;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,14 @@ public class ResepObatTerkirimActivity extends AppCompatActivity {
             startActivity(intentSelesai);
             finish();
         });
+
+        Kembali = findViewById(R.id.iv_back_resep_terkirim);
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
+            startActivity(intent);
+
+        });
+
     }
 
     @Override

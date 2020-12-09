@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class EditProfilActivity extends AppCompatActivity {
+public class    EditProfilActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     TextInputEditText editNama, editNo, editAlamat;

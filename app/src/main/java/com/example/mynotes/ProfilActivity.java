@@ -42,6 +42,7 @@ public class ProfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
+
         EditProfil = findViewById(R.id.ll_edit_akun);
         EditProfil.setOnClickListener(v -> {
             Intent intent = new Intent(ProfilActivity.this, EditProfilActivity.class);

@@ -82,7 +82,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         Antar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AntarPesananObat();
+                AntarPesananResep();
             }
         });
 
@@ -131,6 +131,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         Status = intent.getIntExtra("status",0);
         BuktiBayar = intent.getStringExtra("bukti_bayar");
         Harga = intent.getStringExtra("total_harga");
+        strHarga = intent.getStringExtra("harga");
 
         Log.i("khatima", BuktiBayar);
 
@@ -140,6 +141,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         totalBayar.setText(Harga+",-");
+        etharga.setText(strHarga+",-");
 
         switch (Status){
             case 0:
@@ -148,6 +150,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
                 TextBuktiPembayaran.setVisibility(View.GONE);
                 BuktiPembayaran.setVisibility(View.GONE);
                 Antar.setVisibility(View.GONE);
+                view.setVisibility(View.INVISIBLE);
                 break;
 
             case 1: //MENUNGGU PEMBAYARAN
@@ -177,15 +180,16 @@ public class DetailPesananResepActivity extends AppCompatActivity {
                 TextBuktiPembayaran.setVisibility(View.VISIBLE);
                 Antar.setVisibility(View.GONE);
                 break;
+
+            case 4:
+                etharga.setVisibility(View.GONE);
+                TotalHarusBayar.setVisibility(View.VISIBLE);
+                Kirim.setVisibility(View.GONE);
+                BuktiPembayaran.setVisibility(View.VISIBLE);
+                TextBuktiPembayaran.setVisibility(View.VISIBLE);
+                Antar.setVisibility(View.GONE);
+                break;
         }
-
-//        if (Status == 0) {
-//            statusdesc = "Menunggu Konfirmasi Apotek";
-//            TextBuktiPembayaran.setVisibility(View.GONE);
-//            BuktiPembayaran.setVisibility(View.GONE);
-//            Antar.setVisibility(View.GONE);
-//        }
-
 
         Picasso.get()
                 .load(Gambar)
@@ -241,7 +245,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    private void AntarPesananObat() {
+    private void AntarPesananResep() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Kirim...");
         progressDialog.setCancelable(false);

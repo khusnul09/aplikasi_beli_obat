@@ -60,14 +60,14 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     String filePath;
-    /*Map config = new HashMap();
+      Map config = new HashMap();
 
     private void configCloudinary() {
         config.put("cloud_name", "beliobatid");
         config.put("api_key", "832196155542743");
         config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
-        MediaManager.init(KonfirmasiPembayaranActivity.this, config);
-    }*/
+        MediaManager.init(getApplicationContext(), config);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,12 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
-//        configCloudinary();
+        /*if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "isInit")) {
+            Log.i("khatima", "isInit true");
+        } else {
+            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
+        }*/
+        //configCloudinary();
 
         llNprb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +214,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
                             alamatPasien.putExtra("fragmentItem", 0);
                             alamatPasien.putExtra("namagambar", namagambar);
                             startActivity(alamatPasien);
+                            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", false);
                             finish();
                         }
                         progressDialog.dismiss();

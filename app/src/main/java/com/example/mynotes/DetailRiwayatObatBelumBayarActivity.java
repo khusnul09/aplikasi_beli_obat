@@ -38,9 +38,9 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
 
     TextView waktu, namaPenerima, handphone, alamat, detailAlamat, harga, totalHarga, status, invoice, waktuBayar, waktuKirim;
     String Invoice, Waktu, NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Harga, TotalHarga, Status, WaktuBayar, WaktuKirim;
-    ImageView Kembali;
+    ImageView Kembali, EditDataPenerima;
     LinearLayout WaktuPembayaran, WaktuPengiriman;
-    Button Bayar, Selesai;
+    Button Bayar, PesananDiterima;
 
     AdapterDetailTanpaResep adapterDetailTanpaResep;
     List<ModelDetailTanpaResep> listObatTanpaResep;
@@ -53,6 +53,17 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail__riwayat__obat__belum__bayar);
+
+        EditDataPenerima = findViewById(R.id.iv_edit_data_penerima);
+        EditDataPenerima.setOnClickListener(v -> { //data yg akan dibawa ke halaman edit data penerima obat
+            Intent intentdata = new Intent(getApplicationContext(), EditDataPenerimaObatActivity.class);
+            intentdata.putExtra("invoice", Invoice);
+            intentdata.putExtra("handphone", HandphonePenerima);
+            intentdata.putExtra("nama_penerima", NamaPenerima);
+            intentdata.putExtra("alamat", AlamatPenerima);
+            intentdata.putExtra("detail_alamat", DetailAlamatPenerima);
+            startActivity(intentdata);
+        });
 
         listObatTanpaResep = new ArrayList<>();
         adapterDetailTanpaResep = new AdapterDetailTanpaResep(getApplicationContext());
@@ -82,11 +93,12 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
         status = findViewById(R.id.tv_status_riwayat_obb);
         invoice = findViewById(R.id.tv_kode_obb);
         Bayar = findViewById(R.id.btn_bayar);
-        Selesai = findViewById(R.id.btn_selesaikan);
+        PesananDiterima = findViewById(R.id.btn_pesanan_obat_diterima);
         waktuBayar = findViewById(R.id.tv_waktu_pembayaran_obb);
         WaktuPembayaran = findViewById(R.id.ll_waktu_pembayaran_obb);
         WaktuPengiriman = findViewById(R.id.ll_waktu_pengiriman_obb);
         waktuKirim = findViewById(R.id.tv_waktu_pengiriman_obb);
+
 
         waktu.setText(Waktu);
         waktuBayar.setText(WaktuBayar);
@@ -102,20 +114,22 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
             case "1":
                 status.setText("Menunggu Pembayaran");
                 Bayar.setVisibility(View.VISIBLE);
-                Selesai.setVisibility(View.GONE);
+                PesananDiterima.setVisibility(View.GONE);
                 WaktuPembayaran.setVisibility(View.GONE);
                 WaktuPengiriman.setVisibility(View.GONE);
                 break;
             case "2":
                 status.setText("Pesanan dikemas");
                 Bayar.setVisibility(View.GONE);
-                Selesai.setVisibility(View.GONE);
+                PesananDiterima.setVisibility(View.GONE);
                 WaktuPengiriman.setVisibility(View.GONE);
+                EditDataPenerima.setVisibility(View.GONE);
                 break;
             case "3":
                 status.setText("Pesanan dikirim");
                 Bayar.setVisibility(View.GONE);
-                Selesai.setVisibility(View.VISIBLE);
+                EditDataPenerima.setVisibility(View.GONE);
+                PesananDiterima.setVisibility(View.VISIBLE);
                 break;
             case "4":
                 status.setText("Pesanan diterima");
@@ -136,7 +150,7 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
-        Selesai.setOnClickListener(v -> {
+        PesananDiterima.setOnClickListener(v -> {
             selesaikan2();
         });
 
@@ -149,7 +163,6 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public void reqDetail(){

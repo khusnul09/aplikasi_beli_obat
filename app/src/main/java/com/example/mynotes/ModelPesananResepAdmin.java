@@ -12,7 +12,7 @@ public class ModelPesananResepAdmin {
     private String invoice;
     private String bukti_bayar;
     private String waktu_bayar;
-    String Harga;
+    String Harga, Hargasementara;
     private int status;
 
     public int getStatus() {
@@ -121,5 +121,15 @@ public class ModelPesananResepAdmin {
     public void setBukti_bayar(String bukti_bayar) {
         this.bukti_bayar = bukti_bayar;
     }
+
+    public String getHargasementara() {
+        return Hargasementara;
+    }
+
+    public void setHargasementara(String hargasementara) {
+        Hargasementara = hargasementara;
+    }
+
+
 
 }

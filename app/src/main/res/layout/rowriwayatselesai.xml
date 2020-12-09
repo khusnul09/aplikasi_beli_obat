@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/iv_gambar_resep_selesai"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:src="@mipmap/ic_launcher"
             android:layout_centerVertical="true"/>
 

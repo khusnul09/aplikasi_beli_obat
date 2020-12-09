@@ -51,7 +51,7 @@ public class AdapterRiwayatResep extends RecyclerView.Adapter<AdapterRiwayatRese
         }
     }
 
-    void clear(){
+    void clear(){ //refresh
         listriwayatresep.clear();
         notifyDataSetChanged();
     }

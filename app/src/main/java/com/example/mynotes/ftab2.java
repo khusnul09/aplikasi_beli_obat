@@ -8,7 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ public class ftab2 extends Fragment {
     String email;
     TextView kosong;
     AdapterRiwayatObat adapterRiwayatObat;
+    private SwipeRefreshLayout SwipeRefresh;
     private List<ModelRiwayatObat> listmodelobat;
     RecyclerView recyclerView;
 
@@ -46,6 +49,22 @@ public class ftab2 extends Fragment {
 
         email = SharedPreferenceManager.getStringPreferences(getContext(), "user_email");
         adapterRiwayatObat = new AdapterRiwayatObat(getContext());
+
+        SwipeRefresh = view.findViewById(R.id.swipe_obat);
+        SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
+        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        SwipeRefresh.setRefreshing(false);
+
+                        riwayatObatReq();
+                    }
+                }, 4000);
+            }
+        });
 
         kosong = view.findViewById(R.id.teks_kosong);
 
@@ -91,6 +110,7 @@ public class ftab2 extends Fragment {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
                         JSONArray array = objectResponse.getJSONArray("data");
+                        adapterRiwayatObat.clear();
                         if (objectResponse.getString("data").equals("kosong")) {
                             kosong.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);

@@ -11,7 +11,7 @@ public class ModelRiwayatResep {
     private String invoice;
     private String waktu_bayar;
     private String waktu_kirim;
-    String Harga;
+    String Harga, HargaSementara;
     private int status;
 
     public int getStatus() {
@@ -121,6 +121,14 @@ public class ModelRiwayatResep {
     }
 
     public void setWaktu_kirim(String waktu_kirim) {this.waktu_kirim =  waktu_kirim;}
+
+    public String getHargaSementara() {
+        return HargaSementara;
+    }
+
+    public void setHargaSementara(String hargaSementara) {
+        HargaSementara = hargaSementara;
+    }
 
 
 }

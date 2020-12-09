@@ -51,7 +51,7 @@ public class ftab1 extends Fragment {
         email = SharedPreferenceManager.getStringPreferences(getContext(), "user_email");
         adapterRiwayarResep = new AdapterRiwayatResep(getContext());
 
-        SwipeRefresh = view.findViewById(R.id.swipe);
+        SwipeRefresh = view.findViewById(R.id.swipe_resep); //refresh
         SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
         SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -88,6 +88,7 @@ public class ftab1 extends Fragment {
             intent.putExtra("total_harga", data.getHarga());
             intent.putExtra("waktu_bayar", data.getWaktu_bayar());
             intent.putExtra("waktu_pengiriman", data.getWaktu_kirim());
+            intent.putExtra("harga", data.getHargaSementara());
             startActivity(intent);
         });
 
@@ -111,7 +112,7 @@ public class ftab1 extends Fragment {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
                         JSONArray array = objectResponse.getJSONArray("data");
-                        adapterRiwayarResep.clear();
+                        adapterRiwayarResep.clear(); //refresh
                         if (objectResponse.getString("data").equals("kosong")) {
                             kosong.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
@@ -132,6 +133,7 @@ public class ftab1 extends Fragment {
                                 modelRiwayatResep.setHarga(array.getJSONObject(i).optString("total_harga"));
                                 modelRiwayatResep.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
                                 modelRiwayatResep.setWaktu_kirim(array.getJSONObject(i).optString("waktu_pengiriman"));
+                                modelRiwayatResep.setHargaSementara(array.getJSONObject(i).optString("harga"));
                                 Log.i("khatima", array.getJSONObject(i).optString("waktu"));
                                 adapterRiwayarResep.add(modelRiwayatResep);
                             }

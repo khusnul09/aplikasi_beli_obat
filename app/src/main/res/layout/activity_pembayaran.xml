@@ -15,11 +15,12 @@
         android:orientation="horizontal"
         android:background="#EF3D3D">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_back_info_bayar"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/ic_back"-->
+<!--            android:padding="10dp"/>-->
 
         <TextView
             android:layout_width="match_parent"
@@ -27,6 +28,7 @@
             android:text="Info Pembayaran"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:layout_marginLeft="20dp"
             android:gravity="center_vertical"/>
 
     </LinearLayout>

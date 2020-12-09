@@ -3,12 +3,15 @@ package com.example.mynotes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,6 +33,8 @@ public class PesananResepAdminActivity extends AppCompatActivity {
     AdapterPesananResepAdmin adapterPesananResepAdmin;
     List<ModelPesananResepAdmin> listmodelresepadmin;
     RecyclerView recyclerView;
+    private SwipeRefreshLayout SwipeRefresh;
+    TextView kosong;
     ImageView Kembali;
 
     @Override
@@ -46,9 +51,29 @@ public class PesananResepAdminActivity extends AppCompatActivity {
 
             }
         });
+
+        SwipeRefresh = findViewById(R.id.swipe_pesanan_resep); //refresh
+        SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
+        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        SwipeRefresh.setRefreshing(false);
+
+                        dataPesananAdmin();
+                    }
+                }, 4000);
+            }
+        });
+
+
         Log.i("khatima", "ini halaman pesanan resep");
 
         adapterPesananResepAdmin = new AdapterPesananResepAdmin(getApplicationContext());
+
+        kosong = findViewById(R.id.teks_kosong_resep);
 
         recyclerView = findViewById(R.id.recyclerViewPesananResepAdmin);
         recyclerView.setHasFixedSize(true);
@@ -68,6 +93,7 @@ public class PesananResepAdminActivity extends AppCompatActivity {
             intent.putExtra("total_harga", data.getHarga());
             intent.putExtra("waktu_bayar", data.getWaktu_bayar());
             intent.putExtra("bukti_bayar", data.getBukti_bayar());
+            intent.putExtra("harga", data.getHargasementara());
             startActivity(intent);
         });
 
@@ -84,24 +110,33 @@ public class PesananResepAdminActivity extends AppCompatActivity {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
                         JSONArray array = objectResponse.getJSONArray("data");
+                        adapterPesananResepAdmin.clear(); //refresh
+                        if (objectResponse.getString("data").equals("kosong")){
+                            kosong.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        }else {
+                            kosong.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
 
-                        for (int i = 0; i < array.length(); i++) {
-                            ModelPesananResepAdmin modelPesananResepAdmin = new ModelPesananResepAdmin();
-                            modelPesananResepAdmin.setWaktu(array.getJSONObject(i).optString("waktu"));
-                            modelPesananResepAdmin.setNama_penerima(array.getJSONObject(i).optString("nama_penerima"));
-                            modelPesananResepAdmin.setHandphone(array.getJSONObject(i).optString("handphone"));
-                            modelPesananResepAdmin.setAlamat(array.getJSONObject(i).optString("alamat"));
-                            modelPesananResepAdmin.setInvoice(array.getJSONObject(i).optString("invoice"));
-                            modelPesananResepAdmin.setDetail_alamat(array.getJSONObject(i).optString("detail_alamat"));
-                            modelPesananResepAdmin.setStatus(array.getJSONObject(i).optInt("status"));
-                            modelPesananResepAdmin.setGambar_resep(array.getJSONObject(i).optString("gambar_resep"));
-                            modelPesananResepAdmin.setHarga(array.getJSONObject(i).optString("total_harga"));
-                            modelPesananResepAdmin.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
-                            modelPesananResepAdmin.setBukti_bayar(array.getJSONObject(i).optString("bukti_bayar"));
-                            adapterPesananResepAdmin.add(modelPesananResepAdmin);
+                            for (int i = 0; i < array.length(); i++) {
+                                ModelPesananResepAdmin modelPesananResepAdmin = new ModelPesananResepAdmin();
+                                modelPesananResepAdmin.setWaktu(array.getJSONObject(i).optString("waktu"));
+                                modelPesananResepAdmin.setNama_penerima(array.getJSONObject(i).optString("nama_penerima"));
+                                modelPesananResepAdmin.setHandphone(array.getJSONObject(i).optString("handphone"));
+                                modelPesananResepAdmin.setAlamat(array.getJSONObject(i).optString("alamat"));
+                                modelPesananResepAdmin.setInvoice(array.getJSONObject(i).optString("invoice"));
+                                modelPesananResepAdmin.setDetail_alamat(array.getJSONObject(i).optString("detail_alamat"));
+                                modelPesananResepAdmin.setStatus(array.getJSONObject(i).optInt("status"));
+                                modelPesananResepAdmin.setGambar_resep(array.getJSONObject(i).optString("gambar_resep"));
+                                modelPesananResepAdmin.setHarga(array.getJSONObject(i).optString("total_harga"));
+                                modelPesananResepAdmin.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
+                                modelPesananResepAdmin.setBukti_bayar(array.getJSONObject(i).optString("bukti_bayar"));
+                                modelPesananResepAdmin.setHargasementara(array.getJSONObject(i).optString("harga"));
+                                adapterPesananResepAdmin.add(modelPesananResepAdmin);
+                            }
+                            adapterPesananResepAdmin.addAll(listmodelresepadmin);
+                            adapterPesananResepAdmin.notifyDataSetChanged();
                         }
-                        adapterPesananResepAdmin.addAll(listmodelresepadmin);
-                        adapterPesananResepAdmin.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();

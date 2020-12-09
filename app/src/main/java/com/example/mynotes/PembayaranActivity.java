@@ -32,7 +32,7 @@ public class PembayaranActivity extends AppCompatActivity {
 
     Button UploadSekarang, UploadNanti;
     TextView NomorRekening;
-    ImageView Copy;
+    ImageView Copy ;
     TextView TotalBayar;
     String invoice, setStatus, Total;
 
@@ -71,6 +71,7 @@ public class PembayaranActivity extends AppCompatActivity {
             Toast.makeText(PembayaranActivity.this, "Nomor rekening berhasil disalin", Toast.LENGTH_SHORT).show();
 
         });
+
 
         TotalBayar = findViewById(R.id.tv_total_pembayaran_info);
 

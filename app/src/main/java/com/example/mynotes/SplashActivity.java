@@ -28,6 +28,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        /*if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "isInit")) {
+            Log.i("khatima", "isInit true");
+        } else {
+            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
+        }*/
         configCloudinary();
 
         int waktuLoad = 4000;

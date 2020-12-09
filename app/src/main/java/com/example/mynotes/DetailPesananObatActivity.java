@@ -149,6 +149,11 @@ public class DetailPesananObatActivity extends AppCompatActivity {
             case "3": //PESANAN DIKIRIM
                 Antar.setVisibility(View.GONE);
                 break;
+
+            case "4":
+                Antar.setVisibility(View.GONE);
+                break;
+
         }
 
 
@@ -242,6 +247,9 @@ public class DetailPesananObatActivity extends AppCompatActivity {
                         JSONObject objectResponse = new JSONObject(response);
                         if (objectResponse.getString("respon").equals("berhasil")) {
                             Toast.makeText(getApplicationContext(), "Pengantaran Berhasil", Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(getApplicationContext(), PesananObatAdminActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Gagal", Toast.LENGTH_SHORT).show();
                         }

@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Data Penerima"
+            android:text="Pengiriman"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:gravity="center_vertical"/>
@@ -42,32 +42,52 @@
             android:padding="27dp"
             android:layout_centerInParent="true">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_location"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Masukkan Alamat Pengiriman"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="3dp">
 
-                <!--        <LinearLayout-->
-                <!--            android:layout_width="match_parent"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:gravity="center"-->
-                <!--            android:orientation="horizontal">-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal">-->
 
-                <!--            <ImageView-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:src="@drawable/ic_location"/>-->
+<!--                            <ImageView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@drawable/ic_location"/>-->
 
-                <!--            <TextView-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:text="Alamat Pengiriman"-->
-                <!--                android:textStyle="bold"-->
-                <!--                android:textColor="#ED5454"-->
-                <!--                android:textSize="18sp"/>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Alamat Pengiriman"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textColor="#ED5454"-->
+<!--                                android:textSize="18sp"/>-->
 
-                <!--    </LinearLayout>-->
+<!--                    </LinearLayout>-->
 
                 <TextView
                     android:id="@+id/tv_lbnama"
@@ -75,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#ED5454"
                     android:textSize="16sp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="5dp"
                     android:textStyle="bold"
                     android:text="Nama Lengkap"/>
 
@@ -83,7 +103,7 @@
                     android:id="@+id/et_nama_pasien"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Khusnul Khatima"
+                    android:hint="cth : Khusnul Khatima"
                     android:paddingHorizontal="12dp"
                     android:inputType="text"
                     android:layout_marginTop="5dp"
@@ -103,7 +123,7 @@
                     android:id="@+id/et_hp_pasien"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="085255513984"
+                    android:hint="cth : 085255XXXXXX"
                     android:paddingHorizontal="12dp"
                     android:layout_marginTop="3dp"
                     android:inputType="number"
@@ -133,7 +153,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/linecolor"
-                    android:hint="Perumahan Griya Mawang Indah Blok A2"
+                    android:hint="cth : Perumahan Griya Mawang Indah Blok A2"
                     android:inputType="textCapSentences|textMultiLine"
                     android:maxLines="4"
                     android:paddingHorizontal="12dp" />
@@ -152,7 +172,7 @@
                     android:id="@+id/et_det_alamat_pasien"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Samping Masjid Jami' Abu Bakar As Sidiq"
+                    android:hint="cth : Samping Masjid Jami' Abu Bakar As Sidiq"
                     android:layout_marginTop="3dp"
                     android:paddingHorizontal="12dp"
                     android:inputType="textCapSentences|textMultiLine"
