@@ -44,11 +44,7 @@ public class EditDataPenerimaResepActivity extends AppCompatActivity {
         backEditProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), DetailRiwayatResepActivity.class);
-//                intent.putExtra("fragmentItem", 1);
-                startActivity(intent);
-                finish();
-
+                onBackPressed();
             }
         });
 

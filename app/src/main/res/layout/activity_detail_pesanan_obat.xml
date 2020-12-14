@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="1dp"
-                    android:text="Total Bayar"
+                    android:text="Total Pembayaran"
                     android:textStyle="bold"
                     android:textColor="#ED5454"
                     android:textSize="18sp" />
@@ -218,6 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -246,7 +247,7 @@
                 android:id="@+id/view_total_bayar"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:background="#f0f0f0" />
 
 

@@ -79,8 +79,6 @@ public class PengirimanActivity extends AppCompatActivity implements MyAdapter.I
         kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), PesanObatActivity.class);
-//                startActivity(intent);
                 onBackPressed();
             }
         });

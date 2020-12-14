@@ -130,6 +130,7 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
                 Bayar.setVisibility(View.GONE);
                 EditDataPenerima.setVisibility(View.GONE);
                 PesananDiterima.setVisibility(View.VISIBLE);
+                EditDataPenerima.setVisibility(View.GONE);
                 break;
             case "4":
                 status.setText("Pesanan diterima");

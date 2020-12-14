@@ -65,9 +65,10 @@ public class BayarActivity extends AppCompatActivity {
         Kembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment 1
-                intentUploadNanti.putExtra("fragmentItem", 1);
-                startActivity(intentUploadNanti);
+//                Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment 1
+//                intentUploadNanti.putExtra("fragmentItem", 1);
+//                startActivity(intentUploadNanti);
+                onBackPressed();
             }
         });
 

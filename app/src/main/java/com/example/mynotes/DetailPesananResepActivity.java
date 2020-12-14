@@ -141,7 +141,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
         totalBayar.setText(Harga+",-");
-        etharga.setText(strHarga+",-");
+//        etharga.setText(strHarga+",-");
 
         switch (Status){
             case 0:

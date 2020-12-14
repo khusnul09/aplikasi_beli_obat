@@ -209,7 +209,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="24dp"
-                        android:text="No Telepon"
+                        android:text="Nomor Handphone"
                         android:textSize="14sp"
                         android:layout_marginTop="7dp"/>
 
@@ -391,7 +391,7 @@
                             android:id="@+id/tv_lebel_tot_harus_byr_resep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Bayar"
+                            android:text="Total Pembayaran"
                             android:textSize="16sp"
                             android:textColor="#000"
                             android:textStyle="bold"
@@ -457,7 +457,7 @@
                             android:id="@+id/tv_nominal_biaya_pengiriman_resep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30000-,"
+                            android:text="30000,-"
                             android:textSize="16sp"
                             android:layout_marginLeft="2dp"
                             android:textColor="#000000"

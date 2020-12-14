@@ -44,12 +44,8 @@ public class EditDataPenerimaObatActivity extends AppCompatActivity {
         backEditProfil = findViewById(R.id.iv_kembali_edit_data);
         backEditProfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), DetailRiwayatObatBelumBayarActivity.class);
-//                intent.putExtra("fragmentItem", 1);
-                startActivity(intent);
-                finish();
-
+            public void onClick(View v) { ;
+                onBackPressed();
             }
         });
 

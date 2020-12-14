@@ -243,6 +243,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_lb_nama_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:text="Nama Lengkap"
+                            android:textSize="14sp" />
+
+                        <TextView
                             android:id="@+id/tv_nama_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -250,6 +258,15 @@
                             android:text="nama"
                             android:textColor="#000"
                             android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_lb_tlf_riwayat_obb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:text="Nomor Handphone"
+                            android:textSize="14sp"
+                            android:layout_marginTop="7dp"/>
 
 
                         <TextView
@@ -262,6 +279,14 @@
                             android:textColor="#000"
                             android:textSize="16sp" />
 
+                        <TextView
+                            android:id="@+id/tv_lb_alamat_riwayat_selesai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:text="Alamat"
+                            android:textSize="14sp"
+                            android:layout_marginTop="7dp"/>
 
                         <TextView
                             android:id="@+id/tv_alamat_riwayat_obb"
@@ -272,6 +297,15 @@
                             android:text="alamat"
                             android:textColor="#000"
                             android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_lb_det_alamat_riwayat_selesai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:text="Detail Alamat"
+                            android:textSize="14sp"
+                            android:layout_marginTop="7dp"/>
 
                         <TextView
                             android:id="@+id/tv_det_riwayat_obb"
@@ -289,6 +323,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="100dp"
+                        android:layout_marginTop="50dp"
                         android:id="@+id/iv_edit_data_penerima"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/ic_arrow_right_red"/>

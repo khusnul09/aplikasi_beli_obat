@@ -32,7 +32,7 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
     private static final String urlUpdateStatus = "https://obats.000webhostapp.com//api/user/updatestatusresi";
 
     TextView NomorRekening, tvHarga;
-    ImageView Copy;
+    ImageView Copy, Kembali;
     TextView TotalBayar;
     Button UploadNantiResep, UploadSekarang;
     String Harga, invoice, setStatus;
@@ -61,6 +61,14 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
 
         });
 
+        Kembali = findViewById(R.id.iv_kembali_det_resep);
+        Kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { ;
+                onBackPressed();
+            }
+        });
+
         UploadSekarang = findViewById(R.id.btn_upload_sekarang_resep);
         UploadSekarang.setOnClickListener(v -> {
             Intent intentUploadSekarang = new Intent(getApplicationContext(), KonfirmasiPembayaranResepActivity.class);
@@ -80,11 +88,11 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
 
         TotalBayar.setText(Harga);
     }
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Selesaikan metode pembayaran lebih dahulu", Toast.LENGTH_SHORT).show();
-    }
+//Apabila sebelum back harus memilih upload sekarang atau upload nanti. Tidak dapat back apabila tdk memilih salah satunya
+//    @Override
+//    public void onBackPressed() {
+//        Toast.makeText(getApplicationContext(), "Selesaikan metode pembayaran lebih dahulu", Toast.LENGTH_SHORT).show();
+//    }
 
     private void updateStatus() {
         final ProgressDialog progressDialog = new ProgressDialog(this);

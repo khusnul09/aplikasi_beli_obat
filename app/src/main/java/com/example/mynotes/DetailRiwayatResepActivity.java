@@ -113,8 +113,8 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        TotalHarga.setText(Harga);
-        hargaApoteker.setText(HargaApoteker);
+        TotalHarga.setText(Harga + ",-");
+        hargaApoteker.setText(HargaApoteker + ",-");
 
         if (Status == 0) {
             statusdesc = "Menunggu Konfirmasi Apotek";
@@ -153,10 +153,12 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
             InfoRekBank.setVisibility(View.GONE);
             PesananDiterima.setVisibility(View.GONE);
             WaktuPengiriman.setVisibility(View.GONE);
+            EditDataPenerima.setVisibility(View.GONE);
         } else if (Status == 3) {
             statusdesc = "Pesanan dikirim";
             InfoRekBank.setVisibility(View.GONE);
             PesananDiterima.setVisibility(View.VISIBLE);
+            EditDataPenerima.setVisibility(View.GONE);
             PesananDiterima.setOnClickListener(v -> {
                 selesaikan();
             });
