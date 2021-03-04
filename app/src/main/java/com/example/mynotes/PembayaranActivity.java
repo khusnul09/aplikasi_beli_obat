@@ -44,6 +44,7 @@ public class PembayaranActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         Total = intent.getStringExtra("Total");
+        Log.d("khatimatotal", Total);
         invoice = intent.getStringExtra("invoice");
 
         UploadSekarang = findViewById(R.id.btn_upload_sekarang);
@@ -75,7 +76,8 @@ public class PembayaranActivity extends AppCompatActivity {
 
         TotalBayar = findViewById(R.id.tv_total_pembayaran_info);
 
-        TotalBayar.setText(Total);
+//        TotalBayar.setText(Total);
+        TotalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Total))));
 
     }
 

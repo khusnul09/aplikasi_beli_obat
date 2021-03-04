@@ -74,6 +74,6 @@ public class BayarActivity extends AppCompatActivity {
 
         totalHarga = findViewById(R.id.tv_nominal_tot_bayar_obb);
 
-        totalHarga.setText(TotalHarga+",-");
+        totalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(TotalHarga))));
     }
 }

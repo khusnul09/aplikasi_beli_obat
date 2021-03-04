@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/iv_gambar_resep"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:src="@mipmap/ic_launcher"
             android:layout_centerVertical="true"/>
 
@@ -101,7 +101,7 @@
             android:gravity="end"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#ED5454"
+            android:textColor="@color/base_red_color"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="8dp"
             android:layout_alignParentEnd="true"/>

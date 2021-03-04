@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_kembali6"
@@ -29,12 +29,36 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottombt2"
-        android:layout_below="@id/tb_keranjang"/>
+        android:layout_below="@id/tb_keranjang">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_keranjang_kosong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_empty_cart"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Ada Riwayat"
+            android:textSize="18sp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottombt2"
@@ -43,9 +67,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#f0f0f0"
-        android:padding="9dp">
+        android:padding="9dp"
+        android:visibility="gone">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -55,31 +80,33 @@
                 android:id="@+id/tv_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total : "
-                android:textSize="18sp"
+                android:text="Total"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_Rp_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="#EF3D3D"
-                android:layout_toLeftOf="@id/tv_total"
-                android:textStyle="bold"
-                android:text="Rp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_Rp_total"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="#EF3D3D"-->
+<!--                android:layout_toLeftOf="@id/tv_total"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Rp"/>-->
 
             <TextView
                 android:id="@+id/tv_nominal_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="#EF3D3D"
-                android:layout_marginLeft="2dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
                 android:text="0"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_lanjut_bayar"
@@ -97,7 +124,7 @@
             android:layout_gravity="center"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/color1"
+            android:textColor="@color/base_red_color"
             android:text="Tambah produk lain"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="6dp"/>

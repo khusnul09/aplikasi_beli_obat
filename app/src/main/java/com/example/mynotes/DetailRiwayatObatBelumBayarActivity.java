@@ -107,8 +107,8 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
         detailAlamat.setText(DetailAlamatPenerima);
-        harga.setText(Harga + ",-");
-        totalHarga.setText(TotalHarga + ",-");
+        harga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(Harga)));
+        totalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(TotalHarga)));
         invoice.setText("#"+Invoice);
         switch (Status) {
             case "1":
@@ -206,6 +206,8 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
         progressDialog.setTitle("Menyelesaikan Order...");
         progressDialog.show();
 
+        String tokenAdmin = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "tokenadmin");
+
         StringRequest request = new StringRequest(Request.Method.POST, urlSelesaikan,
                 response -> {
                     Log.i("khatima", response);
@@ -228,6 +230,9 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
                 Map<String, String> param = new HashMap<>();
                 param.put("invoice", Invoice);
                 param.put("status", "4");
+                param.put("token_tujuan", tokenAdmin);
+                param.put("title", "Pesanan paket telah diterima");
+                param.put("message", "Terima Kasih");
                 return param;
             }
         };

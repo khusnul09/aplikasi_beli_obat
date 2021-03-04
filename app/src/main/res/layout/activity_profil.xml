@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_back_profil"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit Profil"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#777171"/>
 
     </LinearLayout>
@@ -94,7 +94,7 @@
                             android:id="@+id/tv_lebel_nama"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textColor="#000"
                             android:text="Nama Lengkap"
                             android:layout_weight="1"/>
@@ -104,7 +104,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Khusnul Khatima"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textColor="#000"
                             android:layout_weight="1.57"/>
 
@@ -123,7 +123,7 @@
                             android:layout_height="wrap_content"
                             android:text="No Handphone"
                             android:textColor="#000"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:layout_weight="1"/>
 
                         <TextView
@@ -131,7 +131,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="085255513984"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textColor="#000"
                             android:layout_weight="1.6"/>
 
@@ -150,7 +150,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Alamat"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textColor="#000"
                             android:layout_weight="1"/>
 
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:text="Jalan Mangga No 24 Gowa, Bontomarannu"
                             android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:layout_weight="1.52"/>
 
                     </LinearLayout>
@@ -178,7 +178,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Email"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textColor="#000"
                             android:layout_weight="1"/>
 
@@ -188,8 +188,39 @@
                             android:layout_height="wrap_content"
                             android:text="khusnulkhatima09@gmail.com"
                             android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:layout_weight="1.52"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2.5"
+                        android:paddingLeft="15dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_password"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Password"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_edit_password"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Ubah Password"
+                            android:textColor="#ED5454"
+                            android:textSize="16sp"
+                            android:textStyle="italic"
+                            android:textAlignment="viewEnd"
+                            android:layout_weight="1.52"
+                            android:layout_marginEnd="8dp"/>
 
                     </LinearLayout>
 

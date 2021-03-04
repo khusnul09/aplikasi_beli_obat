@@ -23,7 +23,7 @@ public class PengirimanHolder extends RecyclerView.ViewHolder implements View.On
 
         this.mImaeView = itemView.findViewById(R.id.iv_image_pengiriman);
         this.mTitle = itemView.findViewById(R.id.tv_title_pengiriman);
-        this.mDes = itemView.findViewById(R.id.tv_harga_pemgiriman);
+        this.mDes = itemView.findViewById(R.id.tv_harga_pengiriman);
         this.jumlah = itemView.findViewById(R.id.tv_total_pengiriman);
         imageViewResource = 0;
         itemView.setOnClickListener(this);

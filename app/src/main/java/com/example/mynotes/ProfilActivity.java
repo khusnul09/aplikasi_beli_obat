@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,11 +23,12 @@ import java.util.Map;
 
 public class ProfilActivity extends AppCompatActivity {
 
-    String url = "https://obats.000webhostapp.com/api/user/profil";
     LinearLayout EditProfil;
-    TextView NamaLengkap, NoHp, Alamat, Email;
+    TextView NamaLengkap, NoHp, Alamat, Email, editPassword;
     ImageView backProfil;
     Button logout;
+
+    String url = "https://obats.000webhostapp.com/api/user/profil";
     String email;
 
     @Override
@@ -43,13 +43,22 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
+        email = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
+
+        NamaLengkap = (TextView) findViewById(R.id.tv_nama_profil);
+        NoHp = (TextView) findViewById(R.id.tv_hp_profil);
+        Alamat = (TextView) findViewById(R.id.tv_alamat_profil);
+        Email = (TextView) findViewById(R.id.tv_email_profil);
         EditProfil = findViewById(R.id.ll_edit_akun);
+        logout = findViewById(R.id.btn_logout);
+        backProfil = findViewById(R.id.iv_back_profil);
+        editPassword = findViewById(R.id.tv_edit_password);
+
         EditProfil.setOnClickListener(v -> {
             Intent intent = new Intent(ProfilActivity.this, EditProfilActivity.class);
             startActivity(intent);
         });
 
-        logout = findViewById(R.id.btn_logout);
         logout.setOnClickListener(v -> {
             SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", false);
             Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
@@ -57,22 +66,16 @@ public class ProfilActivity extends AppCompatActivity {
             finish();
         });
 
-        backProfil = findViewById(R.id.iv_back_profil);
-        backProfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
-                startActivity(intent);
-
-            }
+        backProfil.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
+            startActivity(intent);
+            finish();
         });
 
-        email = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
-
-        NamaLengkap = (TextView) findViewById(R.id.tv_nama_profil);
-        NoHp = (TextView) findViewById(R.id.tv_hp_profil);
-        Alamat = (TextView) findViewById(R.id.tv_alamat_profil);
-        Email = (TextView) findViewById(R.id.tv_email_profil);
+        editPassword.setOnClickListener(view -> {
+            Intent intentEditPassword = new Intent(ProfilActivity.this, GantiPasswordActivity.class);
+            startActivity(intentEditPassword);
+        });
 
         getDataProfil();
     }
@@ -92,7 +95,7 @@ public class ProfilActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        }, error -> {}) {
+        }, Throwable::printStackTrace) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> param = new HashMap<>();

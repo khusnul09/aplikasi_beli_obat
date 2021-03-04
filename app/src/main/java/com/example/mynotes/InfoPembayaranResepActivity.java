@@ -47,7 +47,7 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
         invoice = intent.getStringExtra("invoice");
 
         tvHarga = findViewById(R.id.tv_nominal_pembayaran_resep);
-        tvHarga.setText(Harga);
+        tvHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Harga))));
         Log.i("khatima", Harga);
 
         NomorRekening = findViewById(R.id.tv_no_rekening_resep);
@@ -86,7 +86,7 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
 
         TotalBayar = findViewById(R.id.tv_nominal_pembayaran_resep);
 
-        TotalBayar.setText(Harga);
+        TotalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Harga))));
     }
 //Apabila sebelum back harus memilih upload sekarang atau upload nanti. Tidak dapat back apabila tdk memilih salah satunya
 //    @Override

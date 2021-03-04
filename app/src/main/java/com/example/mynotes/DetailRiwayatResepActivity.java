@@ -113,8 +113,8 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        TotalHarga.setText(Harga + ",-");
-        hargaApoteker.setText(HargaApoteker + ",-");
+        TotalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Harga))));
+        hargaApoteker.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(HargaApoteker))));
 
         if (Status == 0) {
             statusdesc = "Menunggu Konfirmasi Apotek";
@@ -181,6 +181,8 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
+        String tokenAdmin = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "tokenadmin");
+
         StringRequest request = new StringRequest(Request.Method.POST, urlSelesaikan,
                 response -> {
                     Log.i("khatima", response);
@@ -203,6 +205,9 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
                 Map<String, String> param = new HashMap<>();
                 param.put("invoice", Invoice);
                 param.put("status", "4");
+                param.put("token_tujuan", tokenAdmin);
+                param.put("title", "Pesanan telah diterima");
+                param.put("message", "Terima Kasih");
                 return param;
             }
         };

@@ -73,8 +73,10 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        totalHarga.setText(TotalHarga+",-");
-        hargaApoteker.setText(HargaApoteker+",-");
+//        totalHarga.setText(TotalHarga+",-");
+//        hargaApoteker.setText(HargaApoteker+",-");
+        totalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(TotalHarga))));
+        hargaApoteker.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(HargaApoteker))));
 
         Picasso.get().load(Gambar).into(gambar);
         Log.i("khatima", WaktuBayar);

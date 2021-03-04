@@ -88,6 +88,8 @@ public class AlamatPasienActivity extends AppCompatActivity {
         alamatPasien = Objects.requireNonNull(AlamatPasien.getText()).toString().trim();
         detailAlamatPasien = Objects.requireNonNull(DetaiAlamatPasien.getText()).toString().trim();
 
+        String tokenAdmin = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "tokenadmin");
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
                     Log.i("khatima", response);
@@ -117,6 +119,9 @@ public class AlamatPasienActivity extends AppCompatActivity {
                 params.put("detail_alamat", detailAlamatPasien);
                 params.put("gambar_resep", alamatGambar);
                 params.put("waktu", waktuKirim);
+                params.put("token_tujuan", tokenAdmin);
+                params.put("title", "Pesanan Resep");
+                params.put("message", "Ada pesanan...");
                 return  params;
 
             }

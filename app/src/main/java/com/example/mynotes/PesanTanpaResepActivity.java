@@ -28,11 +28,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.mynotes.api.ApiConfig;
 import com.example.mynotes.api.ApiInterface;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -47,16 +51,20 @@ import static java.security.AccessController.getContext;
 
 public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdapter.ICart {
 
-    String url = "https://obats.000webhostapp.com/api/obats";
+    private static final String urlKeranjang = "https://obats.000webhostapp.com//api/user/keranjang";
+
+    // String url = "https://obats.000webhostapp.com/api/obats";
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
     Button btnKeranjang;
-    ArrayList<Model> listObatToCart = new ArrayList<>();
+    ArrayList<Model> listNewObat = new ArrayList<>();
     HashMap<String, Integer> itemsCart = new HashMap<>();
     ArrayList<Model> models = new ArrayList<>();
     String email_user;
 
     SharedPreferences preferences;
+
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +72,19 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         setContentView(R.layout.activity_pesan_tanpa_resep);
 
         ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#EF3D3D"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#D9303E"));
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle("Pilih Obat"); //color and title actionbar
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>Pilih Obat</font>"));
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
+        gson = new Gson();
+
         btnKeranjang = findViewById(R.id.btn_tambah_keranjang);
         btnKeranjang.setOnClickListener(v -> {
-            Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
             setModelDataToCart();
-            intent.putExtra("CART", listObatToCart);
-            startActivity(intent);
+            simpanKeranjang();
         });
 
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -85,11 +93,18 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     }
 
     @Override
+    public void onBackPressed() {
+        Intent kembali = new Intent(this, PesanObatActivity.class);
+        startActivity(kembali);
+        finish();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
     }
 
-    private void getMyList() {
+    /*private void getMyList() {
 
         Model m = new Model();
         m.setNamaObat("Acyclovir 200 mg tab");
@@ -166,9 +181,7 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         myAdapter = new MyAdapter(this, models, true, this);
         mRecyclerView.setAdapter(myAdapter);
         mRecyclerView.setItemViewCacheSize(models.size());
-
-
-    }
+    }*/
     //first create an interface class
     //SORT
 
@@ -184,7 +197,6 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
         switch (item.getItemId()) {
             case R.id.search:
                 SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String query) {
@@ -194,7 +206,6 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
 
                     @Override
                     public boolean onQueryTextChange(String newText) {
-
                         myAdapter.getFilter().filter(newText);
                         return false;
                     }
@@ -203,8 +214,6 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
 
             case R.id.cart_count_menu_item:
                 Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
-                setModelDataToCart();
-                intent.putExtra("CART", listObatToCart);
                 startActivity(intent);
                 return true;
 
@@ -214,28 +223,12 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     }
 
     void setModelDataToCart() {
-        /*for (int i = 0; i < mRecyclerView.getChildCount(); i++) {
-            MyHolder holder = (MyHolder) mRecyclerView.findViewHolderForAdapterPosition(i);
-            assert holder != null;
-            try {
-                if (holder.jumlahAngka>0) {
-                    Model obat = new Model();
-                    obat.setImg(holder.imageViewResource);
-                    obat.setTitle(holder.mTitle.getText().toString());
-                    obat.setDescription(holder.mDes.getText().toString());
-                    obat.setQuantity(holder.jumlahAngka);
-                    listObatToCart.add(obat);
-                }
-            } catch (Exception ignored) {
-
-            }
-        }*/
-        listObatToCart.clear();
+        listNewObat.clear();
         for (Model model : models) {
             for (Map.Entry<String, Integer> data : itemsCart.entrySet()) {
                 if (model.getNamaObat().toLowerCase().equals(data.getKey().toLowerCase())) {
                     model.setQuantity(data.getValue());
-                    listObatToCart.add(model);
+                    listNewObat.add(model);
                 }
             }
         }
@@ -244,6 +237,18 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     @Override
     public void onItemSelected(String title, Integer quantity) {
         itemsCart.put(title, quantity);
+        System.out.println("Title: " + title + ", " + "Quantity: " + quantity);
+        // System.out.println("Test");
+        // System.out.println("Model size: " + models.size());
+        for (Model model: models) {
+            // System.out.println("Iteration");
+            // System.out.println("Item title: " + model.getNamaObat());
+            if (model.getNamaObat().equals(title)) {
+                System.out.println("Added Title: " + title + ", " + "Quantity: " + quantity);
+                model.setQuantity(quantity);
+            }
+        }
+        System.out.println(listNewObat.toString());
     }
 
     public void getListObat() {
@@ -274,5 +279,50 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
                 progressDialog.dismiss();
             }
         });
+    }
+
+    private void simpanKeranjang() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Mengirim...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String itemJson = gson.toJson(listNewObat);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlKeranjang,
+                response -> {
+                    Log.i("khatima", response);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String respon = jsonObject.getString("status");
+                        Log.i("Khatima", respon);
+                        if (jsonObject.getString("status").equals("berhasil")) {
+                            System.out.println("Data berhasil dikirim");
+                        }
+                        Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    progressDialog.dismiss();
+                    listNewObat.clear();
+                    itemsCart.clear();
+                    Intent intent = new Intent(PesanTanpaResepActivity.this, KeranjangActivity.class);
+                    startActivity(intent);
+                }, error -> {
+            Toast.makeText(getApplicationContext(), "error: " + error.toString(), Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }) {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("id_user", email_user);
+                params.put("list_obat", itemJson);
+                return  params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(PesanTanpaResepActivity.this);
+        requestQueue.add(stringRequest);
     }
 }

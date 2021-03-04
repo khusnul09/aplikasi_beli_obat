@@ -2,6 +2,7 @@ package com.example.mynotes;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +16,8 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     int imageViewResource;
     ItemClickListener itemClickListener;
 
-    Button tambah;
-    Button kurang;
+    ImageButton tambah;
+    ImageButton kurang;
     TextView jumlah;
     public int jumlahAngka=0;
 

@@ -94,6 +94,7 @@ public class PesananResepAdminActivity extends AppCompatActivity {
             intent.putExtra("waktu_bayar", data.getWaktu_bayar());
             intent.putExtra("bukti_bayar", data.getBukti_bayar());
             intent.putExtra("harga", data.getHargasementara());
+            intent.putExtra("token", data.getToken());
             startActivity(intent);
         });
 
@@ -132,6 +133,7 @@ public class PesananResepAdminActivity extends AppCompatActivity {
                                 modelPesananResepAdmin.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
                                 modelPesananResepAdmin.setBukti_bayar(array.getJSONObject(i).optString("bukti_bayar"));
                                 modelPesananResepAdmin.setHargasementara(array.getJSONObject(i).optString("harga"));
+                                modelPesananResepAdmin.setToken(array.getJSONObject(i).optString("token"));
                                 adapterPesananResepAdmin.add(modelPesananResepAdmin);
                             }
                             adapterPesananResepAdmin.addAll(listmodelresepadmin);

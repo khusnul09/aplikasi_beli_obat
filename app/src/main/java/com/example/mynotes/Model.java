@@ -1,11 +1,16 @@
 package com.example.mynotes;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
+import com.hannesdorfmann.parcelableplease.annotation.ParcelablePlease;
 
 import java.io.Serializable;
 
-public class Model implements Serializable {
+@ParcelablePlease
+public class Model implements Serializable, Parcelable {
     @SerializedName("id_obat")
     private String idObat;
     @SerializedName("jenis_kategori")
@@ -26,6 +31,54 @@ public class Model implements Serializable {
     private String gambar;
     @SerializedName("quantity")
     private int quantity;
+    @SerializedName("apriori")
+    private int apriori;
+
+    protected Model(Parcel in) {
+        idObat = in.readString();
+        jenisKategori = in.readString();
+        kodeObat = in.readString();
+        namaObat = in.readString();
+        satuan = in.readString();
+        hargaBeli = in.readInt();
+        hargaJual = in.readInt();
+        image = in.readInt();
+        gambar = in.readString();
+        quantity = in.readInt();
+        apriori = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idObat);
+        dest.writeString(jenisKategori);
+        dest.writeString(kodeObat);
+        dest.writeString(namaObat);
+        dest.writeString(satuan);
+        dest.writeInt(hargaBeli);
+        dest.writeInt(hargaJual);
+        dest.writeInt(image);
+        dest.writeString(gambar);
+        dest.writeInt(quantity);
+        dest.writeInt(apriori);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Model> CREATOR = new Creator<Model>() {
+        @Override
+        public Model createFromParcel(Parcel in) {
+            return new Model(in);
+        }
+
+        @Override
+        public Model[] newArray(int size) {
+            return new Model[size];
+        }
+    };
 
     public String getGambar() {
         return gambar;
@@ -105,5 +158,11 @@ public class Model implements Serializable {
 
     public void setHargaJual(int hargaJual) {
         this.hargaJual = hargaJual;
+    }
+
+    public void setApriori(int apriori) {this.apriori = apriori;}
+
+    public int getApriori() {
+        return apriori;
     }
 };

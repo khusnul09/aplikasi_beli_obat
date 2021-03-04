@@ -51,7 +51,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartHolder> {
         Model currentItem = models.get(i);
 
         myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mDes.setText(currentItem.getHargaJual() +",-" +"");
+//        myHolder.mDes.setText(currentItem.getHargaJual() +",-" +"");
+        myHolder.mDes.setText(Rupiah.formatUangId(c, Double.parseDouble(String.valueOf(currentItem.getHargaJual()))));
         myHolder.jumlah.setText("x"+ currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
 

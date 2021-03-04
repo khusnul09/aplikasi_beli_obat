@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:layout_width="50dp"

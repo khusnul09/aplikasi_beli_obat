@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button buttonDaftar;
     ImageView kembali;
     private TextInputEditText namaLengkap, noHp, alamat, emailReg, passwordReg;
-    String dftNamaLengkap, dftNoHp, dftAlamat, dftEmail, dftPassword;
+    String dftNamaLengkap, dftNoHp, dftAlamat, dftEmail, dftPassword ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();
                             SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", dftEmail);
                             SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", "user");
+//                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(),"token", token);
                             Intent keLogin = new Intent(RegisterActivity.this, SyaratDanKetentuanActivity.class);
                             startActivity(keLogin);
                         } else {
@@ -126,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                 param.put("password", dftPassword);
                 param.put("role", "user");
                 param.put("snk", "belum");
+//                param.put("token", token);
                 return param;
             }
         };

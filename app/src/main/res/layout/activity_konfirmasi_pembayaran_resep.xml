@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:layout_width="50dp"
@@ -70,24 +70,26 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tv_Rp1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="130dp"
-                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_resep"
-                            android:gravity="center"
-                            android:text="Rp"
-                            android:textColor="#000"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_Rp1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="130dp"-->
+<!--                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_resep"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="Rp"-->
+<!--                            android:textColor="#000"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:textStyle="bold" />-->
 
                         <TextView
                             android:id="@+id/tv_nominal_totbyr_konfirmasi_resep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginLeft="100dp"
+                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_resep"
                             android:text="0"
+                            android:gravity="center"
                             android:textColor="#000000"
                             android:textSize="14sp"
                             android:textStyle="bold" />

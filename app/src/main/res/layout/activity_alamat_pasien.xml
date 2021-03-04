@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/base_red_color"
     tools:context="com.example.mynotes.AlamatPasienActivity">
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_kembali8"
@@ -25,7 +26,7 @@
             android:layout_height="match_parent"
             android:text="Pengiriman"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:gravity="center_vertical"/>
 
     </LinearLayout>
@@ -33,6 +34,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_home"
         android:layout_below="@+id/tb_alamat_penerima">
 
         <LinearLayout
@@ -51,15 +53,15 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_location"/>
+                    android:src="@drawable/ic_location_red"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Masukkan Alamat Pengiriman"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
+                    android:textColor="@color/base_red_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -93,7 +95,7 @@
                     android:id="@+id/tv_lbnama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#ED5454"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     android:layout_marginTop="5dp"
                     android:textStyle="bold"
@@ -115,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="No Handphone"
-                    android:textColor="#ED5454"
+                    android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="16sp" />
 
@@ -134,7 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="*(No Handphone aktif dan bisa dihubungi)"
-                    android:textColor="#ED5454"
+                    android:textColor="@color/base_red_color"
                     android:textSize="14sp" />
 
                 <TextView
@@ -143,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Alamat"
-                    android:textColor="#ED5454"
+                    android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="16sp" />
 
@@ -164,7 +166,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:text="Detail Alamat"
-                    android:textColor="#ED5454"
+                    android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="16sp" />
 
@@ -184,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="*(Keterangan nama jalan, no rumah, dan lain-lain)"
-                    android:textColor="#ED5454"
+                    android:textColor="@color/base_red_color"
                     android:textSize="14sp" />
 
                 <Button

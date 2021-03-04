@@ -12,6 +12,7 @@ public class ModelPesananResepAdmin {
     private String invoice;
     private String bukti_bayar;
     private String waktu_bayar;
+    private String token;
     String Harga, Hargasementara;
     private int status;
 
@@ -130,6 +131,12 @@ public class ModelPesananResepAdmin {
         Hargasementara = hargasementara;
     }
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 
 }

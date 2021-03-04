@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background7"
+    android:background="@color/base_red_color"
     tools:context=".AdminActivity">
 
     <RelativeLayout
+        android:id="@+id/topbar_admin"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal">
@@ -26,64 +27,119 @@
             android:layout_height="match_parent"
             android:text="Halaman Admin"
             android:textColor="#FFFFFF"
-            android:layout_marginLeft="20dp"
+            android:layout_centerInParent="true"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center_vertical"/>
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:text="Hi :)"
-        android:layout_marginLeft="20dp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:fontFamily="cursive"
-        android:textSize="26sp"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="95dp"-->
+<!--        android:text="Hi :)"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="cursive"-->
+<!--        android:textSize="26sp"/>-->
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/greeting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:text="Selamat datang"
-        android:layout_marginLeft="20dp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:fontFamily="cursive"
-        android:textSize="26sp"/>
+        android:layout_below="@id/topbar_admin"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi,"
+                android:layout_marginStart="16dp"
+                android:textColor="#FFFFFF"
+                android:fontFamily="cursive"
+                android:textSize="26sp"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_nama_user"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Nama User"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:textStyle="bold"-->
+<!--                android:fontFamily="cursive"-->
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selamat datang"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="cursive"
+            android:textSize="26sp"/>
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="130dp"-->
+<!--        android:text="Selamat datang"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="cursive"-->
+<!--        android:textSize="26sp"/>-->
 
     <LinearLayout
         android:id="@+id/layoutAtas"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:layout_marginTop="300dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/greeting"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="-2dp"
+        android:paddingTop="120dp"
+        android:background="@drawable/background_home"
+        android:clipToPadding="false"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
             android:id="@+id/pesanan_resep"
             android:layout_width="150dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
-            app:cardCornerRadius="10dp">
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/background_white_color"
+            app:cardElevation="0dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_width="143dp"
+                android:layout_height="187dp"
+                android:background="@drawable/border_cardview"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/resepdokter"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/resepdokter" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,33 +153,35 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
             android:id="@+id/pesanan_tanpa_resep"
             android:layout_width="150dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
-            app:cardCornerRadius="10dp">
+            android:clickable="true"
+            app:cardElevation="0dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/background_white_color">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:background="@drawable/border_cardview"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/noresep"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/noresep" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Pesanan Obat Tanpa Resep Dokter"
                     android:padding="5dp"
-                    android:textColor="#000000"/>
+                    android:text="Pesanan Obat Tanpa Resep Dokter"
+                    android:textColor="#000000" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

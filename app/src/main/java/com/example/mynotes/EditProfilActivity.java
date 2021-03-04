@@ -107,6 +107,7 @@ public class    EditProfilActivity extends AppCompatActivity {
                 JSONObject object = new JSONObject(response);
                 if (object.optString("respon").equals("berhasil")) {
                     Toast.makeText(getApplicationContext(), "Profil diperbarui", Toast.LENGTH_SHORT).show();
+                    SharedPreferenceManager.saveStringPreferences(this, "user_name", namaEdit);
                     Intent intent = new Intent(EditProfilActivity.this, ProfilActivity.class);
                     startActivity(intent);
                     finish();

@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/iv_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:src="@mipmap/ic_launcher"/>
 
         <TextView
@@ -26,10 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image"
             android:layout_marginLeft="10dp"
@@ -47,21 +47,20 @@
             android:layout_marginTop="3dp"
             android:layout_below="@+id/tv_title">
 
-            <TextView
-                android:id="@+id/tv_rp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp"
-                android:textSize="12dp"
-                android:textColor="#EF0B0B" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_rp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Rp"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textColor="#EF0B0B" />-->
             <TextView
                 android:id="@+id/tv_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:layout_marginLeft="2dp"
-                android:textSize="12dp"
-                android:textColor="#EF0B0B" />
+                android:textSize="16sp"
+                android:textColor="@color/secondary_color" />
         </LinearLayout>
 
         <RelativeLayout
@@ -88,7 +87,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="#605F5F"
                 android:gravity="center_vertical"
                 tools:ignore="RtlCompat"

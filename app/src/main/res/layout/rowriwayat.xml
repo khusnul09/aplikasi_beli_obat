@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="Description"
             android:textSize="12sp"
-            android:textColor="#EF0B0B"
+            android:textColor="@color/secondary_color"
             android:layout_toRightOf="@+id/iv_image_riwayat"
             android:layout_toEndOf="@+id/iv_image_riwayat"
             android:layout_marginLeft="10dp"
@@ -71,7 +71,7 @@
             android:gravity="end"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#ED5454"
+            android:textColor="@color/base_red_color"
             android:layout_marginRight="40dp"/>
 
     </RelativeLayout>

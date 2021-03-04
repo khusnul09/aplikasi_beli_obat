@@ -20,37 +20,28 @@ import androidx.recyclerview.widget.RecyclerView;
 public class PengirimanAdapter extends RecyclerView.Adapter<PengirimanHolder> {
 
     Context c;
-    ArrayList<Model> models, filterList; //this array lis create a list of array which parameter defice in our model class
-    int gJumlah;
-    boolean canModifyQuantity;
-    ICart iCart;
+    ArrayList<ModelKeranjang> listItem;
 
     // now create a parameterized constructor, press alt+insert
 
-    public PengirimanAdapter(Context c, ArrayList<Model> models, boolean canModifyQuantity, ICart iCart) {
+    public PengirimanAdapter(Context c, ArrayList<ModelKeranjang> listItem) {
         this.c = c;
-        this.models = models;
-        this.filterList = models;
-        this.canModifyQuantity = canModifyQuantity;
-        this.iCart = iCart;
+        this.listItem = listItem;
     }
 
     @NonNull
     @Override
     public PengirimanHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rowpengiriman, null, false);// this line inflate our row
-
         return new PengirimanHolder(view); // this vill return our view to holder class
     }
 
     @Override
     public void onBindViewHolder(@NonNull final PengirimanHolder myHolder, int i) {
+        ModelKeranjang currentItem = listItem.get(myHolder.getAdapterPosition());
 
-        Model currentItem = models.get(i);
-
-        myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mDes.setText(currentItem.getHargaJual() +",-"+ "");
+        myHolder.mTitle.setText(currentItem.getNama_obat()); //here i is position
+        myHolder.mDes.setText(Rupiah.formatUangId(c, Double.parseDouble(String.valueOf(currentItem.getHarga()))));
         myHolder.jumlah.setText("x"+currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
 
@@ -63,22 +54,12 @@ public class PengirimanAdapter extends RecyclerView.Adapter<PengirimanHolder> {
             myHolder.imageViewResource = R.drawable.ic_drugs;
         }
 
-
-        //friends this method is than you can use when you want to use one activity
-        myHolder.setItemClickListener((v, position) -> {
-
-
-        });
-
-
+        // friends this method is than you can use when you want to use one activity
+        // myHolder.setItemClickListener((v, position) -> {        });
     }
 
     @Override
     public int getItemCount() {
-        return models.size();
-    }
-
-    public interface ICart {
-        void onItemSelected(String title, Integer quantity);
+        return listItem.size();
     }
 }

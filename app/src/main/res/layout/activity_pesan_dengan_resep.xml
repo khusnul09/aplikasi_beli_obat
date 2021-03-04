@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_kembali5"
@@ -35,16 +35,15 @@
         android:layout_below="@id/tb_unggah"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_silahkan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:textSize="20sp"
             android:text="Silahkan Unggah Foto Resep Anda"
-            android:textColor="#ED5454"
             android:gravity="center"/>
 
         <ImageView
@@ -62,7 +61,7 @@
             android:text="Pilih Gambar"
             android:layout_gravity="center"
             android:background="@drawable/secondary_button"
-            android:textColor="@color/color1"
+            android:textColor="@color/base_red_color"
             />
 
         <Button

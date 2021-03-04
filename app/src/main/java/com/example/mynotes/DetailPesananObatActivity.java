@@ -41,7 +41,7 @@ public class DetailPesananObatActivity extends AppCompatActivity {
 
     TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar, BuktiBayar, Harga, Waktu, WaktuBayar, TotalHarga, WaktuKirim, strHarga;
+            Gambar, BuktiBayar, Harga, Waktu, WaktuBayar, TotalHarga, WaktuKirim, strHarga, Token;
     String Status;
     LinearLayout TextBuktiPembayaran, BuktiPembayaran,  WaktuPembayaran, WaktuPengiriman;
     Button Kemas, Antar;
@@ -103,6 +103,9 @@ public class DetailPesananObatActivity extends AppCompatActivity {
         BuktiBayar = intent.getStringExtra("bukti_bayar");
         TotalHarga = intent.getStringExtra("total_harga");
         Status = intent.getStringExtra("status");
+        Token = intent.getStringExtra("token");
+
+        Log.i("khatima", Token);
 
         Log.i("khatima", BuktiBayar);
 
@@ -117,7 +120,6 @@ public class DetailPesananObatActivity extends AppCompatActivity {
         TextBuktiPembayaran = findViewById(R.id.ll_foto_bukti_bayar_obat);
         BuktiPembayaran = findViewById(R.id.ll_bukti_bayar_obat_admin);
 
-
         Picasso.get()
                 .load(BuktiBayar)
                 .into(buktiBayar);
@@ -126,7 +128,8 @@ public class DetailPesananObatActivity extends AppCompatActivity {
         handphone.setText(HandphonePenerima);
         alamat.setText(AlamatPenerima);
         detailAlamat.setText(DetailAlamatPenerima);
-        totalHarga.setText(TotalHarga + ",-");
+//        totalHarga.setText(TotalHarga + ",-");
+        totalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(TotalHarga)));
         invoice.setText("#" + Invoice);
 
         Log.i("khatima status", String.valueOf(Status));
@@ -264,6 +267,9 @@ public class DetailPesananObatActivity extends AppCompatActivity {
                 param.put("invoice", Invoice);
                 param.put("status", "3");
                 param.put("waktu_pengiriman", WaktuKirim);
+                param.put("token_tujuan", Token);
+                param.put("title", "Pesanan paket anda telah diantar");
+                param.put("message", "Patikan nomor handphone anda aktif dan dapat dihubungi");
                 return param;
             }
         };

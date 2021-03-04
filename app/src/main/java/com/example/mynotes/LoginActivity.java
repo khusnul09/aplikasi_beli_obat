@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout etEmail, etPassword;
     TextView tvDaftar;
     Button btnLogin;
-    String role, statsnk;
+    String role, statsnk, token, nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +80,15 @@ public class LoginActivity extends AppCompatActivity {
                                     for (int i = 0; i < array.length(); i++) {
                                         JSONObject objData = array.getJSONObject(i);
                                         role = objData.getString("role");
+                                        token = objData.getString("token");
                                         statsnk = objData.getString("snk");
+                                        nama = objData.getString("nama");
                                     }
                                     Log.i("khatima", role);
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", Objects.requireNonNull(etEmail.getEditText()).getText().toString());
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", role);
+                                    SharedPreferenceManager.saveStringPreferences(getApplicationContext(),"token", token);
+                                    SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_name", nama);
                                     switch (role) {
                                         case "user":
                                             if (statsnk.equals("setuju")) {

@@ -91,6 +91,7 @@ public class PesananObatAdminActivity extends AppCompatActivity {
             intent.putExtra("total_harga", data.getHarga());
             intent.putExtra("waktu_bayar", data.getWaktu_bayar());
             intent.putExtra("bukti_bayar", data.getBukti_bayar());
+            intent.putExtra("token", data.getToken());
             startActivity(intent);
         });
 
@@ -127,6 +128,8 @@ public class PesananObatAdminActivity extends AppCompatActivity {
                                 modelPesananObatAdmin.setStatus(array.getJSONObject(i).optString("status"));
                                 modelPesananObatAdmin.setWaktu_bayar(array.getJSONObject(i).optString("waktu_pembayaran"));
                                 modelPesananObatAdmin.setBukti_bayar(array.getJSONObject(i).optString("bukti_bayar"));
+                                modelPesananObatAdmin.setToken(array.getJSONObject(i).optString("token"));
+
                                 adapterPesananObatAdmin.add(modelPesananObatAdmin);
                             }
                             adapterPesananObatAdmin.addAll(listmodelobatadmin);

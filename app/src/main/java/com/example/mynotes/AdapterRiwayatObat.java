@@ -58,7 +58,7 @@ public class AdapterRiwayatObat extends RecyclerView.Adapter<AdapterRiwayatObat.
     @Override
     public void onBindViewHolder(AdapterRiwayatObat.ViewHolder holder, int position) {
         ModelRiwayatObat modelRiwayatObat = listriwayatobat.get(position);
-        holder.total.setText(modelRiwayatObat.getTotal_harga() + ",-");
+        holder.total.setText(Rupiah.formatUangId(context, Double.parseDouble(String.valueOf(modelRiwayatObat.getTotal_harga()))));
         holder.invoice.setText("#"+ modelRiwayatObat.getInvoice());
         holder.nama.setText(modelRiwayatObat.getNama_penerima());
         switch (modelRiwayatObat.getStatus()) {

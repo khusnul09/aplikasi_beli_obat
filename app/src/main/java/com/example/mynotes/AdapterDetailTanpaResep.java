@@ -50,7 +50,8 @@ public class AdapterDetailTanpaResep extends RecyclerView.Adapter<AdapterDetailT
         ModelDetailTanpaResep modelDetailTanpaResep = listDetailTanpaResep.get(position);
         holder.nama_obat.setText(modelDetailTanpaResep.getNamaObat());
         holder.kuantitas.setText("x"+ modelDetailTanpaResep.getKuantitasObat());
-        holder.harga.setText(modelDetailTanpaResep.getHargaObat()+",-");
+//        holder.harga.setText(modelDetailTanpaResep.getHargaObat()+",-");
+        holder.harga.setText(Rupiah.formatUangId(context, Double.parseDouble(String.valueOf(modelDetailTanpaResep.getHargaObat()))));
         Picasso.get().load(modelDetailTanpaResep.getGambar()).into(holder.gambar); //menampilkan gambar dari db
     }
 
@@ -67,7 +68,7 @@ public class AdapterDetailTanpaResep extends RecyclerView.Adapter<AdapterDetailT
             super(itemView);
             nama_obat = itemView.findViewById(R.id.tv_title_pengiriman);
             kuantitas = itemView.findViewById(R.id.tv_total_pengiriman);
-            harga = itemView.findViewById(R.id.tv_harga_pemgiriman);
+            harga = itemView.findViewById(R.id.tv_harga_pengiriman);
             gambar = itemView.findViewById(R.id.iv_image_pengiriman);
         }
     }

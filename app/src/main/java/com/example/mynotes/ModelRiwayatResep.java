@@ -11,6 +11,7 @@ public class ModelRiwayatResep {
     private String invoice;
     private String waktu_bayar;
     private String waktu_kirim;
+//    private String token;
     String Harga, HargaSementara;
     private int status;
 
@@ -95,7 +96,6 @@ public class ModelRiwayatResep {
         this.invoice = invoice;
     }
 
-
     public String getWaktu() { return waktu; }
 
     public void setWaktu(String waktu) {
@@ -130,5 +130,11 @@ public class ModelRiwayatResep {
         HargaSementara = hargaSementara;
     }
 
-
+//    public String getToken() {
+//        return token;
+//    }
+//
+//    public void setToken(String token) {
+//        this.token = token;
+//    }
 }

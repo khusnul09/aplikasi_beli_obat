@@ -3,7 +3,7 @@ package com.example.mynotes;
 public class ModelPesananObatAdmin {
 
     private String waktu, invoice, nama_user,nama_penerima, handphone, alamat, detail_alamat, harga, total_harga, jenis_pesan,
-            status, waktu_bayar, gambar_resep, bukti_bayar;
+            status, waktu_bayar, gambar_resep, bukti_bayar, token;
 
     public String getInvoice() {
         return invoice;
@@ -110,5 +110,13 @@ public class ModelPesananObatAdmin {
 
     public void setBukti_bayar(String bukti_bayar) {
         this.bukti_bayar = bukti_bayar;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

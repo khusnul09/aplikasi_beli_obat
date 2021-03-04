@@ -40,7 +40,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
 
     TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, waktu, waktuBayar, totalBayar;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar,BuktiBayar, Harga, Waktu, WaktuBayar, WaktuKirim, totalHarga, strHarga;
+            Gambar,BuktiBayar, Harga, Waktu, WaktuBayar, WaktuKirim, totalHarga, strHarga, Token;
     int Status;
     LinearLayout TextBuktiPembayaran, BuktiPembayaran, TotalHarusBayar;
     Button Kirim, Antar;
@@ -132,6 +132,9 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         BuktiBayar = intent.getStringExtra("bukti_bayar");
         Harga = intent.getStringExtra("total_harga");
         strHarga = intent.getStringExtra("harga");
+        Token = intent.getStringExtra("token");
+
+        Log.i("khatima", Token);
 
         Log.i("khatima", BuktiBayar);
 
@@ -140,7 +143,8 @@ public class DetailPesananResepActivity extends AppCompatActivity {
         alamat.setText(AlamatPenerima);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        totalBayar.setText(Harga+",-");
+//        totalBayar.setText(Harga+",-");
+        totalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(Harga)));
 //        etharga.setText(strHarga+",-");
 
         switch (Status){
@@ -209,7 +213,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
 
         strHarga = etharga.getText().toString();
         int hargamentah = Integer.parseInt(strHarga);
-        totalHarga = String.valueOf(hargamentah + 30000);
+        totalHarga = String.valueOf(hargamentah + 35000);
 
         StringRequest request = new StringRequest(Request.Method.POST, urlKrmHarga,
                 response -> {
@@ -238,6 +242,9 @@ public class DetailPesananResepActivity extends AppCompatActivity {
                 param.put("harga", strHarga);
                 param.put("status", "1");
                 param.put("total_harga", totalHarga);
+                param.put("token_tujuan", Token);
+                param.put("title", "Admin mengirim harga pesanan");
+                param.put("message", "Segera melakukan pembayaran");
                 return param;
             }
         };
@@ -276,6 +283,9 @@ public class DetailPesananResepActivity extends AppCompatActivity {
                 param.put("invoice", Invoice);
                 param.put("status", "3");
                 param.put("waktu_pengiriman", WaktuKirim);
+                param.put("token_tujuan", Token);
+                param.put("title", "Pesanan telah diantar");
+                param.put("message", "Patikan nomor handphone anda aktif dan dapat dihubungi");
                 return param;
             }
         };

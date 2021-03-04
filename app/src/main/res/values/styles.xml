@@ -3,33 +3,37 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#EF3D3D</item>
-        <item name="colorPrimaryDark">#EF3D3D</item>
-        <item name="colorAccent">#EF3D3D</item> //button color
+        <item name="colorPrimary">#D9303E</item>
+        <item name="colorPrimaryDark">#D9303E</item>
+        <item name="colorAccent">#D9303E</item> //button color
 
 <!--        <item name="windowActionBar">false</item>-->
 <!--        <item name="windowNoTitle">true</item>-->
 <!--        <item name="android:windowFullscreen">true</item>-->
 
-        <item name="colorControlNormal">#BF2121</item>
-        <item name="colorControlActivated">#EF4949</item>
-        <item name="colorControlHighlight">#EA2525</item>
+        <item name="colorControlNormal">#D9303E</item>
+        <item name="colorControlActivated">#D9303E</item>
+        <item name="colorControlHighlight">#D9303E</item>
 
         <item name="android:textColorHint">#A89797</item>
     </style>
 
     <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">#F63B3B</item>
+        <item name="boxStrokeColor">#D9303E</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
 
     <style name="TextLabel" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#F63B3B</item>
+        <item name="android:textColor">#D9303E</item>
     </style>
 
     <style name="ButtonRow">
         <item name="colorAccent">#D6D6D6</item>
+    </style>
+
+    <style name="ButtonRed">
+        <item name="colorAccent">#D9303E</item>
     </style>
 
 </resources>

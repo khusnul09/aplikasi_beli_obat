@@ -119,7 +119,8 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
         Invoice = getIntent().getStringExtra("invoice");
 
         TotalBayar = findViewById(R.id.tv_nominal_totbyr_konfirmasi_resep);
-        TotalBayar.setText(Total);
+//        TotalBayar.setText(Total);
+        TotalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Total))));
 
         ActivityCompat.requestPermissions(KonfirmasiPembayaranResepActivity.this,new
                 String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, CODE_GALLERY_RQEUEST);
@@ -203,6 +204,8 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
         narek = etNprb.getText().toString();
         norek = etRekening.getText().toString();
 
+        String tokenAdmin = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "tokenadmin");
+
         StringRequest request = new StringRequest(Request.Method.POST, urlUploadBukti,
                 (Response.Listener<String>) response-> {
                     try {
@@ -232,6 +235,9 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
                 params.put("narek", narek);
                 params.put("norek", norek);
                 params.put("waktu_bayar", waktuBayar);
+                params.put("token_tujuan", tokenAdmin);
+                params.put("title", "Pembayaran Resep User");
+                params.put("message", "User telah melakukan pembayaran");
                 return params;
             }
         };

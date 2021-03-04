@@ -29,25 +29,24 @@
             android:layout_below="@id/imageIv"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_rp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp"
-                android:textSize="12sp"
-                android:textColor="#ED5454"/>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_rp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Rp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="#ED5454"/>-->
 
             <TextView
                 android:id="@+id/tv_harga_obat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/tv_rp"
                 android:layout_marginRight="1dp"
                 android:layout_marginLeft="2dp"
                 android:gravity="center"
                 android:text="10.000"
-                android:textColor="#ED5454"
-                android:textSize="12sp"/>
+                android:textColor="@color/secondary_color"
+                android:textSize="14sp"/>
 
             <TextView
                 android:id="@+id/tv_garing"
@@ -57,8 +56,8 @@
                 android:layout_marginLeft="1dp"
                 android:gravity="center"
                 android:text="/ "
-                android:textColor="#ED5454"
-                android:textSize="12sp"/>
+                android:textColor="@color/secondary_color"
+                android:textSize="14sp"/>
 
             <TextView
                 android:id="@+id/tv_satuan"
@@ -67,19 +66,19 @@
                 android:layout_toLeftOf="@id/tv_garing"
                 android:gravity="center"
                 android:text="ampul"
-                android:textColor="#ED5454"
-                android:textSize="12sp"/>
+                android:textColor="@color/secondary_color"
+                android:textSize="14sp"/>
 
         </LinearLayout>
 
         <TextView
-            android:layout_width="130dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:id="@+id/titleTv"
             android:text="Title"
             android:gravity="center"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="#000"
             android:textStyle="bold"
             android:layout_below="@id/priceLayout"
@@ -93,13 +92,13 @@
             android:layout_below="@id/titleTv"
             android:gravity="center">
 
-            <Button
+            <ImageButton
                 android:id="@+id/kurang"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:theme="@style/ButtonRow"
-                android:text="-"
-                android:textColor="#000" />
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:background="@drawable/button_kurang"
+                android:src="@drawable/ic_kurang"
+                android:textColor="@color/base_white_color" />
 
             <TextView
                 android:layout_width="40dp"
@@ -107,20 +106,21 @@
                 android:layout_toRightOf="@id/kurang"
                 android:id="@+id/jumlah"
                 android:text="0"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="#000000"
                 android:textAlignment="center"
                 android:gravity="center_vertical"
                 tools:ignore="RtlCompat" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/tambah"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_toRightOf="@+id/jumlah"
-                android:text="+"
-                android:textColor="#000"
-                android:theme="@style/ButtonRow" />
+                android:src="@drawable/ic_tambah"
+                android:textColor="@color/base_white_color"
+                android:background="@drawable/button_kurang" />
 
         </LinearLayout>
 

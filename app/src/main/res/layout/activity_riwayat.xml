@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_back_riwayat"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tablayout1"
-        android:background="#EF3D3D"
+        android:background="@color/base_red_color"
         app:tabTextColor="#CBE4D4D4"
         app:tabSelectedTextColor="#FFFFFF"
         app:tabIndicatorColor="#FFFFFF">

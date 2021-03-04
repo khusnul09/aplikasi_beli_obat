@@ -90,7 +90,8 @@ public class AdapterRiwayatSelesai extends RecyclerView.Adapter<AdapterRiwayatSe
         }
 
         holder.waktu.setText(modelRiwayatSelesai.getWaktu());
-        holder.harga.setText(modelRiwayatSelesai.getTotalHarga()+",-");
+//        holder.harga.setText(modelRiwayatSelesai.getTotalHarga()+",-");
+        holder.harga.setText(Rupiah.formatUangId(context, Double.parseDouble(String.valueOf(modelRiwayatSelesai.getTotalHarga()))));
 
         holder.detail.setOnClickListener(v -> {
             onItemCLick.onItemClick(modelRiwayatSelesaiList.get(holder.getAdapterPosition()));

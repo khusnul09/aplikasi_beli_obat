@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_back_resep_terkirim"
@@ -38,7 +38,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1DDFC4C4">
+        android:background="#1DF6ECEC">
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:padding="10dp"
-            android:textColor="#ED5454"/>
+            android:textColor="@color/base_red_color"/>
 
         <ImageView
             android:id="@+id/resep_oke"
@@ -66,7 +66,7 @@
             android:paddingTop="12dp"
             android:textSize="16sp"
             android:layout_marginTop="17dp"
-            android:textColor="#ED5454"/>
+            android:textColor="@color/base_red_color"/>
 
         <Button
             android:id="@+id/btn_selesai"

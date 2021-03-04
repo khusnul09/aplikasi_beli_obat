@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         Model currentItem = models.get(i);
 
         myHolder.mTitle.setText(currentItem.getNamaObat()); //here i is position
-        myHolder.mHarga.setText(currentItem.getHargaJual() +",-" +"");
+//      myHolder.mHarga.setText(currentItem.getHargaJual() +",-" +"");
+        myHolder.mHarga.setText(Rupiah.formatUangId(c, Double.parseDouble(String.valueOf(currentItem.getHargaJual()))));
         myHolder.mSatuan.setText(currentItem.getSatuan());
         myHolder.jumlah.setText(currentItem.getQuantity() + "");
         myHolder.jumlahAngka = 0;
@@ -94,6 +96,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
             String gTitle = models.get(position).getNamaObat();
             String sSatuan = models.get(position).getSatuan();
             String gDesc = models.get(position).getHargaJual() + ""; //this object our data from previous activity
+            Integer iD = models.get(position).getApriori();
             BitmapDrawable bitmapDrawable = (BitmapDrawable) myHolder.mImaeView.getDrawable(); //this will get image from drawable
             Bitmap bitmap = bitmapDrawable.getBitmap();
             ByteArrayOutputStream stream = new ByteArrayOutputStream(); //image will get stream and bytes
@@ -108,8 +111,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
             intent.putExtra("jumlah", gJumlah);
             intent.putExtra("satuan", sSatuan);
             intent.putExtra("gambar", models.get(position).getGambar());
+            intent.putExtra("id", iD);
+            Log.d("khatimaID", iD.toString());
             c.startActivity(intent);
-
         });
 
     }

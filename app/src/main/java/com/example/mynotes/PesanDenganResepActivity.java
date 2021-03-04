@@ -45,19 +45,21 @@ public class PesanDenganResepActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     String filePath;
-    /*Map config = new HashMap();
+    Map config = new HashMap();
 
     private void configCloudinary() {
         config.put("cloud_name", "beliobatid");
         config.put("api_key", "832196155542743");
         config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
         MediaManager.init(PesanDenganResepActivity.this, config);
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesan_dengan_resep);
+
+        //configCloudinary();
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 

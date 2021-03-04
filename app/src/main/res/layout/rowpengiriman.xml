@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#000"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/iv_image_pengiriman"
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#605F5F"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/iv_image_pengiriman"
@@ -62,22 +62,21 @@
             android:layout_marginTop="3dp"
             android:layout_below="@+id/tv_total_pengiriman">
 
-            <TextView
-                android:id="@+id/tv_rp_pengiriman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rp"
-                android:textSize="12sp"
-                android:textColor="#EF0B0B" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_rp_pengiriman"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Rp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="#EF0B0B" />-->
 
             <TextView
-                android:id="@+id/tv_harga_pemgiriman"
+                android:id="@+id/tv_harga_pengiriman"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:layout_marginLeft="2dp"
-                android:textSize="12sp"
-                android:textColor="#EF0B0B"/>
+                android:textSize="14sp"
+                android:textColor="@color/secondary_color"/>
 
         </LinearLayout>
 

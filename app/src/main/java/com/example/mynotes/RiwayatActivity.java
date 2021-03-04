@@ -1,13 +1,10 @@
 package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabItem;
@@ -27,13 +24,10 @@ public class RiwayatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_riwayat);
 
         backRiwayat = findViewById(R.id.iv_back_riwayat);
-        backRiwayat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
-                startActivity(intent);
+        backRiwayat.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
+            startActivity(intent);
 
-            }
         });
 
         tabLayout = findViewById(R.id.tablayout1);
@@ -45,7 +39,7 @@ public class RiwayatActivity extends AppCompatActivity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
-        int currentPage = 0;
+        int currentPage;
         try {
             currentPage = getIntent().getExtras().getInt("fragmentItem");
             viewPager.setCurrentItem(currentPage);

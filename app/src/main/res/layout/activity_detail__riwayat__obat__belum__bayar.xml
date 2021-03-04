@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     tools:context=".DetailRiwayatObatBelumBayarActivity">
 
     <LinearLayout
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:background="#EF3D3D">
+        android:background="@color/base_red_color">
 
         <ImageView
             android:id="@+id/iv_kembali_fragmant_belum_bayar"
@@ -51,7 +52,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#F6E7E7"
+                    android:background="#FFFAF4"
                     android:padding="3dp"
                     android:orientation="vertical">
 
@@ -84,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:text="Statusnya"
                         android:layout_marginLeft="21dp"
-                        android:textColor="#ED5454"
+                        android:textColor="@color/base_red_color"
                         android:textStyle="bold"
                         android:textSize="18sp" />
 
@@ -201,7 +202,7 @@
                         android:layout_marginLeft="1dp"
                         android:text="Data Penerima"
                         android:textStyle="bold"
-                        android:textColor="#ED5454"
+                        android:textColor="@color/base_red_color"
                         android:textSize="18sp" />
 
 <!--                    <LinearLayout-->
@@ -355,7 +356,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="1dp"
                         android:text="Pesanan"
-                        android:textColor="#ED5454"
+                        android:textColor="@color/base_red_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -400,7 +401,7 @@
                         android:gravity="center"
                         android:layout_marginLeft="1dp"
                         android:text="Info pembayaran "
-                        android:textColor="#ED5454"
+                        android:textColor="@color/base_red_color"
                         android:textStyle="bold"
                         android:textSize="16sp" />
 
@@ -449,49 +450,49 @@
 
                     </LinearLayout>
 
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_weight="0.21">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_Rp_tot_pesanan_blm"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:layout_marginBottom="8dp"/>-->
+
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_Rp_biaya_pengiriman_blm"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textColor="#000000"-->
+<!--                            android:layout_marginBottom="8dp"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_Rp_tot_harus_byr_blm"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textColor="#ED5454"-->
+<!--                            android:layout_marginBottom="8dp"/>-->
+
+
+<!--                    </LinearLayout>-->
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_weight="0.21">
-
-                        <TextView
-                            android:id="@+id/tv_Rp_tot_pesanan_blm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
-                            android:layout_marginBottom="8dp"/>
-
-
-                        <TextView
-                            android:id="@+id/tv_Rp_biaya_pengiriman_blm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
-                            android:layout_marginBottom="8dp"/>
-
-                        <TextView
-                            android:id="@+id/tv_Rp_tot_harus_byr_blm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:textColor="#ED5454"
-                            android:layout_marginBottom="8dp"/>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1.6">
 
                         <TextView
                             android:id="@+id/tv_nominal_tot_pesanan_blm"
@@ -507,7 +508,7 @@
                             android:id="@+id/tv_nominal_biaya_pengiriman_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30000-,"
+                            android:text="Rp 35.000,00"
                             android:textSize="16sp"
                             android:layout_marginLeft="2dp"
                             android:textColor="#000000"

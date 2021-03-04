@@ -98,8 +98,10 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
         waktuKirim.setText(WaktuKirim);
         detailAlamat.setText(DetailAlamatPenerima);
         invoice.setText("#"+Invoice);
-        totalHarga.setText(TotalHarga+",-");
-        harga.setText(Harga + ",-");
+//        totalHarga.setText(TotalHarga+",-");
+//        harga.setText(Harga + ",-");
+        totalHarga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(TotalHarga))));
+        harga.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Harga))));
 
 
         reqDetail();

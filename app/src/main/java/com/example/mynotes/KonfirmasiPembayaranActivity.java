@@ -64,6 +64,7 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
     String Total, Invoice;
     EditText etNprb, etRekening;
     String email_user, namagambar, narek, norek, waktuBayar, setStatus, invoice;
+    Double dTotal;
 
     ProgressDialog progressDialog;
 
@@ -135,7 +136,7 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
         Log.i("khatima", Total);
         TotalBayar = findViewById(R.id.tv_nominal_totbyr_konfirmasi);
 
-        TotalBayar.setText(Total);
+        TotalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.valueOf(Total)));
 
         ActivityCompat.requestPermissions(KonfirmasiPembayaranActivity.this,new
                 String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, CODE_GALLERY_RQEUEST);
@@ -168,6 +169,7 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(KonfirmasiPembayaranActivity.this, "Resep gagal dipilih, coba lagi", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
+            Log.e("khatima", e.toString());
         }
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -226,6 +228,8 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
         narek = etNprb.getText().toString();
         norek = etRekening.getText().toString();
 
+        String tokenAdmin = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "tokenadmin");
+
         StringRequest request = new StringRequest(Request.Method.POST, urlUploadBukti,
                 (Response.Listener<String>) response-> {
             try {
@@ -240,7 +244,7 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
                     finish();
                 }
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -254,6 +258,9 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
                 params.put("narek", narek);
                 params.put("norek", norek);
                 params.put("waktu_bayar", waktuBayar);
+                params.put("token_tujuan", tokenAdmin);
+                params.put("title", "Pembayaran Paket User");
+                params.put("message", "User telah melakukan pembayaran");
                 return params;
             }
         };
@@ -280,7 +287,6 @@ public class KonfirmasiPembayaranActivity extends AppCompatActivity {
                             startActivity(intentUploadNanti);
                             finish();
                         }
-                        Toast.makeText(getApplicationContext(), respon, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
