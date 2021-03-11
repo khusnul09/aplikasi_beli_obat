@@ -59,7 +59,7 @@ public class PengirimanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengiriman);
 
-        getApriori();
+//        getApriori();
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
@@ -70,6 +70,22 @@ public class PengirimanActivity extends AppCompatActivity {
 
         buatPesanan = findViewById(R.id.btn_buat_pesanan);
         buatPesanan.setOnClickListener(v -> {
+            if (!Utils.inputValidation(namaPenerima)) {
+                namaPenerima.setError("Masukkan nama penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(handphone)) {
+                handphone.setError("Masukkan nomor hp penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(alamat)) {
+                alamat.setError("Masukkan alamat penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(detailAlamat)) {
+                detailAlamat.setError("Masukkan detail alamat penerima pesanan");
+                return;
+            }
             /*Total = total.getText().toString();
             Intent intent = new Intent(PengirimanActivity.this, PembayaranActivity.class);
             intent.putExtra("Total",Total);

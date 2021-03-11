@@ -17,16 +17,16 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Keranjang Belanja"
+            android:text="@string/keranjang_belanja"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -35,28 +35,34 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottombt2"
         android:layout_below="@id/tb_keranjang">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/ll_keranjang_kosong"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_empty_cart"/>
+            android:src="@drawable/ic_empty_cart"
+            tools:ignore="ContentDescription" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum Ada Riwayat"
+            android:text="@string/belum_ada_riwayat"
             android:textSize="18sp"/>
     </LinearLayout>
 
@@ -80,20 +86,10 @@
                 android:id="@+id/tv_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total"
+                android:text="@string/total"
                 android:layout_centerVertical="true"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_Rp_total"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textColor="#EF3D3D"-->
-<!--                android:layout_toLeftOf="@id/tv_total"-->
-<!--                android:textStyle="bold"-->
-<!--                android:text="Rp"/>-->
 
             <TextView
                 android:id="@+id/tv_nominal_total"
@@ -104,15 +100,15 @@
                 android:textColor="#EF3D3D"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="8dp"
-                android:text="0"/>
-
+                android:text="@string/_0"
+                tools:ignore="RelativeOverlap" />
         </RelativeLayout>
 
         <Button
             android:id="@+id/btn_lanjut_bayar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lanjut Bayar"
+            android:text="@string/lanjut_bayar"
             android:layout_marginTop="5dp"
             android:textColor="#FFFFFF"
             android:background="@drawable/primary_button"/>
@@ -125,10 +121,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/base_red_color"
-            android:text="Tambah produk lain"
+            android:text="@string/tambah_produk_lain"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="6dp"/>
-
     </LinearLayout>
-
 </RelativeLayout>

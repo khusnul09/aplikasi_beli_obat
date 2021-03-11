@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,8 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="PAKET"
+            android:text="@string/tab_riwayat_paket"
             android:textColor="#000"
             android:textStyle="bold"
             android:textSize="16sp" />
@@ -28,10 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
             android:layout_below="@id/tv_paket"
-            android:text="Invoice"
+            android:text="@string/invoice"
             android:textColor="#000"
             android:textSize="12sp" />
 
@@ -41,9 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_invoice"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
-            android:text="Nama"
+            android:text="@string/nama"
             android:textColor="#000"
             android:textSize="12sp" />
 
@@ -53,8 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_nama_penerima_paket_obb"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Status"
+            android:text="@string/status"
             android:textColor="#000"
             android:textStyle="bold"
             android:textSize="14sp" />
@@ -63,14 +60,14 @@
             android:id="@+id/tv_waktu_pesan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
-            android:text="Waktu"
+            android:text="@string/waktu"
             android:textColor="#000"
             android:textStyle="italic"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            tools:ignore="RelativeOverlap" />
 
         <View
             android:id="@+id/view1"
@@ -86,14 +83,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/view1">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="3dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="3dp">
 
                 <TextView
                     android:id="@+id/tv_jumlah_byr"
@@ -102,7 +100,7 @@
                     android:textSize="16sp"
                     android:textColor="#000"
                     android:textStyle="bold"
-                    android:text="Jumlah Bayar"/>
+                    android:text="@string/jumlah_bayar"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -110,23 +108,14 @@
                     android:layout_gravity="center_horizontal"
                     android:orientation="horizontal">
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Rp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:textColor="#ED5454"/>-->
-
                     <TextView
                         android:id="@+id/tv_total_harus_bayar_robb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textStyle="bold"
                         android:textSize="18sp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:textColor="@color/base_red_color"/>
 
                 </LinearLayout>
@@ -137,35 +126,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:gravity="right">
+                android:gravity="right"
+                tools:ignore="RtlHardcoded">
 
                 <Button
                     android:id="@+id/btn_bayar_robb"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:text="Bayar"
-                    android:textSize="10dp"
+                    android:text="@string/bayar"
+                    android:textSize="12sp"
                     android:layout_gravity="center"
                     android:textColor="#ED5454"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
                     android:background="@drawable/secondary_button"/>
-
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:id="@+id/iv_lihat_det_robb"
-                    android:src="@drawable/ic_arrow_right_red"/>
-
-
-                <!--            <Button-->
-                <!--                android:id="@+id/btn_lihat_det_robb"-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="45dp"-->
-                <!--                android:text="lihat detail"-->
-                <!--                android:textSize="10dp"-->
-                <!--                android:textColor="#FFFFFF"-->
-                <!--                android:background="@drawable/primary_button"/>-->
+                    android:src="@drawable/ic_arrow_right_red"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 

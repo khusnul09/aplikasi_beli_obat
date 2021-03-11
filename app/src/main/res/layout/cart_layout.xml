@@ -15,9 +15,10 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/ic_shopping_cart"
-            android:backgroundTint="#ffffff"/>
+            android:backgroundTint="#ffffff"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/count_tv_layout"
@@ -29,7 +30,7 @@
             android:background="@drawable/rounded_textview"
             android:gravity="center"
             android:visibility="gone"
-            android:text="0"
+            android:text="@string/_0"
             android:textColor="@android:color/background_light"
             android:textSize="12sp" />
 

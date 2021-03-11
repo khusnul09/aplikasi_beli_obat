@@ -57,15 +57,15 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             if (!Utils.inputValidation(alamat)) {
-                namaLengkap.setError("Masukkan alamat");
+                alamat.setError("Masukkan alamat");
                 return;
             }
             if (!Utils.inputValidation(emailReg)) {
-                noHp.setError("Masukkan email");
+                emailReg.setError("Masukkan email");
                 return;
             }
             if (!Utils.inputValidation(passwordReg)) {
-                noHp.setError("Masukkan password");
+                passwordReg.setError("Masukkan password");
                 return;
             }
 

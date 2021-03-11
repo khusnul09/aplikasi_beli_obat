@@ -21,9 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Invoice"
+            android:text="@string/invoice"
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="16sp" />
@@ -34,9 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_invoice_pesanan_obat"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
-            android:text="Nama"
+            android:text="@string/nama"
             android:textColor="#000"
             android:textSize="16sp" />
 
@@ -45,9 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
-            android:text="Waktu"
+            android:text="@string/waktu"
             android:layout_below="@+id/tv_nama_penerima_pesanan_obat"
             android:textColor="#000"
             android:textSize="16sp" />
@@ -56,7 +53,7 @@
             android:id="@+id/tv_lihat_detail_pesanan_obat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LIHAT DETAIL"
+            android:text="@string/lihat_detail"
             android:layout_below="@id/tv_waktu_pesan_pesanan_obat"
             android:gravity="end"
             android:textSize="16sp"

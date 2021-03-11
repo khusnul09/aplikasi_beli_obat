@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,16 +17,17 @@
         <ImageView
             android:id="@+id/iv_kembali_pesanan_obat"
             android:layout_width="50dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_invoice_pesanan_obat_admin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Detail Pesanan Obat"
+            android:text="@string/detail_pesanan_obat"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
@@ -48,48 +48,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/datapasien"/>
+                    android:src="@drawable/datapasien"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Data Penerima"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/data_penerima"
                     android:textStyle="bold"
                     android:textColor="@color/base_red_color"
                     android:textSize="18sp" />
-
             </LinearLayout>
-
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:text="Nama Lengkap"
+                android:layout_marginStart="24dp"
+                android:text="@string/nama_lengkap"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_nama_penerima_pesanan_obat_admin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="2dp"
-                android:text="Name"
+                android:text="@string/nama"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:text="No Telepon"
+                android:layout_marginStart="24dp"
+                android:text="@string/no_hp"
                 android:textSize="14sp"
                 android:layout_marginTop="7dp"/>
 
@@ -97,17 +97,17 @@
                 android:id="@+id/tv_hp_penerima_pesanan_obat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="2dp"
-                android:text="0"
+                android:text="@string/_0"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:text="Alamat"
+                android:layout_marginStart="24dp"
+                android:text="@string/alamat"
                 android:textSize="14sp"
                 android:layout_marginTop="7dp"/>
 
@@ -115,17 +115,17 @@
                 android:id="@+id/tv_alamat_penerima_pesanan_obat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="2dp"
-                android:text="address"
+                android:text="@string/alamat"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:text="Detail Alamat"
+                android:layout_marginStart="24dp"
+                android:text="@string/detail_alamat"
                 android:textSize="14sp"
                 android:layout_marginTop="7dp"/>
 
@@ -133,9 +133,9 @@
                 android:id="@+id/tv_det_penerima_pesanan_obat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="2dp"
-                android:text="det address"
+                android:text="@string/detail_alamat"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
@@ -151,23 +151,24 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/pesanan" />
+                    android:src="@drawable/pesanan"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Pesanan Obat"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/pesanan_obat"
                     android:textColor="@color/base_red_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -181,7 +182,6 @@
                     android:id="@+id/recyclerViewPesananObatAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-
             </LinearLayout>
 
             <View
@@ -195,25 +195,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:layout_margin="5dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/totalbayar"/>
+                    android:src="@drawable/totalbayar"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Total Pembayaran"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/total_pembayaran"
                     android:textStyle="bold"
                     android:textColor="@color/base_red_color"
                     android:textSize="18sp" />
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -222,26 +222,15 @@
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_Rp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="Rp"-->
-<!--                    android:textColor="#000"-->
-<!--                    android:textSize="20dp"-->
-<!--                    android:textStyle="bold" />-->
-
                 <TextView
                     android:id="@+id/tv_nominal_totbyr_obat_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="0"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/_0"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
             <View
@@ -251,30 +240,30 @@
                 android:layout_marginTop="20dp"
                 android:background="#f0f0f0" />
 
-
             <LinearLayout
                 android:id="@+id/ll_foto_bukti_bayar_obat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/buktibayar" />
+                    android:src="@drawable/buktibayar"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Bukti Pembayaran"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/bukti_pembayaran"
                     android:textColor="@color/base_red_color"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -288,62 +277,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_margin="16dp"
-                    android:src="@drawable/picture"/>
+                    android:src="@drawable/picture"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginRight="16dp"-->
-<!--                android:layout_marginBottom="50dp"-->
-<!--                android:weightSum="2">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_kemas_pesanan_obat"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:background="@drawable/primary_button"-->
-<!--                    android:gravity="center"-->
-<!--                    android:shadowColor="#00D81616"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:text="kemas"-->
-<!--                    android:textColor="#FFFFFF" />-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_antar_pesanan_obat"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:background="@drawable/primary_button"-->
-<!--                    android:gravity="center"-->
-<!--                    android:shadowColor="#00D81616"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:text="antar"-->
-<!--                    android:textColor="#FFFFFF" />-->
-
-<!--            </LinearLayout>-->
-
 
             <Button
                 android:id="@+id/btn_antar_pesanan_obat"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Antar pesanan"
+                android:text="@string/antar_pesanan"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/primary_button"/>
-
         </LinearLayout>
-
     </ScrollView>
-
 </LinearLayout>

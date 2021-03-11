@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,26 +19,25 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Konfirmasi Pembayaran"
+            android:text="@string/konfirmasi_pembayaran"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/sv_pengirim"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_konfirmasi_pembayaran">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -47,57 +45,28 @@
                 android:id="@+id/ll_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tb_info_pembayaran"
                 android:background="#FFFFFF"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="12sp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_total_pembayaran_info_obat"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="@string/total_pembayaran"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tv_total_pembayaran_info_obat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total Pembayaran"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_Rp1"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginLeft="110dp"-->
-<!--                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_obat"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="Rp"-->
-<!--                            android:textColor="#000"-->
-<!--                            android:textSize="14sp"-->
-<!--                            android:textStyle="bold" />-->
-
-                        <TextView
-                            android:id="@+id/tv_nominal_totbyr_konfirmasi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
-                            android:text="0"
-                            android:layout_toLeftOf="@id/tv_total_pembayaran_info_obat"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
+                <TextView
+                    android:id="@+id/tv_nominal_totbyr_konfirmasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="110dp"
+                    android:text="@string/_0"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <View
@@ -109,7 +78,6 @@
                 android:id="@+id/ll_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_1"
                 android:background="#FFFFFF"
                 android:orientation="horizontal"
                 android:padding="12sp">
@@ -118,8 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="1."
+                    android:text="@string/_1"
                     android:textSize="16sp" />
 
                 <TextView
@@ -127,14 +94,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/info4"
                     android:textSize="16sp" />
-
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_3"
                 android:background="#FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -145,7 +110,8 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
-                    android:src="@drawable/picture" />
+                    android:src="@drawable/picture"
+                    tools:ignore="ContentDescription" />
 
                 <Button
                     android:id="@+id/btn_pilih_gambar_konfirm"
@@ -154,9 +120,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="16dp"
                     android:background="@drawable/secondary_button"
-                    android:text="Pilih Gambar"
+                    android:text="@string/pilih_gambar"
                     android:textColor="@color/color1" />
-
             </LinearLayout>
 
             <View
@@ -170,64 +135,112 @@
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="50dp"
                     android:padding="12sp">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
+                    <TextView
+                        android:id="@+id/tv_nama_pengirim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/nama_pengirim_di_rekening_bank"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_nprb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <TextView
-                            android:id="@+id/tv_nama_pengirim"
+                            android:id="@+id/tv_namarek"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Nama Pengirim di Rekening Bank"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/nama_lengkap" />
 
-                        <LinearLayout
-                            android:id="@+id/ll_nprb"
+                        <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/tv_namarek"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Nama Lengkap" />
+                    <EditText
+                        android:id="@+id/et_npdrb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/tv_nama_pengirim"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/nama_lengkap"
+                        android:textColor="#E9A69E9E"
+                        android:visibility="gone"
+                        tools:ignore="Autofill,RtlHardcoded,TextFields" />
+                </RelativeLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_arrow_right" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="#f0f0f0" />
 
-                        </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="12sp">
 
-                        <EditText
-                            android:id="@+id/et_npdrb"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_toEndOf="@id/tv_nama_pengirim"
-                            android:layout_toRightOf="@id/tv_nama_pengirim"
-                            android:background="@android:color/transparent"
-                            android:gravity="right|center_vertical"
-                            android:hint="Nama Lengkap"
-                            android:textColor="#E9A69E9E"
-                            android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/tv_no_rek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/masukkan_no_rekening_anda"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
 
-                    </RelativeLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_mnra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_norek"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1234567890" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_rekening"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/tv_no_rek"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/_1234567890"
+                        android:inputType="number"
+                        android:textColor="#E9A69E9E"
+                        android:visibility="gone"
+                        tools:ignore="Autofill,RtlHardcoded" />
+
+                </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -237,67 +250,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12sp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-
-                        <TextView
-                            android:id="@+id/tv_no_rek"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:text="Masukkan No. Rekening Anda"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:id="@+id/ll_mnra"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/tv_norek"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1234567890***" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_arrow_right" />
-
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/et_rekening"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_toEndOf="@id/tv_no_rek"
-                            android:layout_toRightOf="@id/tv_no_rek"
-                            android:background="@android:color/transparent"
-                            android:gravity="right|center_vertical"
-                            android:hint="1234567890***"
-                            android:inputType="number"
-                            android:textColor="#E9A69E9E"
-                            android:visibility="gone" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="30dp"
                     android:background="#FFFFFF"
                     android:orientation="vertical"
                     android:padding="12dp">
@@ -308,16 +261,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/primary_button"
-                        android:text="Kirim"
+                        android:text="@string/kirim"
                         android:layout_marginBottom="30dp"
                         android:textColor="#FFFFFF" />
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-
 </LinearLayout>

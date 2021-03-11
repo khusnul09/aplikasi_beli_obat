@@ -18,16 +18,16 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Edit Data Penerima"
+            android:text="@string/edit_data_penerima"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -42,13 +42,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/datapasien"/>
+            android:src="@drawable/datapasien"
+            tools:ignore="ContentDescription" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Nama Penerima"
+            android:hint="@string/nama_penerima"
             app:boxStrokeColor="@color/color1"
             app:hintTextAppearance="@style/TextLabel"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -66,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Nomor Handphone"
+            android:hint="@string/nomor_handphone"
             app:boxStrokeColor="@color/color1"
             app:hintTextAppearance="@style/TextLabel"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -81,11 +82,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Alamat Penerima"
+            android:hint="@string/alamat_penerima"
             app:boxStrokeColor="@color/color1"
             app:hintTextAppearance="@style/TextLabel"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -96,15 +96,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences|textMultiLine"
                 android:textColor="#000000"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Detail Alamat Penerima"
+            android:hint="@string/detail_alamat_penerima"
             app:boxStrokeColor="@color/color1"
             app:hintTextAppearance="@style/TextLabel"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -115,7 +113,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences|textMultiLine"
                 android:textColor="#000000"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -123,11 +120,9 @@
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SIMPAN"
+            android:text="@string/simpan"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:background="@drawable/primary_button"/>
-
     </LinearLayout>
-
 </RelativeLayout>

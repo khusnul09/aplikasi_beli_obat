@@ -20,7 +20,8 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center"
-            android:src="@drawable/logonya" />
+            android:src="@drawable/logonya"
+            tools:ignore="ContentDescription" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email"
@@ -33,12 +34,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:hint="Email"
+                android:hint="@string/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#C62525"
                 android:inputType="textEmailAddress" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,12 +52,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:hint="Password"
+                android:hint="@string/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#C62525"
                 android:inputType="textPassword"/>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -68,7 +67,7 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:layout_marginTop="15dp"
-            android:text="Masuk" />
+            android:text="@string/masuk" />
 
         <LinearLayout
             android:id="@+id/ll_daftar"
@@ -83,7 +82,7 @@
                 android:id="@+id/tv_belum_punya_akun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Belum punya akun? "
+                android:text="@string/belum_punya_akun"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:textColor="@color/font_color"/>
@@ -94,13 +93,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="Daftar Sekarang"
+                android:text="@string/daftar_sekarang"
                 android:layout_marginBottom="1dp"
                 android:textColor="@color/color1"
                 android:textSize="18sp"/>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>

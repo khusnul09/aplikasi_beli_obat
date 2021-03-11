@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,20 +17,20 @@
         <ImageView
             android:id="@+id/iv_kembali_fragmant_belum_bayar"
             android:layout_width="50dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_kode_obb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Detail Riwayat Belum Bayar"
+            android:text="@string/detail_riwayat_belum_bayar"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <RelativeLayout
@@ -61,48 +60,33 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_margin="3dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/infopesanan" />
+                            android:src="@drawable/infopesanan"
+                            tools:ignore="ContentDescription" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Status Transaksi"
-                            android:layout_marginLeft="1dp"
+                            android:text="@string/status_transaksi"
+                            android:layout_marginStart="1dp"
                             android:textSize="16sp" />
-
                     </LinearLayout>
-
 
                     <TextView
                         android:id="@+id/tv_status_riwayat_obb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Statusnya"
-                        android:layout_marginLeft="21dp"
+                        android:text="@string/statusnya"
+                        android:layout_marginStart="21dp"
                         android:textColor="@color/base_red_color"
                         android:textStyle="bold"
                         android:textSize="18sp" />
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="horizontal">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginLeft="21dp"-->
-<!--                            android:text="Mohon melakukan pembayaran"-->
-<!--                            android:textColor="#AF9999"-->
-<!--                            android:textSize="14sp" />-->
-
-<!--                    </LinearLayout>-->
 
                     <LinearLayout
                         android:id="@+id/ll_waktu_pemesanan_obb"
@@ -114,20 +98,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="21dp"
-                            android:text="Waktu Pemesanan  :"
+                            android:layout_marginStart="21dp"
+                            android:text="@string/waktu_pemesanan"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_waktu_pemesanan_obb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="2dp"
-                            android:text="0"
+                            android:layout_marginStart="2dp"
+                            android:text="@string/_0"
                             android:textSize="14sp" />
-
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:id="@+id/ll_waktu_pembayaran_obb"
@@ -139,18 +121,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="21dp"
-                            android:text="Waktu Pembayaran :"
+                            android:layout_marginStart="21dp"
+                            android:text="@string/waktu_pembayaran"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_waktu_pembayaran_obb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="2dp"
-                            android:text="0"
+                            android:layout_marginStart="2dp"
+                            android:text="@string/_0"
                             android:textSize="14sp" />
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -163,20 +144,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="21dp"
-                            android:text="Waktu Pengiriman   :"
+                            android:layout_marginStart="21dp"
+                            android:text="@string/waktu_pengiriman"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_waktu_pengiriman_obb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="2dp"
-                            android:text="0"
+                            android:layout_marginStart="2dp"
+                            android:text="@string/_0"
                             android:textSize="14sp" />
-
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <View
@@ -188,48 +167,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                    android:layout_margin="5dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/datapasien"/>
+                        android:src="@drawable/datapasien"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="1dp"
-                        android:text="Data Penerima"
+                        android:layout_marginStart="1dp"
+                        android:text="@string/data_penerima"
                         android:textStyle="bold"
                         android:textColor="@color/base_red_color"
                         android:textSize="18sp" />
-
-<!--                    <LinearLayout-->
-<!--                        android:id="@+id/ll_edit_data_penerima"-->
-<!--                        android:layout_width="80dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical"-->
-<!--                        android:gravity="center"-->
-<!--                        android:layout_marginLeft="150dp"-->
-<!--                        android:layout_alignParentRight="true"-->
-<!--                        android:layout_alignParentEnd="true">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="15dp"-->
-<!--                            android:layout_height="20dp"-->
-<!--                            android:src="@drawable/ic_edit" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_edit_data"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Edit Profil"-->
-<!--                            android:textSize="10sp"-->
-<!--                            android:textColor="#777171"/>-->
-
-<!--                    </LinearLayout>-->
-
                 </LinearLayout>
 
                 <RelativeLayout
@@ -240,23 +195,24 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="50dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/iv_edit_data_penerima"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tv_lb_nama_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
-                            android:text="Nama Lengkap"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/nama_lengkap"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_nama_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
-                            android:text="nama"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/nama"
                             android:textColor="#000"
                             android:textSize="16sp" />
 
@@ -264,19 +220,18 @@
                             android:id="@+id/tv_lb_tlf_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
-                            android:text="Nomor Handphone"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/nomor_handphone"
                             android:textSize="14sp"
                             android:layout_marginTop="7dp"/>
-
 
                         <TextView
                             android:id="@+id/tv_hp_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
                             android:layout_marginTop="2dp"
-                            android:text="no tlf"
+                            android:text="@string/no_tlf"
                             android:textColor="#000"
                             android:textSize="16sp" />
 
@@ -284,8 +239,8 @@
                             android:id="@+id/tv_lb_alamat_riwayat_selesai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
-                            android:text="Alamat"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/alamat"
                             android:textSize="14sp"
                             android:layout_marginTop="7dp"/>
 
@@ -293,9 +248,9 @@
                             android:id="@+id/tv_alamat_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
                             android:layout_marginTop="2dp"
-                            android:text="alamat"
+                            android:text="@string/alamat"
                             android:textColor="#000"
                             android:textSize="16sp" />
 
@@ -303,8 +258,8 @@
                             android:id="@+id/tv_lb_det_alamat_riwayat_selesai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
-                            android:text="Detail Alamat"
+                            android:layout_marginStart="24dp"
+                            android:text="@string/detail_alamat"
                             android:textSize="14sp"
                             android:layout_marginTop="7dp"/>
 
@@ -312,13 +267,12 @@
                             android:id="@+id/tv_det_riwayat_obb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="6dp"
-                            android:text="detail alamat"
+                            android:text="@string/detail_alamat"
                             android:textColor="#000"
                             android:textSize="16sp" />
-
                     </LinearLayout>
 
                     <ImageView
@@ -326,40 +280,39 @@
                         android:layout_height="100dp"
                         android:layout_marginTop="50dp"
                         android:id="@+id/iv_edit_data_penerima"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_arrow_right_red"/>
-
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_arrow_right_red"
+                        tools:ignore="ContentDescription" />
                 </RelativeLayout>
-
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
                     android:background="#f0f0f0" />
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_marginTop="2dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/pesanan" />
+                        android:src="@drawable/pesanan"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="1dp"
-                        android:text="Pesanan"
+                        android:layout_marginStart="1dp"
+                        android:text="@string/pesanan"
                         android:textColor="@color/base_red_color"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
-
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -373,7 +326,6 @@
                         android:id="@+id/recyclerViewRiwayatObatBelumBayar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-
                 </LinearLayout>
 
                 <View
@@ -386,38 +338,40 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/totalbayar"/>
+                        android:src="@drawable/totalbayar"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/tv_Rp_subtotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginLeft="1dp"
-                        android:text="Info pembayaran "
+                        android:layout_marginStart="1dp"
+                        android:text="@string/info_pembayaran"
                         android:textColor="@color/base_red_color"
                         android:textStyle="bold"
                         android:textSize="16sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="24dp">
+                    android:layout_marginBottom="24dp"
+                    tools:ignore="DisableBaselineAlignment">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
                         android:layout_weight="2.5">
 
                         <TextView
@@ -425,7 +379,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="Total pesanan"
+                            android:text="@string/total_pesanan"
                             android:textColor="#000"
                             android:textSize="16sp" />
 
@@ -434,7 +388,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="8dp"
-                            android:text="Biaya Pengiriman"
+                            android:text="@string/biaya_pengiriman"
                             android:textColor="#000"
                             android:textSize="16sp" />
 
@@ -442,51 +396,12 @@
                             android:id="@+id/tv_lebel_tot_harus_byr_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Harus Bayar"
+                            android:text="@string/total_harus_bayar"
                             android:textSize="16sp"
                             android:textColor="#000"
                             android:textStyle="bold"
                             android:layout_marginBottom="8dp"/>
-
                     </LinearLayout>
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical"-->
-<!--                        android:layout_weight="0.21">-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_Rp_tot_pesanan_blm"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Rp"-->
-<!--                            android:textSize="16sp"-->
-<!--                            android:textColor="#000000"-->
-<!--                            android:layout_marginBottom="8dp"/>-->
-
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_Rp_biaya_pengiriman_blm"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Rp"-->
-<!--                            android:textSize="16sp"-->
-<!--                            android:textColor="#000000"-->
-<!--                            android:layout_marginBottom="8dp"/>-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_Rp_tot_harus_byr_blm"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="Rp"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:textSize="16sp"-->
-<!--                            android:textColor="#ED5454"-->
-<!--                            android:layout_marginBottom="8dp"/>-->
-
-
-<!--                    </LinearLayout>-->
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -498,9 +413,9 @@
                             android:id="@+id/tv_nominal_tot_pesanan_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="@string/_0"
                             android:textSize="16sp"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginStart="2dp"
                             android:textColor="#000000"
                             android:layout_marginBottom="8dp"/>
 
@@ -508,9 +423,9 @@
                             android:id="@+id/tv_nominal_biaya_pengiriman_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rp 35.000,00"
+                            android:text="@string/rp_35_000_00"
                             android:textSize="16sp"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginStart="2dp"
                             android:textColor="#000000"
                             android:layout_marginBottom="8dp"/>
 
@@ -518,19 +433,15 @@
                             android:id="@+id/tv_nominal_tot_harus_byr_blm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="@string/_0"
                             android:textSize="16sp"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginStart="2dp"
                             android:textStyle="bold"
                             android:textColor="#ED5454"
                             android:layout_marginBottom="8dp"/>
-
                     </LinearLayout>
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </ScrollView>
 
         <LinearLayout
@@ -546,7 +457,7 @@
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="Bayar"
+                android:text="@string/bayar"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="16dp"
@@ -557,15 +468,12 @@
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="PESANAN DITERIMA"
+                android:text="@string/pesanan_diterima"
                 android:visibility="gone"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/primary_button"/>
-
         </LinearLayout>
-
     </RelativeLayout>
-
 </LinearLayout>

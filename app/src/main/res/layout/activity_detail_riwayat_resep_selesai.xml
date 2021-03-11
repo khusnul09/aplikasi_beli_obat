@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
     tools:context=".DetailRiwayatResepSelesaiActivity">
-
 
     <LinearLayout
         android:id="@+id/btn_riwayat_resep_selesai"
@@ -19,20 +17,20 @@
         <ImageView
             android:id="@+id/iv_kembali_riwayat_resep_selesai"
             android:layout_width="50dp"
-            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_kode_resep_selesai"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Detail Riwayat Resep Selesai"
+            android:text="@string/detail_riwayat_resep_selesai"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <ScrollView
@@ -54,71 +52,66 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/statuspengiriman" />
+                        android:src="@drawable/statuspengiriman"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/tv_status_resep_selesai"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="2dp"
-                        android:text="Pesanan Diterima"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/pesanan_diterima"
                         android:textStyle="bold"
                         android:textColor="@color/base_red_color"
-                        android:textSize="14sp" />
-
+                        android:textSize="16sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="Pesanan anda sudah selesai"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/pesanan_anda_sudah_selesai"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="2dp">
+                android:layout_margin="2dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_location_red"/>
+                    android:src="@drawable/ic_location_red"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alamat Pengiriman"
+                    android:text="@string/alamat_pengiriman"
                     android:textStyle="bold"
                     android:textColor="@color/base_red_color"
                     android:textSize="16sp" />
-
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_nama_riwayat_resep_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Nama"
+                android:layout_marginStart="20dp"
+                android:text="@string/nama"
                 android:textSize="14sp"
                 android:textColor="#000" />
 
@@ -126,8 +119,8 @@
                 android:id="@+id/tv_tlf_riwayat_resep_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="No Telepon"
+                android:layout_marginStart="20dp"
+                android:text="@string/no_hp"
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:layout_marginTop="3dp"/>
@@ -136,8 +129,8 @@
                 android:id="@+id/tv_alamat_riwayat_resep_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Alamat"
+                android:layout_marginStart="20dp"
+                android:text="@string/alamat"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_marginTop="3dp"/>
@@ -146,8 +139,8 @@
                 android:id="@+id/tv_detai_alamat_riwayat_resep_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Detail Alamat"
+                android:layout_marginStart="20dp"
+                android:text="@string/detail_alamat"
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:layout_marginTop="3dp"/>
@@ -163,39 +156,33 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/pesanan" />
+                    android:src="@drawable/pesanan"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Pesanan"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/pesanan"
                     android:textColor="@color/base_red_color"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/showImgResepRiwayatSelesai"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/showImgResepRiwayatSelesai"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/picture"/>
-
-            </LinearLayout>
+                android:layout_height="300dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/picture"
+                tools:ignore="ContentDescription" />
 
             <View
                 android:layout_width="match_parent"
@@ -207,36 +194,38 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:layout_marginTop="2dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/totalbayar" />
+                    android:src="@drawable/totalbayar"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:text="Informasi Pembayaran"
+                    android:layout_marginStart="1dp"
+                    android:text="@string/info_pembayaran"
                     android:textColor="@color/base_red_color"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -244,7 +233,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Subtotal"
+                        android:text="@string/subtotal"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
@@ -253,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Biaya Pengiriman"
+                        android:text="@string/biaya_pengiriman"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
@@ -262,49 +251,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Total Pembayaran"
+                        android:text="@string/total_pembayaran"
                         android:textColor="#000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_weight="0.21">-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_Rp_subtotal_resep_selesai"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Rp"-->
-<!--                        android:textSize="16sp"-->
-<!--                        android:textColor="#000000"-->
-<!--                        android:layout_marginBottom="8dp"/>-->
-
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_Rp_biaya_pengiriman_resep_selesai"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Rp"-->
-<!--                        android:textSize="16sp"-->
-<!--                        android:textColor="#000000"-->
-<!--                        android:layout_marginBottom="8dp"/>-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/tv_Rp_total_riwayat_resep_selesai"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Rp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textSize="16sp"-->
-<!--                        android:textColor="#000000"-->
-<!--                        android:layout_marginBottom="8dp"/>-->
-
-<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -317,7 +268,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -326,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Rp 35.000,00"
+                        android:text="@string/rp_35_000_00"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -335,13 +286,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <View
@@ -354,13 +303,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="5dp"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="24dp"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp"
                     android:layout_marginBottom="30dp"
                     android:layout_weight="2.8">
 
@@ -369,7 +319,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Waktu Pemesanan"
+                        android:text="@string/waktu_pemesanan"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
@@ -378,7 +328,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="8dp"
-                        android:text="Waktu Pembayaran"
+                        android:text="@string/waktu_pembayaran"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
@@ -386,7 +336,7 @@
                         android:id="@+id/tv_waktu_kirim_resep_selesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Waktu Pengiriman"
+                        android:text="@string/waktu_pengiriman"
                         android:textSize="16sp"
                         android:textColor="#000"
                         android:layout_marginBottom="8dp"/>
@@ -397,7 +347,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="30dp"
                     android:layout_weight="2">
 
@@ -406,7 +356,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -414,7 +364,7 @@
                         android:id="@+id/tv_waktu_pembayaran_resep_selesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textSize="16sp"
                         android:textColor="#000000"
                         android:layout_marginBottom="8dp"/>
@@ -423,37 +373,12 @@
                         android:id="@+id/tv_waktu_pengiriman_resep_selesai"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textSize="16sp"
                         android:textColor="#000000"
                         android:layout_marginBottom="8dp"/>
-
                 </LinearLayout>
-
             </LinearLayout>
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:background="#FFFFFF"-->
-<!--                android:padding="12sp">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_selesai_riwayat_resep"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="SELESAI"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:textColor="#FFFFFF"-->
-<!--                    android:layout_marginBottom="20dp"-->
-<!--                    android:background="@drawable/primary_button"/>-->
-
-<!--            </LinearLayout>-->
-
         </LinearLayout>
-
-
     </ScrollView>
-
 </LinearLayout>

@@ -19,20 +19,19 @@
             android:id="@+id/iv_image"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="@string/title"
             android:textSize="18sp"
             android:textColor="#000"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp" />
 
         <LinearLayout
@@ -40,9 +39,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
             android:layout_below="@+id/tv_title">
@@ -58,7 +55,7 @@
                 android:id="@+id/tv_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/description"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_color" />
         </LinearLayout>
@@ -66,10 +63,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_below="@+id/harga_desc"
             android:layout_marginStart="10dp"
-            android:layout_toRightOf="@+id/iv_image"
             android:layout_toEndOf="@+id/iv_image">
 
             <Button
@@ -77,7 +72,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:theme="@style/ButtonRow"
-                android:text="-"
+                android:text="@string/kurang"
                 android:visibility="gone"
                 android:textColor="#000" />
 
@@ -86,19 +81,19 @@
                 android:layout_width="20dp"
                 android:layout_marginTop="3dp"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/_0"
                 android:textSize="16sp"
                 android:textColor="#605F5F"
                 android:gravity="center_vertical"
                 tools:ignore="RtlCompat"
-                android:layout_toRightOf="@id/bt_kurang"/>
+                android:layout_toEndOf="@id/bt_kurang"/>
 
             <Button
                 android:id="@+id/bt_tambah"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_toRightOf="@+id/tv_jumlah"
-                android:text="+"
+                android:layout_toEndOf="@+id/tv_jumlah"
+                android:text="@string/tambah"
                 android:visibility="gone"
                 android:textColor="#ED5454"
                 android:theme="@style/ButtonRow" />
@@ -109,7 +104,8 @@
                 android:layout_height="40dp"
                 android:padding="8dp"
                 android:src="@drawable/delete1"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                tools:ignore="ContentDescription" />
 
         </RelativeLayout>
 

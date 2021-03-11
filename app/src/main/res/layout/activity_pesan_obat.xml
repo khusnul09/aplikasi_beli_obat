@@ -19,17 +19,19 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_akun"
             android:layout_alignParentEnd="true"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Beli Obat"
+            android:text="@string/beli_obat"
             android:layout_centerInParent="true"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
     <LinearLayout
@@ -49,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hi,"
+                android:text="@string/hi"
                 android:layout_marginStart="16dp"
                 android:textColor="#FFFFFF"
                 android:fontFamily="cursive"
@@ -59,7 +61,7 @@
                 android:id="@+id/tv_nama_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama User"
+                android:text="@string/nama_user"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="#FFFFFF"
@@ -71,7 +73,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selamat datang"
+            android:text="@string/selamat_datang"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:textColor="#FFFFFF"
@@ -114,7 +116,8 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/resepdokter"
-                    android:padding="24dp"/>
+                    android:padding="24dp"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Resep Dokter"
+                        android:text="@string/resep_dokter"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/font_color" />
@@ -136,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Pesan obat dengan menggunakan Resep Dokter"
+                        android:text="@string/pesan_obat_dengan_menggunakan_resep_dokter"
                         android:textSize="14sp"
                         android:textColor="@color/font_color" />
                 </LinearLayout>
@@ -166,7 +169,8 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/noresep"
-                    android:padding="24dp"/>
+                    android:padding="24dp"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -177,7 +181,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pesan Obat"
+                        android:text="@string/pesan_obat"
                         android:padding="5dp"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -186,11 +190,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pilih Obat Tanpa Resep Dokter"
+                        android:text="@string/pilih_obat_tanpa_resep_dokter"
                         android:padding="5dp"
                         android:textSize="14sp"
                         android:textColor="@color/font_color"/>
-
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -218,14 +221,15 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:padding="24dp"
-                    android:src="@drawable/riwayat1" />
+                    android:src="@drawable/riwayat1"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="5dp"
-                    android:text="Riwayat"
+                    android:text="@string/riwayat"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/font_color"/>

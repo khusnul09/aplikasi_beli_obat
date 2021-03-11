@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:visibility="visible"
-                android:text="Riwayat Belanja Resep Kosong"/>
+                android:text="@string/riwayat_belanja_resep_kosong"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewResep"

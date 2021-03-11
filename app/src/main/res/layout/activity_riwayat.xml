@@ -17,15 +17,16 @@
         <ImageView
             android:id="@+id/iv_back_riwayat"
             android:layout_width="50dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Riwayat Pesanan"
+            android:text="@string/riwayat_pesanan"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
@@ -45,19 +46,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tab1"
-            android:text="RESEP"/>
+            android:text="@string/tab_riwayat_resep"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tab2"
-            android:text="PAKET"/>
+            android:text="@string/tab_riwayat_paket"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tab3"
-            android:text="SELESAI"/>
+            android:text="@string/tab_riwayat_selesai"/>
 
     </com.google.android.material.tabs.TabLayout>
 

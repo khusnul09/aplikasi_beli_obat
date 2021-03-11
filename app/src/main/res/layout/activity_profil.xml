@@ -18,16 +18,16 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Profil"
+            android:text="@string/profil"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:gravity="center_vertical"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -36,207 +36,206 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:layout_below="@+id/tb_profil">
+        android:layout_below="@+id/tb_profil"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/ic_edit" />
+            android:src="@drawable/ic_edit"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_edit_profil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Profil"
+            android:text="@string/edit_profil"
             android:textSize="14sp"
             android:textColor="#777171"/>
-
     </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/ll_edit_akun"
+        android:padding="25dp">
+
+        <ImageView
+            android:id="@+id/iv_user_edit"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logouser"
+            tools:ignore="ContentDescription" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@id/ll_edit_akun"
-            android:padding="25dp">
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp">
 
-            <ImageView
-                android:id="@+id/iv_user_edit"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:src="@drawable/logouser"/>
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="12dp">
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:weightSum="2.5"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:layout_marginBottom="8dp"
+                    tools:ignore="RtlSymmetry">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_lebel_nama"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:weightSum="2.5"
-                        android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:layout_marginBottom="8dp">
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:text="@string/nama_lengkap"
+                        android:layout_weight="1"/>
 
-                        <TextView
-                            android:id="@+id/tv_lebel_nama"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:text="Nama Lengkap"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/tv_nama_profil"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Khusnul Khatima"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:layout_weight="1.57"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_nama_profil"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2.5"
-                        android:paddingLeft="15dp"
-                        android:layout_marginBottom="8dp">
+                        android:text="@string/nama_lengkap"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_weight="1.57"/>
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tv_lebel_no"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="No Handphone"
-                            android:textColor="#000"
-                            android:textSize="16sp"
-                            android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2.5"
+                    android:paddingStart="15dp"
+                    android:layout_marginBottom="8dp"
+                    tools:ignore="RtlSymmetry">
 
-                        <TextView
-                            android:id="@+id/tv_hp_profil"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="085255513984"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:layout_weight="1.6"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_lebel_no"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:weightSum="2.5"
-                        android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:layout_marginBottom="8dp">
+                        android:text="@string/no_hp"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:layout_weight="1"/>
 
-                        <TextView
-                            android:id="@+id/tv_lebel_alamat"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Alamat"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/tv_alamat_profil"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Jalan Mangga No 24 Gowa, Bontomarannu"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:layout_weight="1.52"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_hp_profil"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:weightSum="2.5"
-                        android:paddingLeft="15dp"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="8dp">
-
-                        <TextView
-                            android:id="@+id/tv_lebel_email"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Email"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/tv_email_profil"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="khusnulkhatima09@gmail.com"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:layout_weight="1.52"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="2.5"
-                        android:paddingLeft="15dp"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="8dp">
-
-                        <TextView
-                            android:id="@+id/tv_password"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Password"
-                            android:textSize="16sp"
-                            android:textColor="#000"
-                            android:layout_weight="1"/>
-
-                        <TextView
-                            android:id="@+id/tv_edit_password"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Ubah Password"
-                            android:textColor="#ED5454"
-                            android:textSize="16sp"
-                            android:textStyle="italic"
-                            android:textAlignment="viewEnd"
-                            android:layout_weight="1.52"
-                            android:layout_marginEnd="8dp"/>
-
-                    </LinearLayout>
+                        android:text="@string/_085255513"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_weight="1.6"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2.5"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:layout_marginBottom="8dp"
+                    tools:ignore="RtlSymmetry">
 
-            <Button
-                android:id="@+id/btn_logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="Keluar"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/primary_button"/>
+                    <TextView
+                        android:id="@+id/tv_lebel_alamat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alamat"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_weight="1"/>
 
+                    <TextView
+                        android:id="@+id/tv_alamat_profil"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jalan_mangga_no_24_gowa_bontomarannu"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:layout_weight="1.52"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2.5"
+                    android:paddingStart="15dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
+                    tools:ignore="RtlSymmetry">
+
+                    <TextView
+                        android:id="@+id/tv_lebel_email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_email_profil"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/khusnulkhatima09_gmail_com"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:layout_weight="1.52"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2.5"
+                    android:paddingStart="15dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp"
+                    tools:ignore="RtlSymmetry">
+
+                    <TextView
+                        android:id="@+id/tv_password"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/password"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_edit_password"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ubah_password"
+                        android:textColor="#ED5454"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textAlignment="viewEnd"
+                        android:layout_weight="1.52"
+                        android:layout_marginEnd="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="@string/keluar"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/primary_button"/>
     </LinearLayout>
-
 </RelativeLayout>

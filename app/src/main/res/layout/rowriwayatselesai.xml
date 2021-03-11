@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="185dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,19 +20,18 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@mipmap/ic_launcher"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_resep_selesai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RESEP"
+            android:text="@string/tab_riwayat_resep"
             android:textSize="16sp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/iv_gambar_resep_selesai"
             android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginStart="30dp" />
 
@@ -40,11 +40,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_resep_selesai"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
-            android:layout_toRightOf="@+id/iv_gambar_resep_selesai"
-            android:text="#"
+            android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
+            android:text="@string/pagar"
             android:textColor="#000000"
             android:textSize="12sp" />
 
@@ -52,11 +51,10 @@
             android:id="@+id/tv_nama_penerima_selesai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama"
+            android:text="@string/nama"
             android:textSize="12sp"
             android:textColor="#000000"
             android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/tv_invoice_resep_selesai"/>
@@ -65,13 +63,11 @@
             android:id="@+id/tv_statusnya_resep_selesai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@string/status"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_toRightOf="@+id/iv_gambar_resep_selesai"
             android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/tv_nama_penerima_selesai"/>
@@ -82,41 +78,29 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_statusnya_resep_selesai"
             android:layout_marginStart="30dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="1dp"
-            android:layout_toRightOf="@+id/iv_gambar_resep_selesai"
-            android:text="Waktu"
+            android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
+            android:text="@string/waktu"
             android:textColor="#000000"
             android:textSize="12sp" />
-
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_below="@+id/tv_waktu_selesai_resep"
-            android:layout_toRightOf="@+id/iv_gambar_resep_selesai"
             android:layout_toEndOf="@+id/iv_gambar_resep_selesai"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:orientation="horizontal">
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Rp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:textSize="14sp"-->
-<!--                android:textColor="#000000"/>-->
 
             <TextView
                 android:id="@+id/tv_total_byr_resep_selesai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/_0"
                 android:textSize="14sp"
-                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
                 android:textColor="#000000"/>
 
         </LinearLayout>
@@ -130,7 +114,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
             android:gravity="end"
-            android:text="LIHAT DETAIL"
+            android:text="@string/lihat_detail"
             android:textColor="@color/base_red_color"
             android:textSize="16sp"
             android:textStyle="bold" />

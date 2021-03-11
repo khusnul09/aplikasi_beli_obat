@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
         }*/
-        configCloudinary();
+        //configCloudinary();
 
         int waktuLoad = 4000;
 

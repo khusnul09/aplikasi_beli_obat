@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,19 +21,18 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:src="@mipmap/ic_launcher"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_resep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RESEP"
+            android:text="@string/tab_riwayat_resep"
             android:textSize="16sp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/iv_gambar_resep"
             android:layout_toEndOf="@+id/iv_gambar_resep"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginStart="30dp" />
 
@@ -40,12 +40,10 @@
             android:id="@+id/tv_kode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#"
+            android:text="@string/pagar"
             android:textSize="12sp"
             android:textColor="#000000"
-            android:layout_toRightOf="@+id/iv_gambar_resep"
             android:layout_toEndOf="@+id/iv_gambar_resep"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/tv_resep"/>
@@ -55,11 +53,10 @@
             android:id="@+id/tv_nama_penerima_resep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama"
+            android:text="@string/nama"
             android:textSize="12sp"
             android:textColor="#000000"
             android:layout_toEndOf="@+id/iv_gambar_resep"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/tv_kode"/>
@@ -68,13 +65,11 @@
             android:id="@+id/tv_statusnya_resep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menunggu Konfirmasi"
+            android:text="@string/menunggu_konfirmasi"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_toRightOf="@+id/iv_gambar_resep"
             android:layout_toEndOf="@+id/iv_gambar_resep"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="1dp"
             android:layout_below="@id/tv_nama_penerima_resep"/>
@@ -83,20 +78,20 @@
             android:id="@+id/tv_waktu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="30dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
             android:textStyle="italic"
-            android:text="0"
+            android:text="@string/_0"
             android:textColor="#000000"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/tv_lihat_detail_resep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LIHAT DETAIL"
+            android:text="@string/lihat_detail"
             android:layout_below="@id/tv_statusnya_resep"
             android:gravity="end"
             android:textSize="16sp"

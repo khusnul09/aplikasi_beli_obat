@@ -73,7 +73,26 @@ public class AlamatPasienActivity extends AppCompatActivity {
         });
 
         kirim = findViewById(R.id.btn_kirim);
-        kirim.setOnClickListener(v -> alamatPasien());
+        kirim.setOnClickListener(v -> {
+            if (!Utils.inputValidation(NamaLengkapPasien)) {
+                NamaLengkapPasien.setError("Masukkan nama lengkap penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(NoHpPasien)) {
+                NoHpPasien.setError("Masukkan nomor hp penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(AlamatPasien)) {
+                AlamatPasien.setError("Masukkan alamat penerima pesanan");
+                return;
+            }
+            if (!Utils.inputValidation(DetaiAlamatPasien)) {
+                DetaiAlamatPasien.setError("Masukkan detail alamat penerima pesanan");
+                return;
+            }
+
+            alamatPasien();
+        });
 
     }
 

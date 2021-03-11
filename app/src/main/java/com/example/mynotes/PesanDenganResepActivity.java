@@ -91,7 +91,9 @@ public class PesanDenganResepActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data){
+    protected void onActivityResult (int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data.getData() != null) {
             try {
                 Uri path = data.getData();
                 InputStream inputStream = getContentResolver().openInputStream(path);
@@ -104,14 +106,18 @@ public class PesanDenganResepActivity extends AppCompatActivity {
                 Toast.makeText(PesanDenganResepActivity.this, "Resep gagal dipilih, coba lagi", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
-        super.onActivityResult(requestCode, resultCode, data);
 
-        //get the image's file location
-        filePath = getRealPathFromUri(data.getData(), PesanDenganResepActivity.this);
+            //get the image's file location
+            filePath = getRealPathFromUri(data.getData(), PesanDenganResepActivity.this);
+        } else {
+            Toast.makeText(this, "Tidak ada Foto dipilih", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     private String getRealPathFromUri(Uri imageUri, Activity activity){
-        @SuppressLint("Recycle") Cursor cursor = activity.getContentResolver().query(imageUri, null, null, null, null);
+        Cursor cursor = activity.getContentResolver().query(imageUri, null, null, null, null);
 
         if(cursor==null) {
             return imageUri.getPath();

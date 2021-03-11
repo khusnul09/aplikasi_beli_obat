@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +18,8 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
@@ -54,7 +54,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
             android:layout_marginEnd="5dp"
             android:text="@string/_1" />
 
@@ -77,7 +76,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
             android:layout_marginEnd="5dp"
             android:text="@string/_2" />
 
@@ -100,7 +98,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
             android:layout_marginEnd="5dp"
             android:text="@string/_3" />
 
@@ -131,7 +128,8 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:text="@string/setuju"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/tidak_setuju"
@@ -143,7 +141,8 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:text="@string/tidak_setuju"
-            android:textColor="#ED5454" />
+            android:textColor="#ED5454"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 

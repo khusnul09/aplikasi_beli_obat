@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BeliObatApp"
         android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@drawable/logoapp"
@@ -109,7 +110,6 @@
         <activity
             android:name=".SyaratDanKetentuanActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".DashboardActivity" />
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

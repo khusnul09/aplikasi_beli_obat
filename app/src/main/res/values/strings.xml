@@ -22,4 +22,166 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+
+    <!--  activity_admin  -->
+    <string name="_halaman_admin">Halaman Admin</string>
+    <string name="hi">Hi, </string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="pesan_resep">Pesanan Obat dengan Resep Dokter</string>
+    <string name="pesan_obat">Pesanan Obat Tanpa Resep Dokter</string>
+
+    <!-- activity_alamat_pasien -->
+    <string name="pengiriman">Pengiriman</string>
+    <string name="masukkan_alamat_pengiriman">Masukkan Alamat Pengiriman</string>
+
+    <!-- activity another-->
+    <string name="description">Description</string>
+    <string name="garis_miring">/</string>
+    <string name="ampul">Ampul</string>
+    <string name="title">Title</string>
+    <string name="produk_terkait">Produk Terkait</string>
+
+    <!-- Activity Bayar -->
+    <string name="info_pembayaran">Info Pembayaran</string>
+    <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="_0">0</string>
+    <string name="bayar_pesanan_sesuai_jumlah_di_atas">Bayar pesanan sesuai jumlah di atas</string>
+    <string name="nomor_rekening">Nomor Rekening :</string>
+    <string name="norek">0111028895</string>
+    <string name="upload_bukti_transfer_sekarang">Upload bukti transfer sekarang</string>
+    <string name="upload_bukti_transfer_nanti">Upload bukti transfer nanti</string>
+    <string name="detail_riwayat_belum_bayar">Detail Riwayat Belum Bayar</string>
+
+    <!-- Activity detail riwayat obat belum bayar-->
+    <string name="status_transaksi">Status Transaksi</string>
+    <string name="statusnya">Statusnya</string>
+    <string name="waktu_pemesanan">Waktu Pemesanan :</string>
+    <string name="waktu_pembayaran">Waktu Pembayaran :</string>
+    <string name="waktu_pengiriman">Waktu Pengiriman :</string>
+    <string name="data_penerima">Data Penerima</string>
+    <string name="nama">Nama</string>
+    <string name="nomor_handphone">Nomor Handphone</string>
+    <string name="no_tlf">no tlf</string>
+    <string name="detail_alamat">Detail Alamat</string>
+    <string name="pesanan">Pesanan</string>
+    <string name="total_pesanan">Total pesanan</string>
+    <string name="biaya_pengiriman">Biaya Pengiriman</string>
+    <string name="total_harus_bayar">Total Harus Bayar</string>
+    <string name="rp_35_000_00">Rp 35.000,00</string>
+    <string name="bayar">Bayar</string>
+    <string name="pesanan_diterima">Pesanan diterima</string>
+    <string name="detail_pesanan_obat">Detail Pesanan Obat</string>
+    <string name="pesanan_obat">Pesanan Obat</string>
+    <string name="bukti_pembayaran">Bukti Pembayaran</string>
+    <string name="antar_pesanan">Antar pesanan</string>
+    <string name="detail_pesanan_resep">Detail Pesanan Resep</string>
+    <string name="foto_resep">Foto Resep</string>
+    <string name="input_total_harga_rp">Input Total Harga (Rp)</string>
+    <string name="kirim">kirim</string>
+    <string name="detail_riwayat_paket_selesai">Detail Riwayat Paket Selesai</string>
+    <string name="pesanan_anda_sudah_selesai">Transaksi telah selesai</string>
+    <string name="alamat_pengiriman">Alamat Pengiriman</string>
+    <string name="informasi_pembayaran">Informasi Pembayaran</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="riwayat_resep">Riwayat Resep</string>
+    <string name="detail_riwayat_resep_selesai">Detail Riwayat Resep Selesai</string>
+    <string name="edit_data_penerima">Edit Data Penerima</string>
+    <string name="nama_penerima">Nama Penerima</string>
+    <string name="alamat_penerima">Alamat Penerima</string>
+    <string name="detail_alamat_penerima">Detail Alamat Penerima</string>
+    <string name="simpan">SIMPAN</string>
+    <string name="ganti_password">Ganti Password</string>
+    <string name="keranjang_belanja">Keranjang Belanja</string>
+    <string name="belum_ada_riwayat">Belum Ada Riwayat</string>
+    <string name="total">Total</string>
+    <string name="lanjut_bayar">Lanjut Bayar</string>
+    <string name="tambah_produk_lain">Tambah produk lain</string>
+    <string name="konfirmasi_pembayaran">Konfirmasi Pembayaran</string>
+    <string name="pilih_gambar">Pilih Gambar</string>
+    <string name="nama_pengirim_di_rekening_bank">Nama Pengirim di Rekening Bank</string>
+    <string name="masukkan_no_rekening_anda">Masukkan No. Rekening Anda</string>
+    <string name="_1234567890">1234567890***</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="cth_khusnul_khatima">cth : Khusnul Khatima</string>
+    <string name="cth_085255xxxxxx">cth : 085255XXXXXX</string>
+    <string name="no_handphone_aktif_dan_bisa_dihubungi">*(No Handphone aktif dan bisa dihubungi)</string>
+    <string name="cth_perumahan_griya_mawang_indah_blok_a2">cth : Perumahan Griya Mawang Indah Blok A2</string>
+    <string name="cth_samping_masjid_jami_abu_bakar_as_sidiq">cth : Samping Masjid Jami\' Abu Bakar As Sidiq</string>
+    <string name="keterangan_nama_jalan_no_rumah_dan_lain_lain">*(Keterangan nama jalan, no rumah, dan lain-lain)</string>
+    <string name="rincian_harga">Rincian Harga</string>
+    <string name="buat_pesanan">Buat pesanan</string>
+    <string name="unggah_resep">Unggah Resep</string>
+    <string name="silahkan_unggah_foto_resep_anda">Silahkan Unggah Foto Resep Anda</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="nama_user">Nama User</string>
+    <string name="beli_obat">Beli Obat</string>
+    <string name="resep_dokter">Resep Dokter</string>
+    <string name="pesan_obat_dengan_menggunakan_resep_dokter">Pesan obat dengan menggunakan Resep Dokter</string>
+    <string name="pilih_obat_tanpa_resep_dokter">Pilih Obat Tanpa Resep Dokter</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="masukkan_keranjang">Masukkan keranjang</string>
+    <string name="pesanan_obat_kosong">Pesanan Obat Kosong</string>
+    <string name="pesanan_resep">Pesanan Resep</string>
+    <string name="pesanan_resep_kosong">Pesanan Resep Kosong</string>
+    <string name="profil">Profil</string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="_085255513">085255513***</string>
+    <string name="jalan_mangga_no_24_gowa_bontomarannu">Jalan Mangga No 24 Gowa, Bontomarannu</string>
+    <string name="khusnulkhatima09_gmail_com">khusnulkhatima09@gmail.com</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="keluar">Keluar</string>
+    <string name="kirim_resep">Kirim Resep</string>
+    <string name="resep_sudah_dikirim_ke_apoteker">Resep sudah dikirim ke Apoteker</string>
+    <string name="tunggu_konfirmasi_selanjutnya_pastikan_nomor_anda_aktif_dan_bisa_dihubungi">Tunggu konfirmasi selanjutnya. Pastikan nomor anda aktif dan bisa dihubungi</string>
+    <string name="selesai">Selesai</string>
+
+    <!-- Activity riwayat -->
+    <string name="riwayat_pesanan">Riwayat Pesanan</string>
+    <string name="tab_riwayat_resep">RESEP</string>
+    <string name="tab_riwayat_paket">PAKET</string>
+    <string name="tab_riwayat_selesai">SELESAI</string>
+
+    <!-- Activity fragment_ftab -->
+    <string name="riwayat_belanja_resep_kosong">Riwayat Belanja Resep Kosong</string>
+    <string name="riwayat_belanja_obat_kosong">Riwayat Belanja Obat Kosong</string>
+    <string name="riwayat_selesai_kosong">Riwayat Selesai Kosong</string>
+
+    <!-- Activity fragment_ganti_password_baru -->
+    <string name="masukkan_password_baru">Masukkan Password Baru</string>
+    <string name="ulangi_password_baru">Ulangi Password Baru</string>
+
+    <!-- Activity fragment_ganti_password_lama -->
+    <string name="masukkan_password_lama">Masukkan Password Lama</string>
+
+    <!-- Activity progres dialog -->
+    <string name="loading">Loading</string>
+
+    <!-- Activity rowchart -->
+    <string name="kurang">-</string>
+    <string name="tambah">+</string>
+
+    <!-- Activity rowpesanobatadmin -->
+    <string name="invoice">Invoice</string>
+    <string name="waktu">Waktu</string>
+    <string name="lihat_detail">LIHAT DETAIL</string>
+
+    <!-- Activity rowpesanresepadmin -->
+    <string name="nama_pemesan">Nama Pemesan</string>
+
+    <!-- Activity rowriwayat -->
+    <string name="detail">DETAIL</string>
+
+    <!-- Activity rowriwayatbelumbayar -->
+    <string name="status">Status</string>
+    <string name="jumlah_bayar">Jumlah Bayar</string>
+
+    <!-- Activity rowriwayatresep -->
+    <string name="menunggu_konfirmasi">Menunggu Konfirmasi</string>
+    <string name="pagar">#</string>
+
+    <!-- Activity row -->
+    <string name="garing">/ </string>
+    <string name="harga_obat">Harga Obat</string>
 </resources>
