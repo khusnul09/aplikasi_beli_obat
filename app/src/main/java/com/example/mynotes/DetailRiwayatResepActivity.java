@@ -22,15 +22,11 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class DetailRiwayatResepActivity extends AppCompatActivity {
-
-    String urlSelesaikan = "https://obats.000webhostapp.com/api/user/selesaikan";
 
     TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, TotalHarga, waktu, waktuBayar, waktuKirim, hargaApoteker;
     String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
@@ -80,14 +76,11 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
         });
 
         Kembali = findViewById(R.id.iv_kembali_fragmant_resep);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment resep
-                intent.putExtra("fragmentItem", 0);
-                startActivity(intent);
-                finish();
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment resep
+            intent.putExtra("fragmentItem", 0);
+            startActivity(intent);
+            finish();
         });
 
 
@@ -137,14 +130,11 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
                 TotalPembayaranResep.setVisibility(View.VISIBLE);
                 Viewresep.setVisibility(View.VISIBLE);
                 InfoRekBank.setVisibility(View.VISIBLE);
-                InfoRekBank.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(DetailRiwayatResepActivity.this, InfoPembayaranResepActivity.class);
-                        intent.putExtra("harganya", Harga);
-                        intent.putExtra("invoice", Invoice);
-                        startActivity(intent);
-                    }
+                InfoRekBank.setOnClickListener(view -> {
+                    Intent intent1 = new Intent(DetailRiwayatResepActivity.this, InfoPembayaranResepActivity.class);
+                    intent1.putExtra("harganya", Harga);
+                    intent1.putExtra("invoice", Invoice);
+                    startActivity(intent1);
                 });
 
             }
@@ -159,9 +149,7 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
             InfoRekBank.setVisibility(View.GONE);
             PesananDiterima.setVisibility(View.VISIBLE);
             EditDataPenerima.setVisibility(View.GONE);
-            PesananDiterima.setOnClickListener(v -> {
-                selesaikan();
-            });
+            PesananDiterima.setOnClickListener(v -> selesaikan());
         }else if (Status == 4) {
             statusdesc = "Pesanan diterima";
             InfoRekBank.setVisibility(View.GONE);
@@ -176,6 +164,8 @@ public class DetailRiwayatResepActivity extends AppCompatActivity {
     }
 
     private void selesaikan() {
+        String urlSelesaikan = "https://obats.000webhostapp.com/index.php/api/Selesaikan";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Menyelesaikan Order...");
         progressDialog.setCancelable(false);

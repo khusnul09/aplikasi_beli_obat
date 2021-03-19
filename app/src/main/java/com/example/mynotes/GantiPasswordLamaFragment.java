@@ -22,15 +22,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 public class GantiPasswordLamaFragment extends Fragment {
 
     Button lanjutkan;
     TextInputEditText textInputEditText;
 
-    String urlCekPassLama = "https://obats.000webhostapp.com/api/user/cekpassword";
     String email, passlama;
 
     @Override
@@ -54,8 +52,12 @@ public class GantiPasswordLamaFragment extends Fragment {
     }
 
     public void cekPasswordLama() {
-        passlama = textInputEditText.getText().toString();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlCekPassLama, response -> {
+        passlama = Objects.requireNonNull(textInputEditText.getText()).toString();
+
+        String urlCekPassLama = "https://obats.000webhostapp.com/index.php/api/Cek_password?email="
+                + email + "&password_lama=" + passlama;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlCekPassLama, response -> {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 Log.d("khatima", response);
@@ -72,17 +74,8 @@ public class GantiPasswordLamaFragment extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-        }, error -> {}) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("email", email);
-                param.put("password_lama", passlama);
-                return param;
-            }
-        };
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+        }, error -> {});
+        RequestQueue queue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         queue.add(stringRequest);
     }
 }

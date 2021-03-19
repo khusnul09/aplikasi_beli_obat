@@ -4,15 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,17 +23,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
 
-    String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
-
     TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, harga, waktuBayar, waktuKirim;
-    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
+    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Invoice,
             Harga, TotalHarga, Waktu, WaktuBayar, WaktuKirim;
     int Status;
-    Button Selesai;
     ImageView Kembali;
 
     AdapterDetailTanpaResep adapterDetailTanpaResep;
@@ -51,14 +43,11 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
 
 
         Kembali = findViewById(R.id.iv_kembali_riwayat_obat_selesai);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
-                intent.putExtra("fragmentItem", 2);
-                startActivity(intent);
-                finish();
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
+            intent.putExtra("fragmentItem", 2);
+            startActivity(intent);
+            finish();
         });
 
         listObatTanpaResep = new ArrayList<>();
@@ -113,7 +102,10 @@ public class DetailRiwayatObatSelesaiActivity extends AppCompatActivity {
     }
 
     public void reqDetail(){
-        StringRequest request = new StringRequest(Request.Method.POST, urlDetail,
+
+        String urlDetail = "https://obats.000webhostapp.com/index.php/api/Detail?invoice=" + Invoice;
+
+        StringRequest request = new StringRequest(Request.Method.GET, urlDetail,
                 response -> {
                     Log.i("khatima", response);
                     try {

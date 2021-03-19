@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -36,17 +36,14 @@ import java.util.Objects;
 
 public class DetailPesananObatActivity extends AppCompatActivity {
 
-    String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
-    String urlAntarPesananObat = "https://obats.000webhostapp.com/api/user/antarpesananresep";
-
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar;
-    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar, BuktiBayar, Harga, Waktu, WaktuBayar, TotalHarga, WaktuKirim, strHarga, Token;
+    TextView namaPenerima, handphone, alamat, detailAlamat, invoice, totalHarga;
+    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Invoice,
+            BuktiBayar, TotalHarga, WaktuKirim, Token;
     String Status;
-    LinearLayout TextBuktiPembayaran, BuktiPembayaran,  WaktuPembayaran, WaktuPengiriman;
-    Button Kemas, Antar;
+    LinearLayout TextBuktiPembayaran, BuktiPembayaran;
+    Button Antar;
     View view;
-    ImageView img, buktiBayar, Kembali;
+    ImageView buktiBayar, Kembali;
 
     AdapterDetailTanpaResep adapterDetailTanpaResep;
     List<ModelDetailTanpaResep> listObatTanpaResep;
@@ -54,19 +51,17 @@ public class DetailPesananObatActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_pesanan_obat);
 
         Kembali = findViewById(R.id.iv_kembali_pesanan_obat);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PesananObatAdminActivity.class);
-                startActivity(intent);
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PesananObatAdminActivity.class);
+            startActivity(intent);
 
-            }
         });
 
 //        Kemas = findViewById(R.id.btn_kemas_pesanan_obat);
@@ -78,12 +73,7 @@ public class DetailPesananObatActivity extends AppCompatActivity {
 //        });
 
         Antar = findViewById(R.id.btn_antar_pesanan_obat);
-        Antar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AntarPesananObat();
-            }
-        });
+        Antar.setOnClickListener(v -> AntarPesananObat());
 
         Calendar c = Calendar.getInstance();
 
@@ -170,9 +160,10 @@ public class DetailPesananObatActivity extends AppCompatActivity {
     }
 
     public void reqDetail() {
-        StringRequest request = new StringRequest(Request.Method.POST, urlDetail,
+        String urlDetail = "https://obats.000webhostapp.com/index.php/api/Detail?invoice=" + Invoice;
+
+        StringRequest request = new StringRequest(Request.Method.GET, urlDetail,
                 response -> {
-                    Log.i("khatima", response);
                     try {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
@@ -238,6 +229,9 @@ public class DetailPesananObatActivity extends AppCompatActivity {
 //    }
 
     private void AntarPesananObat() {
+
+        String urlAntarPesananObat = "https://obats.000webhostapp.com/index.php/api/Antar_pesanan_resep";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Kirim...");
         progressDialog.setCancelable(false);

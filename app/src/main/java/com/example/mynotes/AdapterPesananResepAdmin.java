@@ -15,14 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterPesananResepAdmin extends RecyclerView.Adapter<AdapterPesananResepAdmin.ViewHolder> {
 
-    private LayoutInflater inflater;
-    private List<ModelPesananResepAdmin> listpesananresep;
-    private Context context;
+    private final LayoutInflater inflater;
+    private final List<ModelPesananResepAdmin> listpesananresep;
+    private final Context context;
     private OnItemClick onItemCLick;
 
     public void setClickListener(OnItemClick onItemClick) {

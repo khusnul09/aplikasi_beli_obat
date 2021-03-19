@@ -33,14 +33,9 @@ import java.util.Objects;
 
 public class DetailPesananResepActivity extends AppCompatActivity {
 
-    //NO
-
-    String urlAntarPesanan = "https://obats.000webhostapp.com/api/user/antarpesananresep";
-    String urlKrmHarga = "https://obats.000webhostapp.com/api/user/edittotalbayarresep";
-
-    TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, waktu, waktuBayar, totalBayar;
-    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
-            Gambar,BuktiBayar, Harga, Waktu, WaktuBayar, WaktuKirim, totalHarga, strHarga, Token;
+    TextView namaPenerima, handphone, alamat, detailAlamat, invoice, totalBayar;
+    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Invoice,
+            Gambar,BuktiBayar, Harga, WaktuKirim, totalHarga, strHarga, Token;
     int Status;
     LinearLayout TextBuktiPembayaran, BuktiPembayaran, TotalHarusBayar;
     Button Kirim, Antar;
@@ -71,28 +66,15 @@ public class DetailPesananResepActivity extends AppCompatActivity {
 
 
         Kirim = findViewById(R.id.btn_krm_total_bayar_admin);
-        Kirim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                KirimHarga();
-            }
-        });
+        Kirim.setOnClickListener(v -> KirimHarga());
 
         Antar = findViewById(R.id.btn_antar_pesanan_resep);
-        Antar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AntarPesananResep();
-            }
-        });
+        Antar.setOnClickListener(v -> AntarPesananResep());
 
         Kembali = findViewById(R.id.iv_kembali_pesanan_resep);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), PesananResepAdminActivity.class);
-                startActivity(intent);
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), PesananResepAdminActivity.class);
+            startActivity(intent);
         });
 
         etharga.addTextChangedListener(new TextWatcher() {
@@ -103,7 +85,7 @@ public class DetailPesananResepActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (etharga.getText().toString()=="") {
+                if (etharga.getText().toString().equals("")) {
                     Kirim.setVisibility(View.INVISIBLE);
                 } else {
                     Kirim.setVisibility(View.VISIBLE);
@@ -206,6 +188,8 @@ public class DetailPesananResepActivity extends AppCompatActivity {
     }
 
     private void KirimHarga() {
+        String urlKrmHarga = "https://obats.000webhostapp.com/index.php/api/Edit_total_bayar_resep";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Kirim...");
         progressDialog.setCancelable(false);
@@ -253,6 +237,8 @@ public class DetailPesananResepActivity extends AppCompatActivity {
     }
 
     private void AntarPesananResep() {
+        String urlAntarPesanan = "https://obats.000webhostapp.com/index.php/api/Antar_pesanan_resep";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Kirim...");
         progressDialog.setCancelable(false);

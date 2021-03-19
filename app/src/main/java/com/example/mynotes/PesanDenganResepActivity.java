@@ -1,11 +1,9 @@
 package com.example.mynotes;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,18 +17,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.cloudinary.Cloudinary;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
-import com.cloudinary.utils.ObjectUtils;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Map;
 
 public class PesanDenganResepActivity extends AppCompatActivity {
@@ -45,21 +39,11 @@ public class PesanDenganResepActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     String filePath;
-    Map config = new HashMap();
-
-    private void configCloudinary() {
-        config.put("cloud_name", "beliobatid");
-        config.put("api_key", "832196155542743");
-        config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
-        MediaManager.init(PesanDenganResepActivity.this, config);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesan_dengan_resep);
-
-        //configCloudinary();
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 

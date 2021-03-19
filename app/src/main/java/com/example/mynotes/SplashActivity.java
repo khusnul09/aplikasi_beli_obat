@@ -7,33 +7,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.cloudinary.android.MediaManager;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class SplashActivity extends AppCompatActivity {
-
-    Map config = new HashMap();
-
-    private void configCloudinary() {
-        config.put("cloud_name", "beliobatid");
-        config.put("api_key", "832196155542743");
-        config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
-        MediaManager.init(getApplicationContext(), config);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        /*if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "isInit")) {
-            Log.i("khatima", "isInit true");
-        } else {
-            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
-        }*/
-        //configCloudinary();
 
         int waktuLoad = 4000;
 

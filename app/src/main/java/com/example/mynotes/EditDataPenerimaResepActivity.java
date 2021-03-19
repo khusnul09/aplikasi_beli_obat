@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,13 +22,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class EditDataPenerimaResepActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     TextInputEditText editNamaPenerima, editNoPenerima, editAlamatPenerima, editDetailAlamatPenerima;
     ImageView backEditProfil;
-    private static String url_update_data_penerima = "https://obats.000webhostapp.com/api/user/updatedatapenerima";
     Button SimpanProfil;
     String invoice, email, namaPenerimaEdit, handphonePenerimaEdit, alamatPenerimaEdit, detailPenerimaEdit;
     String NamaPenerimaResepBaru, NoPenerimaResepBaru,AlamatPenerimaResepBaru, DetailAlamatPenerimaResepBaru;
@@ -41,12 +40,7 @@ public class EditDataPenerimaResepActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_data_penerima_resep);
 
         backEditProfil = findViewById(R.id.iv_kembali_edit_data_resep);
-        backEditProfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        backEditProfil.setOnClickListener(v -> onBackPressed());
 
         SimpanProfil = findViewById(R.id.btn_simpan_edit_data_penerima_resep);
         SimpanProfil.setOnClickListener(v -> editData());
@@ -73,15 +67,16 @@ public class EditDataPenerimaResepActivity extends AppCompatActivity {
     }
 
     private void editData() {
+        String url_update_data_penerima = "https://obats.000webhostapp.com/index.php/api/Update_data_penerima";
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Update Data Penerima...");
         progressDialog.show();
 
-        NamaPenerimaResepBaru = editNamaPenerima.getText().toString();
-        NoPenerimaResepBaru = editNoPenerima.getText().toString();
-        AlamatPenerimaResepBaru = editAlamatPenerima.getText().toString();
-        DetailAlamatPenerimaResepBaru = editDetailAlamatPenerima.getText().toString();
+        NamaPenerimaResepBaru = Objects.requireNonNull(editNamaPenerima.getText()).toString();
+        NoPenerimaResepBaru = Objects.requireNonNull(editNoPenerima.getText()).toString();
+        AlamatPenerimaResepBaru = Objects.requireNonNull(editAlamatPenerima.getText()).toString();
+        DetailAlamatPenerimaResepBaru = Objects.requireNonNull(editDetailAlamatPenerima.getText()).toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_data_penerima, response -> {
             Log.i("khatima", response);

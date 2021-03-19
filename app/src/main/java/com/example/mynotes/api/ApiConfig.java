@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiConfig {
-    public static String BASE_URL = "https://obats.000webhostapp.com/api/";
+    public static String BASE_URL = "https://obats.000webhostapp.com/index.php/api/";
 
     public Retrofit doRequest() {
         Retrofit.Builder builder = new Retrofit.Builder();

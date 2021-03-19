@@ -7,7 +7,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,35 +40,26 @@ public class BayarActivity extends AppCompatActivity {
         });
 
         uploadSekarang = findViewById(R.id.btn_upload_sekarang_obat);
-        uploadSekarang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentSekarang = new Intent(getApplicationContext(), KonfirmasiPembayaranActivity.class);
-                intentSekarang.putExtra("Total", TotalHarga);
-                intentSekarang.putExtra("invoice", Invoice);
-                startActivity(intentSekarang);
-            }
+        uploadSekarang.setOnClickListener(v -> {
+            Intent intentSekarang = new Intent(getApplicationContext(), KonfirmasiPembayaranActivity.class);
+            intentSekarang.putExtra("Total", TotalHarga);
+            intentSekarang.putExtra("invoice", Invoice);
+            startActivity(intentSekarang);
         });
 
         UploadNantiObat = findViewById(R.id.btn_upload_nanti_obat);
-        UploadNantiObat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment 1
-                intentUploadNanti.putExtra("fragmentItem", 1);
-                startActivity(intentUploadNanti);
-            }
+        UploadNantiObat.setOnClickListener(v -> {
+            Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment 1
+            intentUploadNanti.putExtra("fragmentItem", 1);
+            startActivity(intentUploadNanti);
         });
 
         Kembali = findViewById(R.id.iv_kembali_fragmant_obb);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Kembali.setOnClickListener(v -> {
 //                Intent intentUploadNanti = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment 1
 //                intentUploadNanti.putExtra("fragmentItem", 1);
 //                startActivity(intentUploadNanti);
-                onBackPressed();
-            }
+            onBackPressed();
         });
 
         totalHarga = findViewById(R.id.tv_nominal_tot_bayar_obb);

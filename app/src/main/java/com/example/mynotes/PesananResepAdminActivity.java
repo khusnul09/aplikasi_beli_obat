@@ -28,8 +28,6 @@ import java.util.Objects;
 
 public class PesananResepAdminActivity extends AppCompatActivity {
 
-    String urlpesanresepanadmin = "https://obats.000webhostapp.com/api/datapesananresep";
-
     AdapterPesananResepAdmin adapterPesananResepAdmin;
     List<ModelPesananResepAdmin> listmodelresepadmin;
     RecyclerView recyclerView;
@@ -43,30 +41,19 @@ public class PesananResepAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pesanan_resep_admin);
 
         Kembali = findViewById(R.id.iv_kembai_home_admin);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
-                startActivity(intent);
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+            startActivity(intent);
 
-            }
         });
 
         SwipeRefresh = findViewById(R.id.swipe_pesanan_resep); //refresh
         SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
-        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        SwipeRefresh.setRefreshing(false);
+        SwipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            SwipeRefresh.setRefreshing(false);
 
-                        dataPesananAdmin();
-                    }
-                }, 4000);
-            }
-        });
+            dataPesananAdmin();
+        }, 4000));
 
 
         Log.i("khatima", "ini halaman pesanan resep");
@@ -104,6 +91,8 @@ public class PesananResepAdminActivity extends AppCompatActivity {
     }
 
     private void dataPesananAdmin() {
+        String urlpesanresepanadmin = "https://obats.000webhostapp.com/index.php/api/Data_pesanan_resep";
+
         StringRequest request = new StringRequest(Request.Method.GET, urlpesanresepanadmin,
                 response -> {
                     Log.i("khatima", response);

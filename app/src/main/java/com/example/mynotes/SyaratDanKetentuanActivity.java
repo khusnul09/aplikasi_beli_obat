@@ -6,14 +6,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -25,8 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SyaratDanKetentuanActivity extends AppCompatActivity {
-
-    private static final String urlsnk = "https://obats.000webhostapp.com/api/user/snk";
 
     ProgressDialog progressDialog;
     Button buttonSetuju;
@@ -41,25 +36,21 @@ public class SyaratDanKetentuanActivity extends AppCompatActivity {
         userEmail = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
         buttonSetuju = findViewById(R.id.setuju);
-        buttonSetuju.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snk = "setuju";
-                cekSnK();
-            }
+        buttonSetuju.setOnClickListener(v -> {
+            snk = "setuju";
+            cekSnK();
         });
 
         buttonTidakSetuju = findViewById(R.id.tidak_setuju);
-        buttonTidakSetuju.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snk = "belum";
-                cekSnK();
-            }
+        buttonTidakSetuju.setOnClickListener(v -> {
+            snk = "belum";
+            cekSnK();
         });
     }
 
     private void cekSnK() {
+        final String urlsnk = "https://obats.000webhostapp.com/index.php/api/Snk";
+
         progressDialog = new ProgressDialog(SyaratDanKetentuanActivity.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
@@ -67,38 +58,35 @@ public class SyaratDanKetentuanActivity extends AppCompatActivity {
                 android.R.color.transparent
         );
         StringRequest request = new StringRequest(Request.Method.POST, urlsnk,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("khatima", response);
-                        try {
-                            JSONObject object = new JSONObject(response);
-                            JSONArray array = object.getJSONArray("data");
-                            for (int i = 0; i < array.length(); i++) {
-                                JSONObject obj = array.getJSONObject(i);
-                                nilaiSnk = obj.getString("snk");
-                            }
-                            Log.i("khatima", nilaiSnk);
-                            if (nilaiSnk.equals("setuju")) {
-                                String role = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_role");
-                                if (role.equals("user")) {
-                                    Intent intent = new Intent(SyaratDanKetentuanActivity.this, PesanObatActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else if (role.equals("admin")) {
-                                    Toast.makeText(getApplicationContext(), "ke halaman admin nanti", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", "");
-                                SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", "");
-                                Intent intent = new Intent(SyaratDanKetentuanActivity.this, LoginActivity.class);
+                response -> {
+                    Log.i("khatima", response);
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        JSONArray array = object.getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject obj = array.getJSONObject(i);
+                            nilaiSnk = obj.getString("snk");
+                        }
+                        Log.i("khatima", nilaiSnk);
+                        if (nilaiSnk.equals("setuju")) {
+                            String role = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_role");
+                            if (role.equals("user")) {
+                                Intent intent = new Intent(SyaratDanKetentuanActivity.this, PesanObatActivity.class);
                                 startActivity(intent);
                                 finish();
+                            } else if (role.equals("admin")) {
+                                Toast.makeText(getApplicationContext(), "ke halaman admin nanti", Toast.LENGTH_SHORT).show();
                             }
-                            progressDialog.dismiss();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        } else {
+                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", "");
+                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", "");
+                            Intent intent = new Intent(SyaratDanKetentuanActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
+                        progressDialog.dismiss();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
                 error -> {

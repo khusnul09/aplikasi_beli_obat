@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -30,8 +29,6 @@ public class    EditProfilActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     TextInputEditText editNama, editNo, editAlamat;
     ImageView backEditProfil;
-    private static String url_read = "https://obats.000webhostapp.com/api/user/profil";
-    private static String url_edit_user = "https://obats.000webhostapp.com/api/user/edituser";
     Button SimpanProfil;
     String email, namaEdit, handphoneEdit, alamatEdit;
 
@@ -41,13 +38,10 @@ public class    EditProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profil);
 
         backEditProfil = findViewById(R.id.iv_kembali_edit_profil);
-        backEditProfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), ProfilActivity.class);
-                startActivity(intent);
+        backEditProfil.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), ProfilActivity.class);
+            startActivity(intent);
 
-            }
         });
 
         SimpanProfil = findViewById(R.id.bt_simpan_edit_profil);
@@ -63,7 +57,9 @@ public class    EditProfilActivity extends AppCompatActivity {
     }
 
     private void editProfil() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_read, response -> {
+        String url_read = "https://obats.000webhostapp.com/index.php/api/Profil?email=" + email;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url_read, response -> {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -77,21 +73,17 @@ public class    EditProfilActivity extends AppCompatActivity {
             }
 
         }, error -> {
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("email", email);
-                return param;
-            }
-        };
+        });
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(stringRequest);
     }
 
     private void updateUser() {
+        String url_edit_user = "https://obats.000webhostapp.com/index.php/api/Edit_user";
+
         progressDialog = new ProgressDialog(EditProfilActivity.this);
         progressDialog.show();
+        progressDialog.setCancelable(false);
         progressDialog.setContentView(R.layout.progress_dialog);
         Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(
                 android.R.color.transparent
@@ -102,7 +94,7 @@ public class    EditProfilActivity extends AppCompatActivity {
         alamatEdit = Objects.requireNonNull(editAlamat.getText()).toString().trim();
 
         StringRequest request = new StringRequest(Request.Method.POST, url_edit_user, response -> {
-            Log.i("khatima", response);
+            Log.i("EditProfil: response", response);
             try {
                 JSONObject object = new JSONObject(response);
                 if (object.optString("respon").equals("berhasil")) {

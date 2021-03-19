@@ -27,14 +27,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class ftab1 extends Fragment {
 
-    String url = "https://obats.000webhostapp.com/api/user/riwayatresep";
+//    String url = "https://obats.000webhostapp.com/api/user/riwayatresep";
+
     AdapterRiwayatResep adapterRiwayarResep;
     private List<ModelRiwayatResep> listmodelresep;
     private SwipeRefreshLayout SwipeRefresh;
@@ -53,19 +52,11 @@ public class ftab1 extends Fragment {
 
         SwipeRefresh = view.findViewById(R.id.swipe_resep); //refresh
         SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
-        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        SwipeRefresh.setRefreshing(false);
+        SwipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            SwipeRefresh.setRefreshing(false);
 
-                        riwayatResepReq();
-                    }
-                }, 4000);
-            }
-        });
+            riwayatResepReq();
+        }, 4000));
 
 
         kosong = view.findViewById(R.id.teks_kosong);
@@ -105,9 +96,11 @@ public class ftab1 extends Fragment {
     }
 
     public void riwayatResepReq(){
-        StringRequest request = new StringRequest(Request.Method.POST, url,
+        String url = "https://obats.000webhostapp.com/index.php/api/Riwayat_resep?email=" + email;
+
+        Log.i("ftab1: url", url);
+        StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
-                    Log.i("khatima", response);
                     try {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
@@ -143,14 +136,7 @@ public class ftab1 extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Log.i("Khusnul", String.valueOf(error))) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("email", email);
-                return param;
-            }
-        };
+                }, error -> Log.i("Khusnul", String.valueOf(error)));
         RequestQueue queue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         queue.add(request);
     }

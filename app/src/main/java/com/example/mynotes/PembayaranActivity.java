@@ -28,8 +28,6 @@ import java.util.Map;
 
 public class PembayaranActivity extends AppCompatActivity {
 
-    private static final String urlUpdateStatus = "https://obats.000webhostapp.com//api/user/updatestatusresi";
-
     Button UploadSekarang, UploadNanti;
     TextView NomorRekening;
     ImageView Copy ;
@@ -87,6 +85,8 @@ public class PembayaranActivity extends AppCompatActivity {
     }
 
     private void updateStatus() {
+        final String urlUpdateStatus = "https://obats.000webhostapp.com/index.php/api/Update_status_resi";
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
         progressDialog.show();

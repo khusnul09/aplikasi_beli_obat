@@ -15,6 +15,7 @@
         android:background="@color/base_red_color">
 
         <ImageView
+            android:id="@+id/iv_back_konfirmasi_resep"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_back"
@@ -204,14 +205,28 @@
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tv_norek_resep"
+                    <LinearLayout
+                        android:id="@+id/ll_mnrar"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
-                        android:drawableEnd="@drawable/ic_arrow_right"
                         android:gravity="center_vertical"
-                        android:text="@string/_1234567890" />
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:id="@+id/tv_norek_resep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1234567890"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/et_rekening_resep"

@@ -33,9 +33,6 @@ import java.util.Objects;
 
 public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
 
-    String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
-    String urlSelesaikan = "https://obats.000webhostapp.com/api/user/selesaikan";
-
     TextView waktu, namaPenerima, handphone, alamat, detailAlamat, harga, totalHarga, status, invoice, waktuBayar, waktuKirim;
     String Invoice, Waktu, NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Harga, TotalHarga, Status, WaktuBayar, WaktuKirim;
     ImageView Kembali, EditDataPenerima;
@@ -151,25 +148,24 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
-        PesananDiterima.setOnClickListener(v -> {
-            selesaikan2();
-        });
+        PesananDiterima.setOnClickListener(v -> selesaikan2());
 
         Kembali = findViewById(R.id.iv_kembali_fragmant_belum_bayar);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment resep
-                intent.putExtra("fragmentItem", 1);
-                startActivity(intent);
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent12 = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment resep
+            intent12.putExtra("fragmentItem", 1);
+            startActivity(intent12);
         });
+
+        Log.i("DetailRiwayat: invoice", Invoice);
     }
 
     public void reqDetail(){
-        StringRequest request = new StringRequest(Request.Method.POST, urlDetail,
+        String urlDetail = "https://obats.000webhostapp.com/index.php/api/Detail?invoice=" + Invoice;
+
+        StringRequest request = new StringRequest(Request.Method.GET, urlDetail,
                 response -> {
-                    Log.i("khatima", response);
+                    Log.i("DetailRiwayat: response", response);
                     try {
                         Log.i("khatima", "try dijalankan");
                         JSONObject objectResponse = new JSONObject(response);
@@ -189,19 +185,14 @@ public class DetailRiwayatObatBelumBayarActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Log.i("Khusnul", String.valueOf(error))) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("invoice", Invoice);
-                return param;
-            }
-        };
+                }, error -> Log.i("Khusnul", String.valueOf(error)));
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         queue.add(request);
     }
 
     private void selesaikan2() {
+        String urlSelesaikan = "https://obats.000webhostapp.com/index.php/api/Selesaikan";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Menyelesaikan Order...");
         progressDialog.show();

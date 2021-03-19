@@ -26,8 +26,6 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String url = "https://obats.000webhostapp.com/api/user/login";
-
     ProgressDialog progressDialog;
     private TextInputLayout etEmail, etPassword;
     TextView tvDaftar;
@@ -54,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginValidation() {
+        final String url = "https://obats.000webhostapp.com/index.php/api/Login";
+
         if (Utils.inputValidation(etEmail)) {
             Log.i("Khatima", "if Utils.inputValidation(etEmail) dijalankan");
             etEmail.setErrorEnabled(false);
@@ -113,33 +113,9 @@ public class LoginActivity extends AppCompatActivity {
                                             finish();
                                             break;
                                     }
-
-
-
-                                    /*if (statsnk.equals("setuju")) {
-                                        Toast.makeText(getApplicationContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
-                                        SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", true);
-                                        switch (role) {
-                                            case "user":
-                                                Intent intent = new Intent(LoginActivity.this, PesanObatActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                                break;
-                                            case "admin":
-                                                Intent intentAdmin = new Intent(LoginActivity.this, AdminActivity.class);
-                                                startActivity(intentAdmin);
-                                                finish();
-                                                break;
-                                        }
-
-                                    } else if (statsnk.equals("belum")) {
-                                        Intent intent = new Intent(LoginActivity.this, SyaratDanKetentuanActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }*/
-                                } else if (jsonObject.getString("status").equals("gagal")){
+                                } else if (jsonObject.getString("status").equals("0")){
                                     Log.i("Khatima", "else dijalankan");
-                                    Toast.makeText(getApplicationContext(), "User tidak ditemukan!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Username atau Password salah", Toast.LENGTH_SHORT).show();
                                 }
                                 progressDialog.dismiss();
 

@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,13 +17,10 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,8 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PengirimanActivity extends AppCompatActivity {
-
-    private static final String urlSimpanPesananObat = "https://obats.000webhostapp.com//api/user/simpanpesantanparesep";
 
     Button buatPesanan;
     RecyclerView mRecyclerViewCart;
@@ -124,6 +117,8 @@ public class PengirimanActivity extends AppCompatActivity {
     }
 
     private void simpanPesananObat() {
+        final String urlSimpanPesananObat = "https://obats.000webhostapp.com/index.php/api/Simpan_pesan_tanpa_resep";
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Mengirim...");
         progressDialog.setCancelable(false);
@@ -177,7 +172,10 @@ public class PengirimanActivity extends AppCompatActivity {
                         }
 
                         progressDialog.dismiss();
-                    }, error -> Toast.makeText(getApplicationContext(), "error: "+ error.toString(), Toast.LENGTH_LONG).show()) {
+                    }, error -> {
+                Toast.makeText(getApplicationContext(), "error: "+ error.toString(), Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }) {
                 @Override
                 protected Map<String, String> getParams(){
                     Map<String, String> params = new HashMap<>();
@@ -206,20 +204,5 @@ public class PengirimanActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(PengirimanActivity.this);
             requestQueue.add(stringRequest);
         }
-    }
-
-    public void getApriori() {
-
-        String url = "https://obats.000webhostapp.com//api/user/tokenxadmin";
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        @SuppressLint("CheckResult") JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                response -> {
-            Log.d("khatima", response.optString("token"));
-                }, error -> {
-            error.printStackTrace();
-            Toast.makeText(this, "Terjadi masalah.", Toast.LENGTH_SHORT).show();
-        });
-        requestQueue.add(jsonObjectRequest);
     }
 }

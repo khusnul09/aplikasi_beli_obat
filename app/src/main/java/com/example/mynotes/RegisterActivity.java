@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,8 +24,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
-
-    private static final String url = "https://obats.000webhostapp.com//api/user/adduser";
 
     ProgressDialog progressDialog;
     Button buttonDaftar;
@@ -81,6 +78,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void login() {
+        final String url = "https://obats.000webhostapp.com/index.php/api/Add_user";
+
         progressDialog = new ProgressDialog(RegisterActivity.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
@@ -98,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                 response -> {
                     try {
                         JSONObject object = new JSONObject(response);
+                        Log.d("Register: respon", response);
                         progressDialog.dismiss();
                         if (object.getString("text").equals("berhasil")) {
                             Toast.makeText(getApplicationContext(), "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();

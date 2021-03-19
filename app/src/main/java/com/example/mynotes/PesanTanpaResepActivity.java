@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,7 +12,6 @@ import retrofit2.Response;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,9 +20,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,25 +31,15 @@ import com.example.mynotes.api.ApiConfig;
 import com.example.mynotes.api.ApiInterface;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.mynotes.R.id.search;
-import static java.security.AccessController.getContext;
-
 public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdapter.ICart {
 
-    private static final String urlKeranjang = "https://obats.000webhostapp.com//api/user/keranjang";
-
-    // String url = "https://obats.000webhostapp.com/api/obats";
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
     Button btnKeranjang;
@@ -61,8 +47,6 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     HashMap<String, Integer> itemsCart = new HashMap<>();
     ArrayList<Model> models = new ArrayList<>();
     String email_user;
-
-    SharedPreferences preferences;
 
     Gson gson;
 
@@ -282,6 +266,8 @@ public class PesanTanpaResepActivity extends AppCompatActivity implements MyAdap
     }
 
     private void simpanKeranjang() {
+        final String urlKeranjang = "https://obats.000webhostapp.com/index.php/api/Keranjang";
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Mengirim...");
         progressDialog.setCancelable(false);

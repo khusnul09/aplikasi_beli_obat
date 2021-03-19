@@ -28,8 +28,6 @@ import java.util.Objects;
 
 public class PesananObatAdminActivity extends AppCompatActivity {
 
-    String urlpesananoabtadmin = "https://obats.000webhostapp.com/api/datapesananobat";
-    String urlDetail = "https://obats.000webhostapp.com/api/user/detail";
     ImageView Kembali;
     AdapterPesananObatAdmin adapterPesananObatAdmin;
     List<ModelPesananObatAdmin> listmodelobatadmin;
@@ -43,30 +41,18 @@ public class PesananObatAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pesanan_obat_admin);
 
         Kembali = findViewById(R.id.iv_back_home_admin);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
-                startActivity(intent);
-
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), AdminActivity.class);
+            startActivity(intent);
         });
 
         SwipeRefresh = findViewById(R.id.swipe_pesanan_obat); //refresh
         SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
-        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        SwipeRefresh.setRefreshing(false);
+        SwipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            SwipeRefresh.setRefreshing(false);
 
-                        dataPesananAdmin();
-                    }
-                }, 4000);
-            }
-        });
+            dataPesananAdmin();
+        }, 4000));
 
 
         adapterPesananObatAdmin = new AdapterPesananObatAdmin(getApplicationContext());
@@ -101,6 +87,8 @@ public class PesananObatAdminActivity extends AppCompatActivity {
     }
 
     private void dataPesananAdmin() {
+        String urlpesananoabtadmin = "https://obats.000webhostapp.com/index.php/api/Data_pesanan_obat";
+
         StringRequest request = new StringRequest(Request.Method.GET, urlpesananoabtadmin,
                 response -> {
                     Log.i("khatima", response);

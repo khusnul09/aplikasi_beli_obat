@@ -1,16 +1,21 @@
 package com.example.mynotes;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -28,7 +33,6 @@ public class ProfilActivity extends AppCompatActivity {
     ImageView backProfil;
     Button logout;
 
-    String url = "https://obats.000webhostapp.com/api/user/profil";
     String email;
 
     @Override
@@ -60,11 +64,13 @@ public class ProfilActivity extends AppCompatActivity {
         });
 
         logout.setOnClickListener(v -> {
-            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", false);
-            Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(logout);
-            finish();
+            new AlertDialog.Builder(this)
+                    .setMessage("Apakah Anda ingin logout dari akun ini?")
+                    .setPositiveButton("Ya", (dialog, which) -> logout())
+                    .setNegativeButton("Tidak", null)
+                    .show();
         });
+
 
         backProfil.setOnClickListener(v -> {
             Intent intent = new Intent (getApplicationContext(), PesanObatActivity.class);
@@ -81,7 +87,9 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
     public void getDataProfil() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+        String url = "https://obats.000webhostapp.com/index.php/api/Profil?email=" + email;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -95,15 +103,38 @@ public class ProfilActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        }, Throwable::printStackTrace) {
+        }, Throwable::printStackTrace);
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(stringRequest);
+    }
+
+    public void logout() {
+        String url_logout = "https://obats.000webhostapp.com/index.php/api/Hapus_token";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url_logout, response -> {
+            Log.d("logout", response);
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getString("status").equals("token dihapus")) {
+                    SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "is_login", false);
+                    Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(logout);
+                    finish();
+                } else {
+                    Toast.makeText(this, object.optString("status"), Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> Log.i("khatima", error.toString())){
             @Override
-            protected Map<String, String> getParams() {
+            protected Map< String, String> getParams() {
                 Map<String, String> param = new HashMap<>();
                 param.put("email", email);
                 return param;
             }
         };
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        queue.add(stringRequest);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
     }
 }

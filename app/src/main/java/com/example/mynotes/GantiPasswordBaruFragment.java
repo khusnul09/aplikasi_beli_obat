@@ -24,12 +24,12 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class GantiPasswordBaruFragment extends Fragment {
 
     ProgressDialog progressDialog;
 
-    String urlGantiPassword = "https://obats.000webhostapp.com/api/user/gantipassword";
     String email, passwordBaru, passwordBaruLagi;
 
     @Override
@@ -55,10 +55,10 @@ public class GantiPasswordBaruFragment extends Fragment {
 
         btnGantiPassword.setOnClickListener(view -> {
 
-            passwordBaru = tietPassBaru.getText().toString();
-            passwordBaruLagi = tietPassBaruLagi.getText().toString();
+            passwordBaru = Objects.requireNonNull(tietPassBaru.getText()).toString();
+            passwordBaruLagi = Objects.requireNonNull(tietPassBaruLagi.getText()).toString();
 
-            if (passwordBaru.isEmpty() || passwordBaru.equals("")) {
+            if (passwordBaru.isEmpty()) {
                 Toast.makeText(getContext(), "Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
             } else if (passwordBaru.equals(passwordBaruLagi)){
                 progressDialog.show();
@@ -72,6 +72,8 @@ public class GantiPasswordBaruFragment extends Fragment {
     }
 
     public void gantiPassword() {
+        String urlGantiPassword = "https://obats.000webhostapp.com/index.php/api/Ganti_password";
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGantiPassword, response -> {
             try {
                 JSONObject jsonObject = new JSONObject(response);
@@ -94,7 +96,7 @@ public class GantiPasswordBaruFragment extends Fragment {
                 return param;
             }
         };
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+        RequestQueue queue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         queue.add(stringRequest);
     }
 }

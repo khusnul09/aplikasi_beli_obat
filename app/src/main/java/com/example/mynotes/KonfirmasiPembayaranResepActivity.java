@@ -45,13 +45,12 @@ import java.util.Map;
 
 public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
 
-    private static final String urlUploadBukti = "https://obats.000webhostapp.com//api/user/uploadbukti";
-
     private ImageView showGambar;
-    private Button PilihGambarKonfirm, KirimBuktiPembayaran;
+    private Button KirimBuktiPembayaran;
     final int CODE_GALLERY_RQEUEST = 999;
     Bitmap bitmap;
-    LinearLayout llNprb, llMnra;
+    LinearLayout llNprb, llMnra, llBtn;
+    ImageView Kembali;
     TextView TotalBayar;
     String Total, Invoice;
     EditText etNprb, etRekening;
@@ -60,14 +59,6 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     String filePath;
-      Map config = new HashMap();
-
-    private void configCloudinary() {
-        config.put("cloud_name", "beliobatid");
-        config.put("api_key", "832196155542743");
-        config.put("api_secret", "bwnHoGmtO2Li9tq42rDckhd_5BE");
-        MediaManager.init(getApplicationContext(), config);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,36 +70,28 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
 
         showGambar = findViewById(R.id.showGambarResep);
-        PilihGambarKonfirm = findViewById(R.id.btn_pilih_gambar_konfirm_resep);
+        Button pilihGambarKonfirm = findViewById(R.id.btn_pilih_gambar_konfirm_resep);
+        llBtn = findViewById(R.id.ll_mnra_resep);
         KirimBuktiPembayaran = findViewById(R.id.btn_kirim_bukti_pembayaran_resep);
         llNprb = findViewById(R.id.ll_nprb_resep);
         etNprb = findViewById(R.id.et_npdrb_resep);
-        llMnra = findViewById(R.id.ll_mnra_resep);
+        llMnra = findViewById(R.id.ll_mnrar);
         etRekening = findViewById(R.id.et_rekening_resep);
 
         email_user = SharedPreferenceManager.getStringPreferences(getApplicationContext(), "user_email");
 
-        /*if (SharedPreferenceManager.getBooleanPreferences(getApplicationContext(), "isInit")) {
-            Log.i("khatima", "isInit true");
-        } else {
-            SharedPreferenceManager.saveBooleanPreferences(getApplicationContext(), "isInit", true);
-        }*/
-        //configCloudinary();
+        Kembali = findViewById(R.id.iv_back_konfirmasi_resep);
+        Kembali.setOnClickListener(v -> onBackPressed());
 
-        llNprb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                llNprb.setVisibility(View.GONE);
-                etNprb.setVisibility(View.VISIBLE);
-            }
+        llNprb.setOnClickListener(v -> {
+            llNprb.setVisibility(View.GONE);
+            etNprb.setVisibility(View.VISIBLE);
         });
-        llMnra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                llMnra.setVisibility(View.GONE);
-                etRekening.setVisibility(View.VISIBLE);
-            }
+        llMnra.setOnClickListener(v -> {
+            llMnra.setVisibility(View.GONE);
+            etRekening.setVisibility(View.VISIBLE);
         });
+
 
         Calendar c = Calendar.getInstance();
 
@@ -125,7 +108,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(KonfirmasiPembayaranResepActivity.this,new
                 String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, CODE_GALLERY_RQEUEST);
 
-        PilihGambarKonfirm.setOnClickListener(v -> ImagePicker.Companion.with(this)
+        pilihGambarKonfirm.setOnClickListener(v -> ImagePicker.Companion.with(this)
                 //Crop image(Optional), Check Customization for more option
                 .compress(1024)			//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
@@ -134,23 +117,27 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
         KirimBuktiPembayaran.setOnClickListener(v -> uploadToCloudinary(filePath));
     }
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data){
-        try {
-            Uri path = data.getData();
-            InputStream inputStream = getContentResolver().openInputStream(path);
-            bitmap = BitmapFactory.decodeStream(inputStream);
-            showGambar.setImageBitmap(bitmap);
-            showGambar.setVisibility(View.VISIBLE);
-            KirimBuktiPembayaran.setVisibility(View.VISIBLE);
-            Toast.makeText(KonfirmasiPembayaranResepActivity.this, "Resep berhasil dipilih", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(KonfirmasiPembayaranResepActivity.this, "Resep gagal dipilih, coba lagi", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
+    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data.getData() != null) {
+            try {
+                Uri path = data.getData();
+                InputStream inputStream = getContentResolver().openInputStream(path);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                showGambar.setImageBitmap(bitmap);
+                showGambar.setVisibility(View.VISIBLE);
+                llBtn.setVisibility(View.VISIBLE);
+                Toast.makeText(KonfirmasiPembayaranResepActivity.this, "Resep berhasil dipilih", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(KonfirmasiPembayaranResepActivity.this, "Resep gagal dipilih, coba lagi", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
 
-        //get the image's file location
-        filePath = getRealPathFromUri(data.getData(), KonfirmasiPembayaranResepActivity.this);
+            //get the image's file location
+            filePath = getRealPathFromUri(data.getData(), KonfirmasiPembayaranResepActivity.this);
+        } else {
+            Toast.makeText(this, "Tidak ada Foto dipilih", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String getRealPathFromUri(Uri imageUri, Activity activity){
@@ -200,6 +187,7 @@ public class KonfirmasiPembayaranResepActivity extends AppCompatActivity {
     }
 
     private void uploadBukti() {
+        final String urlUploadBukti = "https://obats.000webhostapp.com/index.php/api/Upload_bukti";
 
         narek = etNprb.getText().toString();
         norek = etRekening.getText().toString();

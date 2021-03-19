@@ -12,14 +12,12 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filterable {
 
@@ -62,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         myHolder.jumlahAngka = 0;
 
         //menampilkan gambar
-        if (currentItem.getGambar() != "") {
+        if (!currentItem.getGambar().equals("")) {
             //myHolder.mImaeView.setImageResource(currentItem.getImage());//here we used image resource because we will use images in our
             //myHolder.imageViewResource = currentItem.getImage();
             Glide.with(c).load(currentItem.getGambar()).into(myHolder.mImaeView);

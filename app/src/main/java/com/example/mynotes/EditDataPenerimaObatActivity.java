@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,14 +22,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class EditDataPenerimaObatActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     TextInputEditText editNamaPenerima, editNoPenerima, editAlamatPenerima, editDetailAlamatPenerima;
     ImageView backEditProfil;
-//    private static String url_read = "https://obats.000webhostapp.com/api/user/datapenerima";
-    private static String url_update_data_penerima = "https://obats.000webhostapp.com/api/user/updatedatapenerima";
     Button SimpanProfil;
     String invoice, email, namaPenerimaEdit, handphonePenerimaEdit, alamatPenerimaEdit, detailPenerimaEdit;
     String NamaPenerimaBaru, NoPenerimaBaru,AlamatPenerimaBaru, DetailAlamatPenerimaBaru;
@@ -42,12 +40,7 @@ public class EditDataPenerimaObatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_data_penerima_obat);
 
         backEditProfil = findViewById(R.id.iv_kembali_edit_data);
-        backEditProfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { ;
-                onBackPressed();
-            }
-        });
+        backEditProfil.setOnClickListener(v -> onBackPressed());
 
         SimpanProfil = findViewById(R.id.btn_simpan_edit_data_penerima);
         SimpanProfil.setOnClickListener(v -> editData());
@@ -75,14 +68,16 @@ public class EditDataPenerimaObatActivity extends AppCompatActivity {
 
     private void editData() {
 
+        final String url_update_data_penerima = "https://obats.000webhostapp.com/index.php/api/Update_data_penerima";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Update Data Penerima...");
         progressDialog.show();
 
-        NamaPenerimaBaru = editNamaPenerima.getText().toString();
-        NoPenerimaBaru = editNoPenerima.getText().toString();
-        AlamatPenerimaBaru = editAlamatPenerima.getText().toString();
-        DetailAlamatPenerimaBaru = editDetailAlamatPenerima.getText().toString();
+        NamaPenerimaBaru = Objects.requireNonNull(editNamaPenerima.getText()).toString();
+        NoPenerimaBaru = Objects.requireNonNull(editNoPenerima.getText()).toString();
+        AlamatPenerimaBaru = Objects.requireNonNull(editAlamatPenerima.getText()).toString();
+        DetailAlamatPenerimaBaru = Objects.requireNonNull(editDetailAlamatPenerima.getText()).toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_data_penerima, response -> {
             Log.i("khatima", response);

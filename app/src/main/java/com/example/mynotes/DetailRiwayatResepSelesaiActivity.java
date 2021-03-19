@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -16,11 +13,10 @@ import com.squareup.picasso.Picasso;
 public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
 
     TextView namaPenerima, handphone, alamat, detailAlamat, status, invoice, totalHarga, waktu, waktuBayar, waktuKirim, hargaApoteker;
-    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, statusdesc, Invoice,
+    String NamaPenerima, HandphonePenerima, AlamatPenerima, DetailAlamatPenerima, Invoice,
             Waktu, Gambar, TotalHarga, WaktuBayar, WaktuKirim, HargaApoteker;
     int Status;
     ImageView gambar, Kembali;
-    Button Selesai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +24,11 @@ public class DetailRiwayatResepSelesaiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_riwayat_resep_selesai);
 
         Kembali = findViewById(R.id.iv_kembali_riwayat_resep_selesai);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
-                intent.putExtra("fragmentItem", 2);
-                startActivity(intent);
-                finish();
-            }
+        Kembali.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RiwayatActivity.class); //kembali ke fragment selesai
+            intent.putExtra("fragmentItem", 2);
+            startActivity(intent);
+            finish();
         });
 
         namaPenerima = findViewById(R.id.tv_nama_riwayat_resep_selesai);

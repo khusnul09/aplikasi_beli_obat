@@ -18,19 +18,15 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class KeranjangActivity extends AppCompatActivity {
@@ -123,13 +119,12 @@ public class KeranjangActivity extends AppCompatActivity {
     }
 
     public void getKeranjang(String user) {
-        String url = "https://obats.000webhostapp.com//api/user/keranjang/" + user;
+        String url = "https://obats.000webhostapp.com/index.php/api/Get_keranjang?user=" + user;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     mSwipeLayout.setRefreshing(false);
-                    //mRecyclerView.setVisibility(View.VISIBLE);
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -170,7 +165,7 @@ public class KeranjangActivity extends AppCompatActivity {
     }
 
     public void deleteKeranjang(String user, ModelKeranjang model, int position) {
-        String urlDelete = "https://obats.000webhostapp.com//api/user/deletekeranjang";
+        String urlDelete = "https://obats.000webhostapp.com/index.php/api/Delete_keranjang";
         Log.d("khatima", urlDelete);
         ProgressDialog progress = new ProgressDialog(this);
         progress.setCancelable(false);

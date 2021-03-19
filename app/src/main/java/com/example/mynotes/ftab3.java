@@ -25,14 +25,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class ftab3 extends Fragment {
-
-    String urlRiwayatSelesai = "https://obats.000webhostapp.com/api/user/riwayatselesai";
 
     TextView kosong;
     String email;
@@ -52,19 +48,11 @@ public class ftab3 extends Fragment {
 
         SwipeRefresh = view.findViewById(R.id.swipe_selesai);
         SwipeRefresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
-        SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        SwipeRefresh.setRefreshing(false);
+        SwipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            SwipeRefresh.setRefreshing(false);
 
-                        riwayatSelesai();
-                    }
-                }, 4000);
-            }
-        });
+            riwayatSelesai();
+        }, 4000));
 
         kosong = view.findViewById(R.id.teks_kosong);
 
@@ -120,7 +108,9 @@ public class ftab3 extends Fragment {
     }
 
     public void riwayatSelesai(){
-        StringRequest request = new StringRequest(Request.Method.POST, urlRiwayatSelesai,
+        String urlRiwayatSelesai = "https://obats.000webhostapp.com/index.php/api/Riwayat_selesai?email=" + email;
+
+        StringRequest request = new StringRequest(Request.Method.GET, urlRiwayatSelesai,
                 response -> {
                     Log.i("khatima", response);
                     try {
@@ -159,14 +149,7 @@ public class ftab3 extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Log.i("Khusnul", String.valueOf(error))) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> param = new HashMap<>();
-                param.put("email", email);
-                return param;
-            }
-        };
+                }, error -> Log.i("Khusnul", String.valueOf(error)));
         RequestQueue queue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         queue.add(request);
     }

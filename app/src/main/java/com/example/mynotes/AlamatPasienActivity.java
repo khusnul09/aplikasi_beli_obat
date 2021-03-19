@@ -28,7 +28,7 @@ import java.util.Objects;
 
 public class AlamatPasienActivity extends AppCompatActivity {
 
-    private static final String url = "https://obats.000webhostapp.com//api/user/addimage";
+    private static final String url = "https://obats.000webhostapp.com/index.php/api/Add_image";
 
     Button kirim;
     ImageView backAlamatPasien;
@@ -93,7 +93,6 @@ public class AlamatPasienActivity extends AppCompatActivity {
 
             alamatPasien();
         });
-
     }
 
     private void alamatPasien() {
@@ -142,7 +141,6 @@ public class AlamatPasienActivity extends AppCompatActivity {
                 params.put("title", "Pesanan Resep");
                 params.put("message", "Ada pesanan...");
                 return  params;
-
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(AlamatPasienActivity.this);

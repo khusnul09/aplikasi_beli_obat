@@ -1,17 +1,13 @@
 package com.example.mynotes;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
@@ -32,11 +26,8 @@ import java.util.Map;
 
 public class PesanObatActivity extends AppCompatActivity {
 
-    String url = "https://obats.000webhostapp.com/api/user/cektoken";
-    final String url_tokenadmin = "https://obats.000webhostapp.com/api/tokenadmin";
-    private CardView OpenImage, PilihObat, Riwayat;
     ImageView Akun;
-    String tokensekarang, tokenbaru, email, nama;
+    String tokensekarang, email, nama;
     String tokenA;
     TextView tvNama;
 
@@ -52,37 +43,25 @@ public class PesanObatActivity extends AppCompatActivity {
         tvNama = findViewById(R.id.tv_nama_user);
         tvNama.setText(nama);
 
-
-        //tokensekarang = SharedPreferenceManager.getStringPreferences(getApplicationContext(),"token");
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             tokensekarang = task.getResult();
             Log.w("khatima", tokensekarang);
             cektoken();
-
-
-            /*if (tokensekarang.equals(tokenbaru)) {
-                Log.d("khatima", "token sama");
-            }
-            else {
-                tokensekarang = tokenbaru;
-                Log.d("khatima", tokensekarang);
-
-            }*/
         });
 
-        OpenImage = findViewById(R.id.ada_resep);
-        OpenImage.setOnClickListener(v -> {
+        CardView openImage = findViewById(R.id.ada_resep);
+        openImage.setOnClickListener(v -> {
             Intent intent = new Intent(PesanObatActivity.this, PesanDenganResepActivity.class);
             startActivity(intent);
         });
-        PilihObat = findViewById(R.id.no_resep);
-        PilihObat.setOnClickListener(v -> {
+        CardView pilihObat = findViewById(R.id.no_resep);
+        pilihObat.setOnClickListener(v -> {
             Intent intent = new Intent(PesanObatActivity.this, PesanTanpaResepActivity.class);
             startActivity(intent);
         });
 
-        Riwayat = findViewById(R.id.riwayat);
-        Riwayat.setOnClickListener(v -> {
+        CardView riwayat = findViewById(R.id.riwayat);
+        riwayat.setOnClickListener(v -> {
             Intent intent = new Intent(PesanObatActivity.this, RiwayatActivity.class);
             startActivity(intent);
         });
@@ -106,6 +85,8 @@ public class PesanObatActivity extends AppCompatActivity {
     }
 
     private void cektoken() {
+        String url = "https://obats.000webhostapp.com/index.php/api/Cek_token";
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
                     Log.i("khatima", response);
@@ -131,13 +112,13 @@ public class PesanObatActivity extends AppCompatActivity {
     }
 
     private void tokenadmin() {
+        final String url_tokenadmin = "https://obats.000webhostapp.com/index.php/api/Token_admin";
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url_tokenadmin,
                 response -> {
-                   // Log.i("khatima", response);
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-                        String respon = jsonObject.getString("text");
-                        JSONArray array = jsonObject.getJSONArray("text");
+                        JSONArray array = jsonObject.getJSONArray("data");
                         tokenA = array.getJSONObject(0).optString("token");
                         SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "tokenadmin", tokenA);
 

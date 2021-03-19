@@ -68,15 +68,10 @@ public class AnotherActivity extends AppCompatActivity {
 
         Log.d("khatima", idApriori.toString());
 
-        //byte[] mBytes = getIntent().getByteArrayExtra("iImage");
-        //now decode image because from previous activity we get our image in bytes
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(mBytes, 0, mBytes.length);
-
         actionBar.setTitle(mTitle); //which title we get from previous activity that will set in our action bar
 
         //now set our data in our view, which we get in our previous activity
         mTitleTv.setText(mTitle);
-//        mDescTv.setText(mDescription);
         sSatuanTv.setText(sSatuan);
         mDescTv.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(mDescription))));
 
@@ -110,7 +105,7 @@ public class AnotherActivity extends AppCompatActivity {
             dalamnyaBawah.setVisibility(View.VISIBLE);
         }
 
-        String url = "https://obats.000webhostapp.com//api/user/apriori/" + idObat;
+        String url = "https://obats.000webhostapp.com/index.php/api/Apriori?id=" + idObat;
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         @SuppressLint("CheckResult") JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,

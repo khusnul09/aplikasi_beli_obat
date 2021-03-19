@@ -5,11 +5,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterPesananObatAdmin extends RecyclerView.Adapter<AdapterPesananObatAdmin.ViewHolder> {
 
-    private LayoutInflater inflater;
-    private List<ModelPesananObatAdmin> listpesananobat;
-    private Context context;
+    private final LayoutInflater inflater;
+    private final List<ModelPesananObatAdmin> listpesananobat;
+    private final Context context;
     private OnItemClick onItemClick;
 
     public void setClickListener(OnItemClick onItemClick) {

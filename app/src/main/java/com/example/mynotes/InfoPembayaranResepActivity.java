@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,11 +28,8 @@ import java.util.Map;
 
 public class InfoPembayaranResepActivity extends AppCompatActivity {
 
-    private static final String urlUpdateStatus = "https://obats.000webhostapp.com//api/user/updatestatusresi";
-
     TextView NomorRekening, tvHarga;
     ImageView Copy, Kembali;
-    TextView TotalBayar;
     Button UploadNantiResep, UploadSekarang;
     String Harga, invoice, setStatus;
 
@@ -62,12 +58,7 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
         });
 
         Kembali = findViewById(R.id.iv_kembali_det_resep);
-        Kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { ;
-                onBackPressed();
-            }
-        });
+        Kembali.setOnClickListener(v -> onBackPressed());
 
         UploadSekarang = findViewById(R.id.btn_upload_sekarang_resep);
         UploadSekarang.setOnClickListener(v -> {
@@ -83,10 +74,6 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
             setStatus = "1";
             updateStatus();
         });
-
-        TotalBayar = findViewById(R.id.tv_nominal_pembayaran_resep);
-
-        TotalBayar.setText(Rupiah.formatUangId(getApplicationContext(), Double.parseDouble(String.valueOf(Harga))));
     }
 //Apabila sebelum back harus memilih upload sekarang atau upload nanti. Tidak dapat back apabila tdk memilih salah satunya
 //    @Override
@@ -95,6 +82,8 @@ public class InfoPembayaranResepActivity extends AppCompatActivity {
 //    }
 
     private void updateStatus() {
+        final String urlUpdateStatus = "https://obats.000webhostapp.com/index.php/api/Update_status_resi";
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
         progressDialog.show();
