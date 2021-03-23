@@ -81,7 +81,7 @@ public class GantiPasswordBaruFragment extends Fragment {
                 if (jsonObject.getString("status").equals("sukses")) {
                     Intent intent = new Intent(getContext(), ProfilActivity.class);
                     startActivity(intent);
-                    Toast.makeText(getContext(), "Password Diganti", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Password telah diubah", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 } else if (jsonObject.getString("status").equals("0")){
                                     Log.i("Khatima", "else dijalankan");
-                                    Toast.makeText(getApplicationContext(), "Username atau Password salah", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Email atau Password salah", Toast.LENGTH_SHORT).show();
                                 }
                                 progressDialog.dismiss();
 
