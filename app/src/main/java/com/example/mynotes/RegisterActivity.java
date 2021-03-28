@@ -103,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();
                             SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", dftEmail);
                             SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", "user");
+                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_name", dftNamaLengkap);
 //                            SharedPreferenceManager.saveStringPreferences(getApplicationContext(),"token", token);
                             Intent keLogin = new Intent(RegisterActivity.this, SyaratDanKetentuanActivity.class);
                             startActivity(keLogin);

@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                         statsnk = objData.getString("snk");
                                         nama = objData.getString("nama");
                                     }
-                                    Log.i("khatima", role);
+                                    Log.i("khatima", nama);
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_email", Objects.requireNonNull(etEmail.getEditText()).getText().toString());
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(), "user_role", role);
                                     SharedPreferenceManager.saveStringPreferences(getApplicationContext(),"token", token);
